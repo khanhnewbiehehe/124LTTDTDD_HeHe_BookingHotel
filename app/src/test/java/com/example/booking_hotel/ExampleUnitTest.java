@@ -1,4 +1,4 @@
-package com.example.a124_ltdd;
+package com.example.booking_hotel;
 
 import org.junit.Test;
 

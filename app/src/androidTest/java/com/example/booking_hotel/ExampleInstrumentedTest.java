@@ -1,4 +1,4 @@
-package com.example.a124_ltdd;
+package com.example.booking_hotel;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.a124_ltdd", appContext.getPackageName());
+        assertEquals("com.example.booking_hotel", appContext.getPackageName());
     }
 }
