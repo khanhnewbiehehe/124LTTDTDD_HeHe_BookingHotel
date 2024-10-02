@@ -5,15 +5,44 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_ht"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/logo_ht"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="188dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_ht" />
 
+    <TextView
+        android:id="@+id/text_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="BOOKING HOTEL"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/logo_ht"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="@+id/logo_ht"
+        app:layout_constraintTop_toBottomOf="@+id/logo_ht" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="88dp"
+        android:backgroundTint="#0076DA"
+        android:text="Get Start  >"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/text_logo"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="@+id/text_logo"
+        app:layout_constraintTop_toBottomOf="@+id/text_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

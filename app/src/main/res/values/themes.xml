@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme._124_LTDD" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Booking_Hotel" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme._124_LTDD" parent="Base.Theme._124_LTDD" />
+    <style name="Theme.Booking_Hotel" parent="Base.Theme.Booking_Hotel" />
 </resources>

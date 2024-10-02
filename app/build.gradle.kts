@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.a124_ltdd"
+    namespace = "com.example.booking_hotel"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.a124_ltdd"
+        applicationId = "com.example.booking_hotel"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
