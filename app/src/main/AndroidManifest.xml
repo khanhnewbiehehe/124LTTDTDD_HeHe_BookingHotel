@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo_ht"
+        android:icon="@drawable/ihotel"
         android:label="Booking Hotel"
-        android:roundIcon="@drawable/logo_ht"
+        android:roundIcon="@drawable/ihotel"
         android:supportsRtl="true"
         android:theme="@style/Theme.Booking_Hotel"
         tools:targetApi="31">
