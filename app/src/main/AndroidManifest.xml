@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo_ht"
+        android:icon="@drawable/ihotel"
         android:label="Booking Hotel"
-        android:roundIcon="@drawable/logo_ht"
+        android:roundIcon="@drawable/ihotel"
         android:supportsRtl="true"
         android:theme="@style/Theme.Booking_Hotel"
         tools:targetApi="31">
@@ -16,7 +16,12 @@
             android:name=".register_hotel_1"
             android:exported="false" />
         <activity
-            android:name=".forgot_pass"
+            android:name=".create_order"
+            android:exported="false" />
+        <activity android:name=".forgot_pass"
+            android:exported="false"/>
+        <activity
+            android:name=".create_room"
             android:exported="false" />
         <activity
             android:name=".sign_in"
