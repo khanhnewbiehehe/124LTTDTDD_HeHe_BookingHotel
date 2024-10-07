@@ -38,7 +38,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="88dp"
         android:backgroundTint="#0076DA"
-        android:text="Get Start  >"
+        android:text="Bắt Đầu  >"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/text_logo"

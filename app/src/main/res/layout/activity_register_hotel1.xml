@@ -44,13 +44,11 @@
         android:layout_marginTop="28dp"
         android:text="Đăng Ký"
         android:backgroundTint="#0076DA"
-        android:background="@drawable/btn_background"
-        android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputPass"
+        app:layout_constraintEnd_toEndOf="@+id/createPass"
         app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="@+id/inputPass"
-        app:layout_constraintTop_toBottomOf="@+id/inputPass" />
+        app:layout_constraintStart_toStartOf="@+id/createPass"
+        app:layout_constraintTop_toBottomOf="@+id/createPass" />
 
     <EditText
         android:id="@+id/inputPass"
@@ -131,18 +129,48 @@
         app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <TextView
-        android:id="@+id/Khanh_2725"
+        android:id="@+id/notification_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="404"
-        android:textStyle="bold"
+        android:text="Đã từng đặt phòng với SDT này"
         android:textColor="#FF0000"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/haveAccount"
+        app:layout_constraintEnd_toEndOf="@+id/inputPass"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/haveAccount"
-        app:layout_constraintTop_toBottomOf="@+id/haveAccount" />
+        app:layout_constraintStart_toStartOf="@+id/inputPass"
+        app:layout_constraintTop_toBottomOf="@+id/inputPass" />
+
+    <LinearLayout
+        android:id="@+id/createPass"
+        android:layout_width="320dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/notification_account"
+        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintStart_toStartOf="@+id/notification_account"
+        app:layout_constraintTop_toBottomOf="@+id/notification_account">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:text="Quên mật khẩu ? "
+            android:textColor="#FF0101"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textViewForgotPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tạo mật khẩu mới"
+            android:textStyle="bold"
+            android:textColor="#FF0404"
+            android:textSize="20dp" />
+
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
