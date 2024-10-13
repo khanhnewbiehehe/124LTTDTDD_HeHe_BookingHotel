@@ -1,3 +1,5 @@
+import com.android.tools.r8.internal.me
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -40,4 +42,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation ("me.relex:circleindicator:2.1.6")
 }
