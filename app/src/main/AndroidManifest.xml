@@ -37,10 +37,10 @@
             android:name=".register_hotel"
             android:exported="false" />
         <activity
-            android:name=".booking_details"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".booking_details"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
