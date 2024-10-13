@@ -1,7 +1,9 @@
 package com.example.booking_hotel;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
@@ -11,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class create_order extends AppCompatActivity {
@@ -25,39 +28,47 @@ public class create_order extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Spinner loaiPhong = findViewById(R.id.spn_LoaiPhong);
-        List<String> listLoaiPhong = new ArrayList<>();
-        listLoaiPhong.add("Loại phòng:");
-        listLoaiPhong.add("Phòng đôi");
-        listLoaiPhong.add("Phòng đơn");
-        listLoaiPhong.add("Phòng gia đình");
-        ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listLoaiPhong);
-        LoaiPhongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        loaiPhong.setAdapter(LoaiPhongAdapter);
-        loaiPhong.setSelection(0);
 
-        Spinner loaiView = findViewById(R.id.spn_View);
-        List<String> listKhungCanh = new ArrayList<>();
-        listKhungCanh.add("Loại khung cảnh:");
-        listKhungCanh.add("Thành phố");
-        listKhungCanh.add("Biển");
-        listKhungCanh.add("Cửa sổ");
-        listKhungCanh.add("Không có");
-        ArrayAdapter<String> KhungCanhAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listKhungCanh);
-        KhungCanhAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        loaiView.setAdapter(KhungCanhAdapter);
-        loaiView.setSelection(0);
+        Spinner Phong = findViewById(R.id.spn_Room);
+        List<String> listPhong = new ArrayList<>();
+        listPhong.add("PhÃ²ng"); // ThÃªm pháº§n tá»­ placeholder
+        listPhong.add("101");
+        listPhong.add("201");
+        listPhong.add("301");
+        ArrayAdapter<String> PhongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listPhong);
+        PhongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Phong.setAdapter(PhongAdapter);
+        Phong.setSelection(0);
 
-        Spinner loaiGiuong = findViewById(R.id.spn_LoaiGiuong);
-        List<String> listLoaiGiuong = new ArrayList<>();
-        listLoaiGiuong.add("Loại giường:");
-        listLoaiGiuong.add("1 giường đơn");
-        listLoaiGiuong.add("2 giường đơn");
-        listLoaiGiuong.add("1 giường đôi");
-        listLoaiGiuong.add("2 giường đôi");
-        ArrayAdapter<String> LoaiGiuongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listLoaiGiuong);
-        LoaiGiuongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        loaiGiuong.setAdapter(LoaiGiuongAdapter);
-        loaiGiuong.setSelection(0);
+        Button checkinDateButton = findViewById(R.id.btn_CheckIn);
+        Button checkoutDateButton = findViewById(R.id.btn_CheckOut);
+
+        // Láº¥y ngÃ y hiá»‡n táº¡i Ä‘á»ƒ lÃ m máº·c Ä‘á»‹nh
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Xá»­ lÃ½ sá»± kiá»‡n cho nÃºt Check-in
+        checkinDateButton.setOnClickListener(v -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    create_order.this,
+                    (view, year1, month1, dayOfMonth) -> {
+                        // Cáº­p nháº­t text cho nÃºt Check-in
+                        checkinDateButton.setText(dayOfMonth + "/" + (month1 + 1) + "/" + year1);
+                    }, year, month, day);
+            datePickerDialog.show();
+        });
+
+        // Xá»­ lÃ½ sá»± kiá»‡n cho nÃºt Check-out
+        checkoutDateButton.setOnClickListener(v -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    create_order.this,
+                    (view, year12, month12, dayOfMonth) -> {
+                        // Cáº­p nháº­t text cho nÃºt Check-out
+                        checkoutDateButton.setText(dayOfMonth + "/" + (month12 + 1) + "/" + year12);
+                    }, year, month, day);
+            datePickerDialog.show();
+        });
     }
 }
