@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_ht"
-    tools:context=".create_customer">
+    tools:context=".list_order">
 
     <Button
         android:id="@+id/btn_Back"
@@ -23,71 +23,68 @@
         android:contentDescription="Nút quay lại"
         />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="THÊM KHÁCH HÀNG"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Back" />
-
-    <EditText
-        android:id="@+id/txt_HoTenKhachHang"
+    <Button
+        android:id="@+id/button3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:hint="Họ tên"
-        android:inputType="text"
-        android:paddingLeft="20dp"
-        android:paddingTop="15dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="15dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray"
+        android:background="@drawable/btn_background"
+        android:text="Thêm đơn hàng"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Back" />
 
     <EditText
-        android:id="@+id/txt_SDT"
+        android:id="@+id/txt_Search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/listview_customer_item"
+        android:drawableEnd="@drawable/icon_search"
+        android:drawableTint="#225C6E"
+        android:ems="10"
+        android:hint="Tìm khách hàng ..."
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#989797"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Spinner
+        android:id="@+id/spn_Room"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:hint="Số điện thoại"
-        android:inputType="text"
+        android:background="@drawable/white_filled_input"
+        android:drawableEnd="@drawable/icon_dropdown"
+        android:drawableTint="#0F77A6"
         android:paddingLeft="20dp"
         android:paddingTop="15dp"
         android:paddingRight="20dp"
         android:paddingBottom="15dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/txt_HoTenKhachHang"
-        app:layout_constraintStart_toStartOf="@+id/txt_HoTenKhachHang"
-        app:layout_constraintTop_toBottomOf="@+id/txt_HoTenKhachHang" />
+        app:layout_constraintEnd_toEndOf="@+id/txt_Search"
+        app:layout_constraintStart_toStartOf="@+id/txt_Search"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Search" />
 
-    <Button
-        android:id="@+id/btn_TaoKhachHang"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/btn_background"
-        android:text="Tạo"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/txt_SDT"
-        app:layout_constraintStart_toStartOf="@+id/txt_SDT"
-        app:layout_constraintTop_toBottomOf="@+id/txt_SDT" />
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spn_Room"
+        app:layout_constraintVertical_bias="0.0"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
