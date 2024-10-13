@@ -16,7 +16,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".booking_details"
+            android:name=".booking_list"
             android:exported="false" />
         <activity
             android:name=".profile"
@@ -48,6 +48,10 @@
         <activity
             android:name=".register_hotel"
             android:exported="false" />
+        <activity
+            android:name=".booking_details"
+            android:exported="false"
+            android:parentActivityName=".booking_list"/>
         <activity
             android:name=".details_order"
             android:exported="false" />
