@@ -31,7 +31,7 @@ public class create_order extends AppCompatActivity {
 
         Spinner Phong = findViewById(R.id.spn_Room);
         List<String> listPhong = new ArrayList<>();
-        listPhong.add("PhÃ²ng"); // ThÃªm pháº§n tá»­ placeholder
+        listPhong.add("Phòng");
         listPhong.add("101");
         listPhong.add("201");
         listPhong.add("301");
@@ -43,29 +43,27 @@ public class create_order extends AppCompatActivity {
         Button checkinDateButton = findViewById(R.id.btn_CheckIn);
         Button checkoutDateButton = findViewById(R.id.btn_CheckOut);
 
-        // Láº¥y ngÃ y hiá»‡n táº¡i Ä‘á»ƒ lÃ m máº·c Ä‘á»‹nh
+
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Xá»­ lÃ½ sá»± kiá»‡n cho nÃºt Check-in
+
         checkinDateButton.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     create_order.this,
                     (view, year1, month1, dayOfMonth) -> {
-                        // Cáº­p nháº­t text cho nÃºt Check-in
                         checkinDateButton.setText(dayOfMonth + "/" + (month1 + 1) + "/" + year1);
                     }, year, month, day);
             datePickerDialog.show();
         });
 
-        // Xá»­ lÃ½ sá»± kiá»‡n cho nÃºt Check-out
+
         checkoutDateButton.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     create_order.this,
                     (view, year12, month12, dayOfMonth) -> {
-                        // Cáº­p nháº­t text cho nÃºt Check-out
                         checkoutDateButton.setText(dayOfMonth + "/" + (month12 + 1) + "/" + year12);
                     }, year, month, day);
             datePickerDialog.show();
