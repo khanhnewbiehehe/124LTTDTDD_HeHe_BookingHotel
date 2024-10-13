@@ -40,6 +40,7 @@
         android:backgroundTint="#0076DA"
         android:text="Bắt Đầu  >"
         android:textSize="20dp"
+        android:background="@drawable/btn_background"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/text_logo"
         app:layout_constraintHorizontal_bias="0.517"
