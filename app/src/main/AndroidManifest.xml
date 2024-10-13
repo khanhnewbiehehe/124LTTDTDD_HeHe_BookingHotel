@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Booking_Hotel"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".booking_list"
             android:exported="false" />
         <activity
             android:name=".profile"
@@ -50,7 +50,7 @@
             android:exported="false"
             android:parentActivityName=".booking_list"/>
         <activity
-            android:name=".booking_list"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
