@@ -38,5 +38,14 @@ public class sign_in extends AppCompatActivity {
                 startActivity(forgot_pass);
             }
         });
+
+        Button btn = findViewById(R.id.btnLogin);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sign_home = new Intent(sign_in.this, customer_home.class);
+                startActivity(sign_home);
+            }
+        });
     }
 }

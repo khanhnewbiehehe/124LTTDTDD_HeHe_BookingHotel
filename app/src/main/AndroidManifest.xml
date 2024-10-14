@@ -16,7 +16,19 @@
             android:name=".manager_roomlist"
             android:exported="false" />
         <activity
+            android:name=".room_list_k"
+            android:exported="false" />
+        <activity
+            android:name=".tb_dptc"
+            android:exported="false" />
+        <activity
+            android:name=".customer_home"
+            android:exported="false" />
+        <activity
             android:name=".manager_homescreen"
+            android:exported="false" />
+        <activity
+            android:name=".details_order"
             android:exported="false" />
         <activity
             android:name=".renew_password"
@@ -71,7 +83,7 @@
             android:exported="false"
             android:parentActivityName=".booking_list" />
         <activity
-            android:name=".details_order"
+            android:name=".room_details"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
