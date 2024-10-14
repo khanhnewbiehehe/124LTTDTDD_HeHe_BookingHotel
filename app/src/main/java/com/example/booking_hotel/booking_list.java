@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -35,6 +36,18 @@ public class booking_list extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button btnBack = findViewById(R.id.btn_Back);
+
+        // Set a click listener to navigate to another activity
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to go back to the desired activity (e.g., MainActivity)
+                Intent intent = new Intent(booking_list.this, customer_home.class);
+                startActivity(intent);
+            }
         });
 
         Spinner trangthai = findViewById(R.id.spn_trangthai_danhsach);

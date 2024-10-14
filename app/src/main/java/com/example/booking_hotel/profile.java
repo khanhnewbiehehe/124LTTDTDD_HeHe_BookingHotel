@@ -26,6 +26,7 @@ public class profile extends AppCompatActivity {
 
         Button btnChange = findViewById(R.id.profile_btn_change);
         Button btnChangePass = findViewById(R.id.profile_btn_change_password);
+        Button btnBack = findViewById(R.id.btn_Back);
 
         // Set a click listener to navigate to another activity
         btnChange.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +43,15 @@ public class profile extends AppCompatActivity {
             public void onClick(View v) {
                 // Create an intent to go back to the desired activity (e.g., MainActivity)
                 Intent intent = new Intent(profile.this, renew_password.class);
+                startActivity(intent);
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to go back to the desired activity (e.g., MainActivity)
+                Intent intent = new Intent(profile.this, customer_home.class);
                 startActivity(intent);
             }
         });
