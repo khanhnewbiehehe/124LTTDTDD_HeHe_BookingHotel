@@ -37,17 +37,16 @@ public class booking_list extends AppCompatActivity {
             return insets;
         });
 
-        Spinner loaiPhong = findViewById(R.id.spn_trangthai_danhsach);
-        List<String> listLoaiPhong = new ArrayList<>();
-        listLoaiPhong.add("Trạng thái"); // Thêm phần tử placeholder
-        listLoaiPhong.add("Trống");
-        listLoaiPhong.add("Đang sử dụng");
-        listLoaiPhong.add("Chưa nhận phòng");
-        listLoaiPhong.add("Bảo trì");
-        ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listLoaiPhong);
+        Spinner trangthai = findViewById(R.id.spn_trangthai_danhsach);
+        List<String> listTrangThai = new ArrayList<>();
+        listTrangThai.add("Trạng thái"); // Thêm phần tử placeholder
+        listTrangThai.add("Đang sử dụng");
+        listTrangThai.add("Chưa nhận phòng");
+        listTrangThai.add("Đã thanh toán");
+        ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listTrangThai);
         LoaiPhongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        loaiPhong.setAdapter(LoaiPhongAdapter);
-        loaiPhong.setSelection(0);
+        trangthai.setAdapter(LoaiPhongAdapter);
+        trangthai.setSelection(0);
 
         room_listProperties.add(
                 new room_list_detail("308","Phòng đôi", "20/9/2024 - 22/9/2024","Chưa nhận phòng","room_img"));
