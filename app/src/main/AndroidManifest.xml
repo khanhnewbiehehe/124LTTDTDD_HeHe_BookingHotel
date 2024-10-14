@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Booking_Hotel"
         tools:targetApi="31">
         <activity
-            android:name=".room_details"
+            android:name=".tb_dptc"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -58,7 +58,7 @@
             android:name=".customer_home"
             android:exported="false" />
         <activity
-            android:name=".tb_dptc"
+            android:name=".room_details"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
