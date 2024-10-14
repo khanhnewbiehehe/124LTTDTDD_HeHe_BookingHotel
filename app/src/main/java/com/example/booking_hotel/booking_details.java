@@ -1,6 +1,7 @@
 package com.example.booking_hotel;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class booking_details extends AppCompatActivity {
     private ViewPager mViewPager;
     private CircleIndicator mCircleIndicator;
     private  List<img_slider> mListPhoto;
+    private Button btnLeft, btnRight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +35,17 @@ public class booking_details extends AppCompatActivity {
 
         mViewPager = findViewById(R.id.img_slider);
         mCircleIndicator = findViewById(R.id.circle_indicator);
+        btnLeft = findViewById(R.id.icon_left);
+        btnRight = findViewById(R.id.icon_right);
 
         mListPhoto = getListPhoto();
         img_slider_adapter adapter = new img_slider_adapter(mListPhoto);
         mViewPager.setAdapter(adapter);
 
         mCircleIndicator.setViewPager(mViewPager);
+
+        btnLeft.setOnClickListener(v -> navigateSlider(-1));
+        btnRight.setOnClickListener(v -> navigateSlider(1));
     }
 
     private List<img_slider> getListPhoto() {
@@ -49,6 +56,17 @@ public class booking_details extends AppCompatActivity {
         list.add(new img_slider(R.drawable.room_img));
 
         return list;
+    }
+
+    private void navigateSlider(int direction) {
+        int currentPosition = mViewPager.getCurrentItem();
+        int totalItems = mListPhoto.size();
+
+        int newPosition = currentPosition + direction;
+
+        if (newPosition >= 0 && newPosition < totalItems) {
+            mViewPager.setCurrentItem(newPosition);
+        }
     }
 
 }
