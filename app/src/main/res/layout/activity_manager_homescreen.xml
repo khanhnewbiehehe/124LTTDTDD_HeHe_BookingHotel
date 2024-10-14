@@ -81,7 +81,7 @@
             android:textStyle="normal" />
 
         <Button
-            android:id="@+id/btn_manager_check_room"
+            android:id="@+id/btn_manager_search_room"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
