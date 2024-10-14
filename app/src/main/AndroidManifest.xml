@@ -13,7 +13,13 @@
         android:theme="@style/Theme.Booking_Hotel"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".list_order"
+            android:exported="false" />
+        <activity
+            android:name=".ListviewOrderAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".Renewal"
             android:exported="false" />
         <activity
             android:name=".booking_list"
@@ -51,12 +57,12 @@
         <activity
             android:name=".booking_details"
             android:exported="false"
-            android:parentActivityName=".booking_list"/>
+            android:parentActivityName=".booking_list" />
         <activity
             android:name=".details_order"
             android:exported="false" />
         <activity
-            android:name=".list_order"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
