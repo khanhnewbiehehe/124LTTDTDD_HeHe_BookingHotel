@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Booking_Hotel"
         tools:targetApi="31">
         <activity
+            android:name=".renew_password"
+            android:exported="false" />
+        <activity
             android:name=".thongbao_huydatphong"
             android:exported="false" />
         <activity
