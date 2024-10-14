@@ -13,13 +13,19 @@
         android:theme="@style/Theme.Booking_Hotel"
         tools:targetApi="31">
         <activity
+            android:name=".room_list_k"
+            android:exported="false" />
+        <activity
             android:name=".tb_dptc"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".customer_home"
             android:exported="false" />
         <activity
             android:name=".details_order"
+            android:exported="false" />
+        <activity
+            android:name=".booking_list"
             android:exported="false" />
         <activity
             android:name=".profile"
@@ -53,12 +59,16 @@
             android:exported="false" />
         <activity
             android:name=".booking_details"
-            android:exported="false" />
-        <activity
-            android:name=".customer_home"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".booking_list" />
         <activity
             android:name=".room_details"
+            android:exported="false" />
+        <activity
+            android:name=".list_order"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

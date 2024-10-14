@@ -157,7 +157,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/huydatphong"
+            android:id="@+id/btn_TraPhong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

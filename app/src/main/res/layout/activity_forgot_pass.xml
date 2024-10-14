@@ -33,31 +33,32 @@
         app:layout_constraintStart_toStartOf="@+id/inputNumberCall_F"
         app:layout_constraintTop_toBottomOf="@+id/inputNumberCall_F">
 
-    <EditText
+        <EditText
             android:id="@+id/inputEmail"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_corner"
+            android:drawableLeft="@drawable/icon_email"
             android:ems="10"
             android:hint=" Email"
-            android:drawableLeft="@drawable/icon_email"
             android:inputType="text"
             android:padding="12dp"
-        android:drawableTint="@color/gray"
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray"
+
+
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
             android:textSize="20sp" />
 
         <Button
             android:layout_width="95dp"
             android:layout_height="wrap_content"
-            android:padding="12dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/btn_background_white"
+            android:padding="12dp"
+            android:text="Gửi Mã"
             android:textColor="@color/black"
-            android:textSize="15dp"
-            android:text="Gửi Mã" />
+            android:textSize="15dp" />
     </LinearLayout>
 
     <Button
@@ -65,8 +66,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Tạo Mới"
         android:background="@drawable/btn_background"
+        android:text="Tạo Mới"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/inputCPass"
@@ -80,9 +81,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_corner"
+        android:drawableLeft="@drawable/icon_lock"
         android:ems="10"
         android:hint=" Nhập Lại Mật Khẩu "
-        android:drawableLeft="@drawable/icon_lock"
         android:inputType="text"
         android:padding="12dp"
         android:drawableTint="@color/gray"
@@ -100,9 +101,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:background="@drawable/rounded_corner"
+        android:drawableLeft="@drawable/icon_lock"
         android:ems="10"
         android:hint=" Mật Khẩu Mới"
-        android:drawableLeft="@drawable/icon_lock"
         android:inputType="text"
         android:padding="12dp"
         android:drawableTint="@color/gray"
@@ -115,8 +116,6 @@
         app:layout_constraintTop_toBottomOf="@+id/inputEmail_ln" />
 
 
-
-
     <EditText
         android:id="@+id/inputNumberCall_F"
         android:layout_width="0dp"
@@ -125,9 +124,9 @@
         android:layout_marginTop="88dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rounded_corner"
+        android:drawableLeft="@drawable/icon_call"
         android:ems="10"
         android:hint=" Số Điện Thoại"
-        android:drawableLeft="@drawable/icon_call"
         android:inputType="text"
         android:padding="12dp"
         android:drawableTint="@color/gray"
