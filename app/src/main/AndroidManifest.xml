@@ -25,6 +25,15 @@
             android:name=".details_order"
             android:exported="false" />
         <activity
+            android:name=".list_order"
+            android:exported="false" />
+        <activity
+            android:name=".ListviewOrderAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".Renewal"
+            android:exported="false" />
+        <activity
             android:name=".booking_list"
             android:exported="false" />
         <activity
@@ -63,9 +72,6 @@
             android:parentActivityName=".booking_list" />
         <activity
             android:name=".room_details"
-            android:exported="false" />
-        <activity
-            android:name=".list_order"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
