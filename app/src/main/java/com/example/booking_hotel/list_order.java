@@ -1,7 +1,10 @@
 package com.example.booking_hotel;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -26,6 +29,19 @@ public class list_order extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button btnBack = findViewById(R.id.btn_Back);
+
+        // Set a click listener to navigate to another activity
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to go back to the desired activity (e.g., MainActivity)
+                Intent intent = new Intent(list_order.this, manager_homescreen.class);
+                startActivity(intent);
+            }
+        });
+
         Spinner Phong = findViewById(R.id.spn_Room);
         List<String> listPhong = new ArrayList<>();
         listPhong.add("Trạng thái");
@@ -46,5 +62,6 @@ public class list_order extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.order_list);
         listView.setAdapter(adapter);
+
     }
 }

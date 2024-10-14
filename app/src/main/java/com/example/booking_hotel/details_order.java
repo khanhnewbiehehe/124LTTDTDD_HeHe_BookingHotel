@@ -1,6 +1,8 @@
 package com.example.booking_hotel;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -31,6 +33,18 @@ public class details_order extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button btnBack = findViewById(R.id.btn_Back);
+
+        // Set a click listener to navigate to another activity
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to go back to the desired activity (e.g., MainActivity)
+                Intent intent = new Intent(details_order.this, list_order.class);
+                startActivity(intent);
+            }
         });
 
         mViewPager = findViewById(R.id.img_slider);
