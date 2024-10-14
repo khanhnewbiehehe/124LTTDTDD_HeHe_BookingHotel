@@ -22,7 +22,16 @@
             android:name=".customer_home"
             android:exported="false" />
         <activity
+            android:name=".manager_homescreen"
+            android:exported="false" />
+        <activity
             android:name=".details_order"
+            android:exported="false" />
+        <activity
+            android:name=".renew_password"
+            android:exported="false" />
+        <activity
+            android:name=".thongbao_huydatphong"
             android:exported="false" />
         <activity
             android:name=".list_order"
