@@ -25,6 +25,8 @@ public class customer_information extends AppCompatActivity {
         });
 
         Button btnBack = findViewById(R.id.btn_Back);
+        Button btnDoiMK = findViewById(R.id.btn_DoiMatKhau);
+        Button btnCapNhat = findViewById(R.id.btn_ThayDoiThongTin);
 
         // Set a click listener to navigate to another activity
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +34,22 @@ public class customer_information extends AppCompatActivity {
             public void onClick(View v) {
                 // Create an intent to go back to the desired activity (e.g., MainActivity)
                 Intent intent = new Intent(customer_information.this, list_customer.class);
+                startActivity(intent);
+            }
+        });
+        btnDoiMK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to go back to the desired activity (e.g., MainActivity)
+                Intent intent = new Intent(customer_information.this, change_password.class);
+                startActivity(intent);
+            }
+        });
+        btnCapNhat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to go back to the desired activity (e.g., MainActivity)
+                Intent intent = new Intent(customer_information.this, update_customer.class);
                 startActivity(intent);
             }
         });
