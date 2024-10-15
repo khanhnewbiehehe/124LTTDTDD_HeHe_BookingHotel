@@ -8,21 +8,21 @@ import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class forgot_pass extends AppCompatActivity {
+public class change_password extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_forgot_pass);
+        setContentView(R.layout.activity_change_password);
 
 
-        Button btn = findViewById(R.id.btnChangePass);
+        Button btn = findViewById(R.id.btn_Back);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent fogot_sign = new Intent(forgot_pass.this , sign_in.class);
-                startActivity(fogot_sign);
+                Intent intent = new Intent(change_password.this , customer_information.class);
+                startActivity(intent);
             }
         });
     }
