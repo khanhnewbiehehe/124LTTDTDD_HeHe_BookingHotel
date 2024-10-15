@@ -14,7 +14,7 @@ import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class room_details extends AppCompatActivity {
+public class manager_room_details extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private CircleIndicator mCircleIndicator;
@@ -27,7 +27,7 @@ public class room_details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_room_details);
+        setContentView(R.layout.activity_manager_room_details);
 
         mViewPager = findViewById(R.id.img_slider);
         mCircleIndicator = findViewById(R.id.circle_indicator);
@@ -42,17 +42,17 @@ public class room_details extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent rDetail_list = new Intent(room_details.this , room_list_k.class);
+                Intent rDetail_list = new Intent(manager_room_details.this , manager_roomlist.class);
                 startActivity(rDetail_list);
             }
         });
 
-        Button btn_datphong = findViewById(R.id.btn_CapNhatPhong);
-        btn_datphong.setOnClickListener(new View.OnClickListener() {
+        Button btn_capnhat = findViewById(R.id.btn_CapNhatPhong);
+        btn_capnhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent datphong_tb = new Intent(room_details.this , tb_dptc.class);
-                startActivity(datphong_tb);
+                Intent rDetail_list = new Intent(manager_room_details.this , update_room.class);
+                startActivity(rDetail_list);
             }
         });
 

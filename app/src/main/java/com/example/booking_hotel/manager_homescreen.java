@@ -1,5 +1,6 @@
 package com.example.booking_hotel;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Calendar;
 
 public class manager_homescreen extends AppCompatActivity {
 
@@ -24,9 +27,47 @@ public class manager_homescreen extends AppCompatActivity {
             return insets;
         });
 
+        Button checkinDateButton = findViewById(R.id.btn_manager_checkin);
+        Button checkoutDateButton = findViewById(R.id.btn_manager_checkout);
+
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        checkinDateButton.setOnClickListener(v -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    manager_homescreen.this,
+                    (view, year1, month1, dayOfMonth) -> {
+                        checkinDateButton.setText(dayOfMonth + "/" + (month1 + 1) + "/" + year1);
+                    }, year, month, day);
+            datePickerDialog.show();
+        });
+
+
+        checkoutDateButton.setOnClickListener(v -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    manager_homescreen.this,
+                    (view, year12, month12, dayOfMonth) -> {
+                        checkoutDateButton.setText(dayOfMonth + "/" + (month12 + 1) + "/" + year12);
+                    }, year, month, day);
+            datePickerDialog.show();
+        });
+
         Button btnQLKH = findViewById(R.id.btn_manager_quanlykhachhang);
         Button btnQLP = findViewById(R.id.btn_manager_quanlyphong);
         Button btnQLDDP = findViewById(R.id.btn_manager_quanlydondatphong);
+        Button btnSearchRoom = findViewById(R.id.btn_manager_search_room);
+
+        btnSearchRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(manager_homescreen.this, manager_roomlist.class);
+                startActivity(intent);
+            }
+        });
 
         // Set a click listener to navigate to another activity
         btnQLKH.setOnClickListener(new View.OnClickListener() {

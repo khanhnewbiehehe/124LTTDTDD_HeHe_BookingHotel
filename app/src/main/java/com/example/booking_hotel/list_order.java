@@ -3,6 +3,7 @@ package com.example.booking_hotel;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -31,6 +32,7 @@ public class list_order extends AppCompatActivity {
         });
 
         Button btnBack = findViewById(R.id.btn_Back);
+        Button btnCreateOrder = findViewById(R.id.btn_ThemDonThue);
 
         // Set a click listener to navigate to another activity
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +40,15 @@ public class list_order extends AppCompatActivity {
             public void onClick(View v) {
                 // Create an intent to go back to the desired activity (e.g., MainActivity)
                 Intent intent = new Intent(list_order.this, manager_homescreen.class);
+                startActivity(intent);
+            }
+        });
+
+        btnCreateOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to go back to the desired activity (e.g., MainActivity)
+                Intent intent = new Intent(list_order.this, create_order.class);
                 startActivity(intent);
             }
         });
@@ -62,6 +73,24 @@ public class list_order extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.order_list);
         listView.setAdapter(adapter);
+
+        AdapterView.OnItemClickListener adapterViewListener = new AdapterView.OnItemClickListener() {
+
+            //on click
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                room_list_detail property = room_listProperties.get(position);
+
+                Intent intent = new Intent(list_order.this, details_order.class);
+                intent.putExtra("room_name", property.getRoomName());
+                intent.putExtra("room_type", property.getRoomType());
+                intent.putExtra("room_trangthai", property.getRoomTrangthai());
+                intent.putExtra("image", property.getRoomImage());
+                startActivity(intent);
+            }
+        };
+//set the listener to the list view
+        listView.setOnItemClickListener(adapterViewListener);
 
     }
 }
