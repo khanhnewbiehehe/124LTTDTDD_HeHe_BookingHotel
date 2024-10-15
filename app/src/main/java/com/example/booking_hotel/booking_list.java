@@ -66,7 +66,7 @@ public class booking_list extends AppCompatActivity {
         room_listProperties.add(
                 new room_list_detail("309","Phòng đon", "21/9/2024 - 22/9/2024","Đang sử dụng", "room_img"));
 
-        ArrayAdapter<room_list_detail> adapter = new room_listArrayAdapter(this, 0, room_listProperties);
+        ArrayAdapter<room_list_detail> adapter = new list_orderArrayAdapter(this, 0, room_listProperties);
 
         ListView listView = (ListView) findViewById(R.id.room_listview);
         listView.setAdapter(adapter);
@@ -84,7 +84,6 @@ public class booking_list extends AppCompatActivity {
                 intent.putExtra("room_date", property.getRoomDate());
                 intent.putExtra("room_trangthai", property.getRoomTrangthai());
                 intent.putExtra("image", property.getRoomImage());
-
                 startActivity(intent);
             }
         };
