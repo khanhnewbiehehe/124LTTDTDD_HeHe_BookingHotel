@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -36,6 +37,24 @@ public class manager_roomlist extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button btnBack = findViewById(R.id.btn_Back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(manager_roomlist.this, manager_homescreen.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnCreateRoom = findViewById(R.id.btn_themphong);
+        btnCreateRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(manager_roomlist.this, create_room.class);
+                startActivity(intent);
+            }
         });
 
         Spinner trangthai = findViewById(R.id.spn_manager_rooomlist_trangthai);
@@ -90,7 +109,7 @@ public class manager_roomlist extends AppCompatActivity {
 
                 manager_roomlist_detail property = manager_room_listProperties.get(position);
 
-                Intent intent = new Intent(manager_roomlist.this, booking_details.class);
+                Intent intent = new Intent(manager_roomlist.this, manager_room_details.class);
                 intent.putExtra("room_name", property.getRoomName());
                 intent.putExtra("room_type", property.getRoomType());
                 intent.putExtra("room_trangthai", property.getRoomTrangthai());

@@ -124,7 +124,6 @@
             android:textSize="14sp" />
 
 
-
         <Button
             android:id="@+id/btn_CapNhatPhong"
             android:layout_width="wrap_content"
@@ -135,7 +134,7 @@
             android:background="@drawable/btn_background"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Đặt phòng"
+            android:text="Cập nhật"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
