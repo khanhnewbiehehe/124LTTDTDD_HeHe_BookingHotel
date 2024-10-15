@@ -79,6 +79,9 @@
             android:name=".register_hotel"
             android:exported="false" />
         <activity
+            android:name=".customer_information"
+            android:exported="false" />
+        <activity
             android:name=".booking_details"
             android:exported="false"
             android:parentActivityName=".booking_list" />
