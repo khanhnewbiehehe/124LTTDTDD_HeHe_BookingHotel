@@ -8,6 +8,21 @@
     android:background="@drawable/background_ht"
     tools:context=".forgot_pass">
 
+    <Button
+        android:id="@+id/btn_Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border_btn"
+        android:drawableStart="@drawable/icon_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Nút quay lại"
+        />
+
     <TextView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
@@ -22,11 +37,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.136" />
+
     <LinearLayout
         android:id="@+id/inputEmail_ln"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/inputNumberCall_F"
         app:layout_constraintHorizontal_bias="0.617"
@@ -35,25 +51,22 @@
 
         <EditText
             android:id="@+id/inputEmail"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:background="@drawable/rounded_corner"
             android:drawableLeft="@drawable/icon_email"
+            android:drawableTint="@color/gray"
             android:ems="10"
             android:hint=" Email"
             android:inputType="text"
             android:padding="12dp"
-
-
             android:textColor="@color/black"
             android:textColorHint="@color/gray"
             android:textSize="20sp" />
 
         <Button
-            android:layout_width="95dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/btn_background_white"
             android:padding="12dp"
             android:text="Gửi Mã"
@@ -77,16 +90,16 @@
 
     <EditText
         android:id="@+id/inputCPass"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corner"
         android:drawableLeft="@drawable/icon_lock"
+        android:drawableTint="@color/gray"
         android:ems="10"
         android:hint=" Nhập Lại Mật Khẩu "
         android:inputType="text"
         android:padding="12dp"
-        android:drawableTint="@color/gray"
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
         android:textSize="20sp"
@@ -97,16 +110,16 @@
 
     <EditText
         android:id="@+id/inputPass"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corner"
         android:drawableLeft="@drawable/icon_lock"
+        android:drawableTint="@color/gray"
         android:ems="10"
         android:hint=" Mật Khẩu Mới"
         android:inputType="text"
         android:padding="12dp"
-        android:drawableTint="@color/gray"
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
         android:textSize="20sp"

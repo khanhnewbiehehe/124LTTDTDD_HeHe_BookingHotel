@@ -88,7 +88,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Loại phòng: Phòng đôi"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/giatien"
@@ -99,7 +100,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Giá tiền : 300.000VNĐ/ngày"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/view"
@@ -110,7 +112,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="View: Thành phố"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/loaigiuong"
@@ -121,7 +124,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Loại giường: 1 giường đôi"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/trangthai"
@@ -132,7 +136,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Trạng thái: Chưa nhận phòng"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/ngaynhan"
@@ -143,7 +148,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Ngày nhận: 20/9/2024 "
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/ngaytra"
@@ -154,7 +160,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Ngày trả: 22/09/2024"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/btn_TraPhong"
