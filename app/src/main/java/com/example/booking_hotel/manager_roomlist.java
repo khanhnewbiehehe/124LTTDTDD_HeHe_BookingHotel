@@ -109,7 +109,7 @@ public class manager_roomlist extends AppCompatActivity {
 
                 manager_roomlist_detail property = manager_room_listProperties.get(position);
 
-                Intent intent = new Intent(manager_roomlist.this, room_details.class);
+                Intent intent = new Intent(manager_roomlist.this, manager_room_details.class);
                 intent.putExtra("room_name", property.getRoomName());
                 intent.putExtra("room_type", property.getRoomType());
                 intent.putExtra("room_trangthai", property.getRoomTrangthai());

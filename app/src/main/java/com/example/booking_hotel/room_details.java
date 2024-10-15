@@ -7,9 +7,6 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
@@ -50,7 +47,7 @@ public class room_details extends AppCompatActivity {
             }
         });
 
-        Button btn_datphong = findViewById(R.id.datphong);
+        Button btn_datphong = findViewById(R.id.btn_CapNhatPhong);
         btn_datphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
