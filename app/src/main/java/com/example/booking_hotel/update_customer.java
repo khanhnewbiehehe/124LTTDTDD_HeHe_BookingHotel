@@ -11,13 +11,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class customer_information extends AppCompatActivity {
+public class update_customer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_customer_information);
+        setContentView(R.layout.activity_update_customer);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -25,31 +25,13 @@ public class customer_information extends AppCompatActivity {
         });
 
         Button btnBack = findViewById(R.id.btn_Back);
-        Button btnDoiMK = findViewById(R.id.btn_DoiMatKhau);
-        Button btnCapNhat = findViewById(R.id.btn_ThayDoiThongTin);
 
         // Set a click listener to navigate to another activity
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create an intent to go back to the desired activity (e.g., MainActivity)
-                Intent intent = new Intent(customer_information.this, list_customer.class);
-                startActivity(intent);
-            }
-        });
-        btnDoiMK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create an intent to go back to the desired activity (e.g., MainActivity)
-                Intent intent = new Intent(customer_information.this, change_password.class);
-                startActivity(intent);
-            }
-        });
-        btnCapNhat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create an intent to go back to the desired activity (e.g., MainActivity)
-                Intent intent = new Intent(customer_information.this, update_customer.class);
+                Intent intent = new Intent(update_customer.this, customer_information.class);
                 startActivity(intent);
             }
         });

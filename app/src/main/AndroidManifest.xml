@@ -16,6 +16,12 @@
             android:name=".manager_roomlist"
             android:exported="false" />
         <activity
+            android:name=".update_customer"
+            android:exported="false" />
+        <activity
+            android:name=".change_password"
+            android:exported="false" />
+        <activity
             android:name=".update_room"
             android:exported="false" />
         <activity
