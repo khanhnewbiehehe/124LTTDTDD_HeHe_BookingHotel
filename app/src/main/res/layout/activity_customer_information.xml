@@ -121,6 +121,7 @@
             android:paddingRight="0dp"
             android:paddingBottom="0dp"
             android:text="Thay đổi thông tin"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
     </LinearLayout>
