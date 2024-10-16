@@ -88,6 +88,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Loại phòng: Phòng đôi"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
@@ -99,6 +100,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Giá tiền : 300.000VNĐ/ngày"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
@@ -110,6 +112,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="View: Thành phố"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
@@ -121,6 +124,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Loại giường: 2 giường đôi"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
 
