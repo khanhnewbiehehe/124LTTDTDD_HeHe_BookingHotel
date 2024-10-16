@@ -25,5 +25,17 @@ public class forgot_pass extends AppCompatActivity {
                 startActivity(fogot_sign);
             }
         });
+
+        Button btnBack = findViewById(R.id.btn_Back);
+
+        // Set a click listener to navigate to another activity
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to go back to the desired activity (e.g., MainActivity)
+                Intent intent = new Intent(forgot_pass.this, sign_in.class);
+                startActivity(intent);
+            }
+        });
     }
 }
