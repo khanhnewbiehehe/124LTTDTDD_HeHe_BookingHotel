@@ -52,9 +52,6 @@
             android:name=".list_order"
             android:exported="false" />
         <activity
-            android:name=".ListviewOrderAdapter"
-            android:exported="false" />
-        <activity
             android:name=".Renewal"
             android:exported="false" />
         <activity
