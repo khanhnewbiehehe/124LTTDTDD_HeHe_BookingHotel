@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+<<<<<<< HEAD
+=======
+import android.widget.AdapterView;
+>>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -61,5 +65,16 @@ public class list_customer extends AppCompatActivity {
 
         ListviewCustomerAdapter customAdapter = new ListviewCustomerAdapter(this, R.layout.customer_row, arrCustomer);
         listCus.setAdapter(customAdapter);
+
+        AdapterView.OnItemClickListener adapterViewListener = new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Customer property = arrCustomer.get(position);
+                Intent intent = new Intent(list_customer.this, customer_information.class);
+                intent.putExtra("txt_CusName", property.getCusFullname());
+                intent.putExtra("txt_SDT", property.getCusID());
+                startActivity(intent);
+            }
+        };
+        listCus.setOnItemClickListener(adapterViewListener);
     }
 }

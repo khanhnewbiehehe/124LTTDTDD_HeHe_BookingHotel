@@ -24,100 +24,116 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_ht">
-    <TextView
-        android:id="@+id/hello"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_margin="36dp"
-        android:layout_marginTop="68dp"
-        android:text="Xin chào Khánh!"
-        android:textAlignment="viewEnd"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="344dp"
-        android:layout_height="209dp"
-        android:layout_marginTop="72dp"
-
-        android:background="@drawable/back_ground_customer_search"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hello">
-
 
         <Button
-            android:id="@+id/btn_CheckIn"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_nav"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="50dp"
-            android:background="@drawable/white_filled_input"
-            android:drawableStart="@drawable/icon_calendar"
-            android:drawableTint="#0F77A6"
-            android:fontFamily="sans-serif"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="5dp"
-            android:text="Ngày nhận phòng"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hello" />
-
-        <Button
-            android:id="@+id/btn_CheckOut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="50dp"
-            android:background="@drawable/white_filled_input"
-            android:drawableStart="@drawable/icon_calendar"
-            android:drawableTint="#0F77A6"
-            android:fontFamily="sans-serif"
-            android:paddingLeft="10dp"
-            android:paddingTop="15dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="15dp"
-            android:text="Ngày trả phòng"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="@id/btn_CheckIn"
-            app:layout_constraintStart_toStartOf="@id/btn_CheckIn"
-            app:layout_constraintTop_toBottomOf="@+id/btn_CheckIn" />
+            android:background="@drawable/icon_menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/white"/>
 
-        <Button
-            android:id="@+id/btn_check_room"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start|center_vertical"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/background_customer_btn_search"
-            android:drawableRight="@drawable/icon_search"
-            android:drawablePadding="20dp"
-            android:includeFontPadding="false"
-            android:paddingStart="120dp"
-            android:paddingEnd="110dp"
-            android:text="Tìm Kiếm  "
-            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/hello"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_margin="36dp"
+            android:layout_marginTop="68dp"
+            android:text="Xin chào Khánh!"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="42dp"
+            android:background="@drawable/white_fill_date_container"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hello">
 
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_CheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/white_filled_input"
+                android:drawableStart="@drawable/icon_calendar"
+                android:drawableTint="#0F77A6"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="Ngày nhận phòng"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hello" />
+
+            <Button
+                android:id="@+id/btn_CheckOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/white_filled_input"
+                android:drawableStart="@drawable/icon_calendar"
+                android:drawableTint="#0F77A6"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="Ngày trả phòng"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="@id/btn_CheckIn"
+                app:layout_constraintStart_toStartOf="@id/btn_CheckIn"
+                app:layout_constraintTop_toBottomOf="@+id/btn_CheckIn" />
+
+            <Button
+                android:id="@+id/btn_check_room"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:background="@drawable/blue_fill_rounded_topleft_topright"
+                android:drawableRight="@drawable/icon_search"
+                android:drawablePadding="20dp"
+                android:includeFontPadding="false"
+                android:paddingStart="90dp"
+                android:paddingEnd="100dp"
+                android:layout_marginTop="25dp"
+                android:text="Tìm kiếm  "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
 
 
         <TextView

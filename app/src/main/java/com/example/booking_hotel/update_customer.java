@@ -7,23 +7,21 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-public class forgot_pass extends AppCompatActivity {
+public class update_customer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_forgot_pass);
-
-
-        Button btn = findViewById(R.id.btnChangePass);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent fogot_sign = new Intent(forgot_pass.this , sign_in.class);
-                startActivity(fogot_sign);
-            }
+        setContentView(R.layout.activity_update_customer);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
         });
 
         Button btnBack = findViewById(R.id.btn_Back);
@@ -33,7 +31,7 @@ public class forgot_pass extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create an intent to go back to the desired activity (e.g., MainActivity)
-                Intent intent = new Intent(forgot_pass.this, sign_in.class);
+                Intent intent = new Intent(update_customer.this, customer_information.class);
                 startActivity(intent);
             }
         });

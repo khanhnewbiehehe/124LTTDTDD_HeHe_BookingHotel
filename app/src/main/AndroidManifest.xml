@@ -16,6 +16,18 @@
             android:name=".manager_roomlist"
             android:exported="false" />
         <activity
+            android:name=".update_customer"
+            android:exported="false" />
+        <activity
+            android:name=".change_password"
+            android:exported="false" />
+        <activity
+            android:name=".update_room"
+            android:exported="false" />
+        <activity
+            android:name=".manager_room_details"
+            android:exported="false" />
+        <activity
             android:name=".room_list_k"
             android:exported="false" />
         <activity
@@ -38,9 +50,6 @@
             android:exported="false" />
         <activity
             android:name=".list_order"
-            android:exported="false" />
-        <activity
-            android:name=".ListviewOrderAdapter"
             android:exported="false" />
         <activity
             android:name=".Renewal"
@@ -77,6 +86,9 @@
             android:exported="false" />
         <activity
             android:name=".register_hotel"
+            android:exported="false" />
+        <activity
+            android:name=".customer_information"
             android:exported="false" />
         <activity
             android:name=".booking_details"
