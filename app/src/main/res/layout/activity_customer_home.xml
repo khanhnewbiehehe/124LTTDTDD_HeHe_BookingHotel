@@ -119,240 +119,261 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/khung_canh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Khung Cảnh"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/id_phong_don"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_phong_don" />
 
-    <FrameLayout
-        android:id="@+id/id_bien"
-        android:layout_width="117dp"
-        android:layout_height="86dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/back_ground_customer_search"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/khung_canh"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/khung_canh"
-        app:layout_constraintTop_toBottomOf="@+id/khung_canh">
-
-        <ImageView
-            android:id="@+id/img_slider3"
-            android:layout_width="117dp"
-            android:layout_height="86dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-        <Button
-            android:id="@+id/btn_bien"
-            android:layout_width="117dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom"
-            android:alpha="0.7"
-            android:background="@drawable/background_btn_loai"
-            android:text="Biển"
-            android:textColor="#234BD5"
-            android:textSize="10dp" />
+        <TextView
+            android:id="@+id/khung_canh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Khung Cảnh"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/layout_loai_phong"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_loai_phong" />
 
 
-    </FrameLayout>
+        <LinearLayout
+            android:id="@+id/layout_khung_canh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/khung_canh"
+            tools:layout_editor_absoluteX="0dp">
 
-    <FrameLayout
-        android:id="@+id/id_thanh_pho"
-        android:layout_width="117dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/back_ground_customer_search"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@+id/id_bien"
-        app:layout_constraintTop_toBottomOf="@+id/khung_canh">
+            <FrameLayout
+                android:id="@+id/id_bien"
+                android:layout_width="117dp"
+                android:layout_height="86dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/back_ground_customer_search"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/khung_canh"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/khung_canh"
+                app:layout_constraintTop_toBottomOf="@+id/khung_canh">
 
-        <Button
-            android:id="@+id/btn_thanh_pho"
-            android:layout_width="117dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom"
-            android:alpha="0.7"
-            android:background="@drawable/background_btn_loai"
-            android:text="Thành Phố"
-            android:textColor="#234BD5"
-            android:textSize="10dp" />
+                <ImageView
+                    android:id="@+id/img_slider3"
+                    android:layout_width="117dp"
+                    android:layout_height="86dp"
+                    android:background="@drawable/rounded_img"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/room_img" />
 
-        <ImageView
-            android:id="@+id/img_slider4"
-            android:layout_width="115dp"
-            android:layout_height="85dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/id_cua_so"
-        android:layout_width="117dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/back_ground_customer_search"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/id_thanh_pho"
-        app:layout_constraintTop_toBottomOf="@+id/khung_canh">
-
-        <ImageView
-            android:id="@+id/img_slider5"
-            android:layout_width="117dp"
-            android:layout_height="86dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-        <Button
-            android:id="@+id/btn_cua_so"
-            android:layout_width="117dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom"
-            android:alpha="0.7"
-            android:background="@drawable/background_btn_loai"
-            android:text="Cửa Sổ"
-            android:textColor="#234BD5"
-            android:textSize="10dp" />
+                <Button
+                    android:id="@+id/btn_bien"
+                    android:layout_width="117dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:alpha="0.7"
+                    android:background="@drawable/background_btn_loai"
+                    android:text="Biển"
+                    android:textColor="#234BD5"
+                    android:textSize="10dp" />
 
 
-    </FrameLayout>
+            </FrameLayout>
 
-    <TextView
-        android:id="@+id/loaiphong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Loại Phòng"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.057"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            <FrameLayout
+                android:id="@+id/id_thanh_pho"
+                android:layout_width="117dp"
+                android:layout_height="86dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/back_ground_customer_search"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@+id/id_bien"
+                app:layout_constraintTop_toBottomOf="@+id/khung_canh">
 
-    <FrameLayout
-        android:id="@+id/id_phong_don"
-        android:layout_width="117dp"
-        android:layout_height="86dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/back_ground_customer_search"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/loaiphong"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/loaiphong"
-        app:layout_constraintTop_toBottomOf="@+id/loaiphong">
+                <Button
+                    android:id="@+id/btn_thanh_pho"
+                    android:layout_width="117dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:alpha="0.7"
+                    android:background="@drawable/background_btn_loai"
+                    android:text="Thành Phố"
+                    android:textColor="#234BD5"
+                    android:textSize="10dp" />
 
-        <ImageView
-            android:id="@+id/img_slider"
-            android:layout_width="117dp"
-            android:layout_height="86dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-        <Button
-            android:id="@+id/btn_phong_don"
-            android:layout_width="117dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom"
-            android:alpha="0.7"
-            android:background="@drawable/background_btn_loai"
-            android:text="Phòng Đơn"
-            android:textColor="#234BD5"
-            android:textSize="10dp" />
+                <ImageView
+                    android:id="@+id/img_slider4"
+                    android:layout_width="115dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/rounded_img"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/room_img" />
 
 
-    </FrameLayout>
+            </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/id_phong_doi"
-        android:layout_width="117dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/back_ground_customer_search"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@+id/id_phong_don"
-        app:layout_constraintTop_toBottomOf="@+id/loaiphong">
+            <FrameLayout
+                android:id="@+id/id_cua_so"
+                android:layout_width="117dp"
+                android:layout_height="86dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/back_ground_customer_search"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/id_thanh_pho"
+                app:layout_constraintTop_toBottomOf="@+id/khung_canh">
 
-        <Button
-            android:id="@+id/btn_phong_doi"
-            android:layout_width="117dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom"
-            android:alpha="0.7"
-            android:background="@drawable/background_btn_loai"
-            android:text="Phòng Đôi"
-            android:textColor="#234BD5"
-            android:textSize="10dp" />
+                <ImageView
+                    android:id="@+id/img_slider5"
+                    android:layout_width="117dp"
+                    android:layout_height="86dp"
+                    android:background="@drawable/rounded_img"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/room_img" />
 
-        <ImageView
-            android:id="@+id/img_slider1"
-            android:layout_width="115dp"
-            android:layout_height="85dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/id_phong_gia_dinh"
-        android:layout_width="117dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/back_ground_customer_search"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/id_phong_doi"
-        app:layout_constraintTop_toBottomOf="@+id/loaiphong">
-
-        <ImageView
-            android:id="@+id/img_slider2"
-            android:layout_width="117dp"
-            android:layout_height="86dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-        <Button
-            android:id="@+id/btn_phong_gia_dinh"
-            android:layout_width="117dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom"
-            android:alpha="0.7"
-            android:background="@drawable/background_btn_loai"
-            android:text="Phòng Gia Đình"
-            android:textColor="#234BD5"
-            android:textSize="10dp" />
+                <Button
+                    android:id="@+id/btn_cua_so"
+                    android:layout_width="117dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:alpha="0.7"
+                    android:background="@drawable/background_btn_loai"
+                    android:text="Cửa Sổ"
+                    android:textColor="#234BD5"
+                    android:textSize="10dp" />
 
 
-    </FrameLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/loaiphong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:text="Loại Phòng"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                app:layout_constraintHorizontal_bias="0.057"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <LinearLayout
+            android:id="@+id/layout_loai_phong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/loaiphong">
+            <FrameLayout
+                android:id="@+id/id_phong_don"
+                android:layout_width="117dp"
+                android:layout_height="86dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/back_ground_customer_search"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/loaiphong"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/loaiphong"
+                app:layout_constraintTop_toBottomOf="@+id/loaiphong">
+
+                <ImageView
+                    android:id="@+id/img_slider"
+                    android:layout_width="117dp"
+                    android:layout_height="86dp"
+                    android:background="@drawable/rounded_img"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/room_img" />
+
+                <Button
+                    android:id="@+id/btn_phong_don"
+                    android:layout_width="117dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:alpha="0.7"
+                    android:background="@drawable/background_btn_loai"
+                    android:text="Phòng Đơn"
+                    android:textColor="#234BD5"
+                    android:textSize="10dp" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/id_phong_doi"
+                android:layout_width="117dp"
+                android:layout_height="86dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/back_ground_customer_search"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@+id/id_phong_don"
+                app:layout_constraintTop_toBottomOf="@+id/loaiphong">
+
+                <Button
+                    android:id="@+id/btn_phong_doi"
+                    android:layout_width="117dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:alpha="0.7"
+                    android:background="@drawable/background_btn_loai"
+                    android:text="Phòng Đôi"
+                    android:textColor="#234BD5"
+                    android:textSize="10dp" />
+
+                <ImageView
+                    android:id="@+id/img_slider1"
+                    android:layout_width="115dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/rounded_img"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/room_img" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/id_phong_gia_dinh"
+                android:layout_width="117dp"
+                android:layout_height="86dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/back_ground_customer_search"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/id_phong_doi"
+                app:layout_constraintTop_toBottomOf="@+id/loaiphong">
+
+                <ImageView
+                    android:id="@+id/img_slider2"
+                    android:layout_width="117dp"
+                    android:layout_height="86dp"
+                    android:background="@drawable/rounded_img"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/room_img" />
+
+                <Button
+                    android:id="@+id/btn_phong_gia_dinh"
+                    android:layout_width="117dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:alpha="0.7"
+                    android:background="@drawable/background_btn_loai"
+                    android:text="Phòng Gia Đình"
+                    android:textColor="#234BD5"
+                    android:textSize="10dp" />
+
+
+            </FrameLayout>
+        </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

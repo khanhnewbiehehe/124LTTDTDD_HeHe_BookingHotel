@@ -16,8 +16,9 @@
             android:id="@+id/room_img"
             android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop" />
+            android:background="@drawable/lefttop_leftbottom_rounded"
+            android:scaleType="centerCrop"
+            android:clipToOutline="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,6 +42,7 @@
                     android:layout_centerVertical="true" />
 
                 <Button
+                    android:id="@+id/btn_giahan"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:background="@drawable/btn_background"
