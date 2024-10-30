@@ -25,8 +25,11 @@ public class customer_information extends AppCompatActivity {
         });
 
         Button btnBack = findViewById(R.id.btn_Back);
+<<<<<<< HEAD
+=======
         Button btnDoiMK = findViewById(R.id.btn_DoiMatKhau);
         Button btnCapNhat = findViewById(R.id.btn_ThayDoiThongTin);
+>>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
 
         // Set a click listener to navigate to another activity
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +40,8 @@ public class customer_information extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+<<<<<<< HEAD
+=======
         btnDoiMK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,5 +58,6 @@ public class customer_information extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+>>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
     }
 }

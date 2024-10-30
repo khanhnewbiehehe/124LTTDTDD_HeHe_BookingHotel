@@ -1,5 +1,12 @@
 package com.example.booking_hotel;
 
+<<<<<<< HEAD
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+=======
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+>>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,7 +46,10 @@ public class list_order extends AppCompatActivity {
         });
 
         Button btnBack = findViewById(R.id.btn_Back);
+<<<<<<< HEAD
+=======
         Button btnCreateOrder = findViewById(R.id.btn_ThemDonThue);
+>>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
 
         // Set a click listener to navigate to another activity
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +61,8 @@ public class list_order extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
         btnCreateOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +72,7 @@ public class list_order extends AppCompatActivity {
             }
         });
 
+>>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
         Spinner Phong = findViewById(R.id.spn_Room);
         List<String> listPhong = new ArrayList<>();
         listPhong.add("Trạng thái");
@@ -80,6 +94,8 @@ public class list_order extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.order_list);
         listView.setAdapter(adapter);
 
+<<<<<<< HEAD
+=======
         AdapterView.OnItemClickListener adapterViewListener = new AdapterView.OnItemClickListener() {
 
             //on click
@@ -138,5 +154,6 @@ class list_orderArrayAdapter extends ArrayAdapter<room_list_detail> {
         image.setImageResource(imageID);
 
         return view;
+>>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
     }
 }
