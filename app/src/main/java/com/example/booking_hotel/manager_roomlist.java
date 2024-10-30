@@ -9,10 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-<<<<<<< HEAD
-=======
 import android.widget.Button;
->>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -42,8 +39,7 @@ public class manager_roomlist extends AppCompatActivity {
             return insets;
         });
 
-<<<<<<< HEAD
-=======
+
         Button btnBack = findViewById(R.id.btn_Back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +58,6 @@ public class manager_roomlist extends AppCompatActivity {
             }
         });
 
->>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
         Spinner trangthai = findViewById(R.id.spn_manager_rooomlist_trangthai);
         List<String> listTrangThai = new ArrayList<>();
         listTrangThai.add("Trạng thái"); // Thêm phần tử placeholder
@@ -115,11 +110,7 @@ public class manager_roomlist extends AppCompatActivity {
 
                 manager_roomlist_detail property = manager_room_listProperties.get(position);
 
-<<<<<<< HEAD
-                Intent intent = new Intent(manager_roomlist.this, booking_details.class);
-=======
                 Intent intent = new Intent(manager_roomlist.this, manager_room_details.class);
->>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
                 intent.putExtra("room_name", property.getRoomName());
                 intent.putExtra("room_type", property.getRoomType());
                 intent.putExtra("room_trangthai", property.getRoomTrangthai());
