@@ -162,6 +162,29 @@
             android:text="Ngày trả: 22/09/2024"
             android:textSize="14sp"
             android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã giảm giá :"
+                android:textSize="14sp"
+                android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/voucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="14sp"
+                android:textColor="@color/drak_gray"
+                android:layout_marginLeft="5dp"
+                />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_TraPhong"

@@ -93,7 +93,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Loại phòng: Phòng đôi"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/giatien"
@@ -104,7 +105,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Tổng tiền : 600.000VNĐ"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/view"
@@ -115,7 +117,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="View: Thành phố"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/loaigiuong"
@@ -126,7 +129,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Loại giường: 1 giường đôi"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/trangthai"
@@ -137,7 +141,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Trạng thái: Chưa nhận phòng"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/khachhang"
@@ -148,7 +153,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Tên khách hàng: Ironman"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/sdtkhachhang"
@@ -159,7 +165,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="SĐT: 0123123123"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/ngaytra"
@@ -170,7 +177,32 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Ngày trả: 22/09/2024"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã giảm giá :"
+                android:textSize="14sp"
+                android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/voucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="14sp"
+                android:textColor="@color/drak_gray"
+                android:layout_marginLeft="5dp"
+                />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
