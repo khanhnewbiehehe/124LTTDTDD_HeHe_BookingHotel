@@ -37,7 +37,7 @@
             android:name=".customer_home"
             android:exported="false" />
         <activity
-            android:name=".manager_homescreen"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".details_order"
@@ -98,7 +98,7 @@
             android:name=".room_details"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".manager_homescreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
