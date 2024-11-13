@@ -4,13 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-<<<<<<< HEAD
-=======
 import android.widget.AdapterView;
->>>>>>> a0e46e101cd7c7f3b60035f722c5fe9d647f6ac3
 import android.widget.Button;
 import android.widget.ListView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
