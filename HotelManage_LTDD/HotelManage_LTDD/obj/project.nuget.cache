@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RUGGysFJqLg=",
+  "dgSpecHash": "OCWO1f+hGnw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\DELL\\source\\repos\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj",
+  "projectFilePath": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\firebase.auth\\1.0.0\\firebase.auth.1.0.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\firebasestorage.net\\1.0.3\\firebasestorage.net.1.0.3.nupkg.sha512",

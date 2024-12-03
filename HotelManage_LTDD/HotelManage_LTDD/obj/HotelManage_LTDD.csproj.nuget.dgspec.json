@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\source\\repos\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj": {}
+    "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\source\\repos\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj": {
+    "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj",
+        "projectUniqueName": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj",
         "projectName": "HotelManage_LTDD",
-        "projectPath": "C:\\Users\\DELL\\source\\repos\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj",
+        "projectPath": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\HotelManage_LTDD.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\source\\repos\\HotelManage_LTDD\\HotelManage_LTDD\\obj\\",
+        "outputPath": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

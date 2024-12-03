@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
-    $('#RoomTypeTable').DataTable({
+    $('#AreaTable').DataTable({
         ajax: {
-            url: '/RoomType/List',
+            url: '/Area/List',
             type: 'GET',
             dataSrc: function (json) {
                 // Firebase trả về object, chuyển thành array
@@ -16,23 +16,15 @@
             }, // Số thứ tự
             {
                 data: 'Name',
-                width: "20%"
-            },
-            {
-                data: 'People',
-                width: "10%"
-            },
-            {
-                data: 'Description',
-                width: "30%"
+                width: "60%"
             },
             {
                 data: 'Id',
                 render: (data, type, row) => {
                     return `
-                            <a href = "/RoomType/Details/${data}" class="btn btn-info btn-sm">Xem</a>
-                            <a href = "/RoomType/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
-                            <a onClick="Delete('/RoomType/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
+                            <a href = "/Area/Details/${data}" class="btn btn-info btn-sm">Xem</a>
+                            <a href = "/Area/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
+                            <a onClick="Delete('/Area/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
                         `;
                 },
                 width: "30%"
@@ -43,7 +35,7 @@
 
 function Delete(url) {
 
-    var currentPage = $('#RoomTypeTable').DataTable().page();
+    var currentPage = $('#AreaTable').DataTable().page();
 
     $.ajax({
         url: url,
@@ -51,7 +43,7 @@ function Delete(url) {
         success: function (response) {
             if (response.success) {
                 toastr.success(response.message);
-                var table = $('#RoomTypeTable').DataTable();
+                var table = $('#AreaTable').DataTable();
                 table.ajax.reload(function () {
                     table.page(currentPage).draw('page');
                 });

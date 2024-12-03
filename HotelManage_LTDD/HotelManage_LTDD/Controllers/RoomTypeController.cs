@@ -19,7 +19,6 @@ namespace HotelManage_LTDD.Controllers
         {
             _client = client;
         }
-
         public ActionResult Index()
         {
             return View();
@@ -31,7 +30,7 @@ namespace HotelManage_LTDD.Controllers
             return View();
         }
 
-        [Route("/RoomType")]
+        [Route("/RoomType/List")]
         public async Task<IActionResult> getList()
         {
             FirebaseResponse response = _client.Get("RoomTypes");

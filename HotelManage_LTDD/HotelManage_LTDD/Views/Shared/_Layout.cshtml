@@ -24,6 +24,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="RoomType" asp-action="Index">Loại phòng</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Area" asp-action="Index">Loại khu vực</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -45,6 +48,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/loadData/loadRoomType.js"></script>
+    <script src="~/loadData/loadArea.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
