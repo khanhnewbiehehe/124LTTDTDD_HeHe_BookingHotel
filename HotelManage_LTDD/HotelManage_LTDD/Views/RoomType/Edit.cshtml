@@ -1,0 +1,47 @@
+﻿@model HotelManage_LTDD.Models.RoomType
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg" style="width: 30rem;">
+        <div class="card-body">
+            @using (Html.BeginForm("Edit", "RoomType", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Tên loại phòng:</label>
+                    <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Mô tả:</label>
+                    <textarea id="Description" name="Description" class="form-control" rows="4" required>@Model.Description</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="People" class="form-label">Số người tối đa</label>
+                    <input type="number" id="People" name="People" class="form-control" value="@Model.People" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="ImageUrl" class="form-label">Hình ảnh:</label>
+                    <input type="file" id="ImageUrl" name="ImageUrl" class="form-control" />
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <div class="mt-3 text-center">
+                            <strong>Hình ảnh hiện tại:</strong>
+                            <img src="@Model.ImageUrl" alt="@Model.Name" class="img-thumbnail" style="max-width: 200px; height: auto;" />
+                        </div>
+                    }
+                </div>
+
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                </div>
+            }
+
+            <div class="d-grid">
+                <a href="@Url.Action("Index", "RoomType")" class="btn btn-secondary">Quay trở lại</a>
+            </div>
+        </div>
+    </div>
+</div>
