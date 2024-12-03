@@ -10,6 +10,7 @@ using System.Linq;
 
 namespace HotelManage_LTDD.Controllers
 {
+    [Area("Admin")]
     public class AreaController : Controller
     {
 
@@ -19,25 +20,26 @@ namespace HotelManage_LTDD.Controllers
         {
             _client = client;
         }
+        [Route("Admin/Area")]
         public ActionResult Index()
         {
             return View();
         }
 
-        [Route("/Area/Create")]
+        [Route("Admin/Area/Create")]
         public ActionResult Create()
         {
             return View();
         }
 
-        [Route("/Area/List")]
+        [Route("Admin/Area/List")]
         public async Task<IActionResult> getList()
         {
             FirebaseResponse response = _client.Get("Areas");
             return Content(response.Body, "application/json");
         }
 
-        [Route("/Area/Details/{id}")]
+        [Route("Admin/Area/Details/{id}")]
         public ActionResult Details(string id)
         {
             // Lấy dữ liệu từ Firebase theo ID
@@ -49,13 +51,13 @@ namespace HotelManage_LTDD.Controllers
                 return NotFound();
 
             }
-            var area = JsonConvert.DeserializeObject<Area>(JsonConvert.SerializeObject(data));
+            var area = JsonConvert.DeserializeObject<HotelArea>(JsonConvert.SerializeObject(data));
             return View(area);
         }
 
-        [Route("/Area/Create")]
+        [Route("Admin/Area/Create")]
         [HttpPost]
-        public async Task<ActionResult> Create(Area area)
+        public async Task<ActionResult> Create(HotelArea area)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +80,7 @@ namespace HotelManage_LTDD.Controllers
             return View();
         }
 
-        [Route("/Area/Edit/{id}")]
+        [Route("Admin/Area/Edit/{id}")]
         public ActionResult Edit(string id)
         {
             FirebaseResponse response = _client.Get("Areas/" + id);
@@ -88,12 +90,12 @@ namespace HotelManage_LTDD.Controllers
             {
                 return NotFound();
             }
-            var area = JsonConvert.DeserializeObject<Area>(JsonConvert.SerializeObject(data));
+            var area = JsonConvert.DeserializeObject<HotelArea>(JsonConvert.SerializeObject(data));
             return View(area);
         }
-        [Route("/Area/Edit/{id}")]
+        [Route("Admin/Area/Edit/{id}")]
         [HttpPost]
-        public async Task<ActionResult> Edit(string id, Area area)
+        public async Task<ActionResult> Edit(string id, HotelArea area)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +116,7 @@ namespace HotelManage_LTDD.Controllers
             return View(area);
         }
 
-        [Route("/Area/Delete/{id}")]
+        [Route("Admin/Area/Delete/{id}")]
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {

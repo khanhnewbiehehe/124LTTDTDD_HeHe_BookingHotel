@@ -10,6 +10,7 @@ using System.Linq;
 
 namespace HotelManage_LTDD.Controllers
 {
+    [Area("Admin")]
     public class RoomTypeController : Controller
     {
 
@@ -19,25 +20,26 @@ namespace HotelManage_LTDD.Controllers
         {
             _client = client;
         }
+        [Route("Admin")]
         public ActionResult Index()
         {
             return View();
         }
 
-        [Route("/RoomType/Create")]
+        [Route("Admin/RoomType/Create")]
         public ActionResult Create()
         {
             return View();
         }
 
-        [Route("/RoomType/List")]
+        [Route("Admin/RoomType/List")]
         public async Task<IActionResult> getList()
         {
             FirebaseResponse response = _client.Get("RoomTypes");
             return Content(response.Body, "application/json");
         }
 
-        [Route("/RoomType/Details/{id}")]
+        [Route("Admin/RoomType/Details/{id}")]
         public ActionResult Details(string id)
         {
             // Lấy dữ liệu từ Firebase theo ID
@@ -53,7 +55,7 @@ namespace HotelManage_LTDD.Controllers
             return View(roomType);
         }
 
-        [Route("/RoomType/Create")]
+        [Route("Admin/RoomType/Create")]
         // POST: RoomTypeController/Create
         [HttpPost]
         public async Task<ActionResult> Create(RoomType RoomType, IFormFile ImageUrl)
@@ -95,7 +97,7 @@ namespace HotelManage_LTDD.Controllers
             return View();
         }
 
-        [Route("/RoomType/Edit/{id}")]
+        [Route("Admin/RoomType/Edit/{id}")]
         // GET: RoomTypeController/Edit/5
         public ActionResult Edit(string id)
         {
@@ -111,7 +113,7 @@ namespace HotelManage_LTDD.Controllers
             var roomType = JsonConvert.DeserializeObject<RoomType>(JsonConvert.SerializeObject(data));
             return View(roomType);
         }
-        [Route("/RoomType/Edit/{id}")]
+        [Route("Admin/RoomType/Edit/{id}")]
         [HttpPost]
         public async Task<ActionResult> Edit(string id, RoomType roomType, IFormFile ImageUrl = null)
         {
@@ -172,7 +174,7 @@ namespace HotelManage_LTDD.Controllers
             return View(roomType);
         }
 
-        [Route("/RoomType/Delete/{id}")]
+        [Route("Admin/RoomType/Delete/{id}")]
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {

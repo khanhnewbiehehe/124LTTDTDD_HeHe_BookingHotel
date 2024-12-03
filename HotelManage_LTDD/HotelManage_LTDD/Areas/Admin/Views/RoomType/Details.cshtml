@@ -19,8 +19,7 @@
             <h5 class="card-title">@Model.Name</h5>
             <p class="card-text"><strong>Mô tả:</strong> @Model.Description</p>
             <p class="card-text"><strong>Số người tối đa:</strong> @Model.People</p>
-
-            <a href="@Url.Action("Index", "RoomType")" class="btn btn-primary mt-3">Quay lại</a>
+            <a asp-area="Admin" asp-action="Index" asp-controller="RoomType" class="btn btn-primary mt-3">Quay lại</a>
         </div>
     </div>
 </div>

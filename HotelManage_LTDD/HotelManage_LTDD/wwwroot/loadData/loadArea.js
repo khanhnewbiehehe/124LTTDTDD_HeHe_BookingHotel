@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $('#AreaTable').DataTable({
         ajax: {
-            url: '/Area/List',
+            url: '/Admin/Area/List',
             type: 'GET',
             dataSrc: function (json) {
                 // Firebase trả về object, chuyển thành array
@@ -22,9 +22,9 @@
                 data: 'Id',
                 render: (data, type, row) => {
                     return `
-                            <a href = "/Area/Details/${data}" class="btn btn-info btn-sm">Xem</a>
-                            <a href = "/Area/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
-                            <a onClick="Delete('/Area/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
+                            <a href = "Admin/Area/Details/${data}" class="btn btn-info btn-sm">Xem</a>
+                            <a href = "Admin/Area/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
+                            <a onClick="Delete('Admin/Area/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
                         `;
                 },
                 width: "30%"
