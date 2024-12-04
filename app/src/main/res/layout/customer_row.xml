@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:text="Nguyễn Văn A"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/txt_SDT"
@@ -34,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:text="0123123123"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
