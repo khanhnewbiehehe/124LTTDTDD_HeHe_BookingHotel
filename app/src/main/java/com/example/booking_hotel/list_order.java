@@ -7,14 +7,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -43,7 +38,6 @@ public class list_order extends AppCompatActivity {
         });
 
         Button btnBack = findViewById(R.id.btn_Back);
-
         Button btnCreateOrder = findViewById(R.id.btn_ThemDonThue);
 
         // Set a click listener to navigate to another activity
@@ -65,7 +59,6 @@ public class list_order extends AppCompatActivity {
             }
         });
 
-
         Spinner Phong = findViewById(R.id.spn_Room);
         List<String> listPhong = new ArrayList<>();
         listPhong.add("Trạng thái");
@@ -86,8 +79,6 @@ public class list_order extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.order_list);
         listView.setAdapter(adapter);
-
-
         AdapterView.OnItemClickListener adapterViewListener = new AdapterView.OnItemClickListener() {
 
             //on click

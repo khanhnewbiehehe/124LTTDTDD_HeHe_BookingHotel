@@ -38,8 +38,6 @@ public class manager_roomlist extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
         Button btnBack = findViewById(R.id.btn_Back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +55,6 @@ public class manager_roomlist extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         Spinner trangthai = findViewById(R.id.spn_manager_rooomlist_trangthai);
         List<String> listTrangThai = new ArrayList<>();
         listTrangThai.add("Trạng thái"); // Thêm phần tử placeholder
@@ -111,6 +108,7 @@ public class manager_roomlist extends AppCompatActivity {
                 manager_roomlist_detail property = manager_room_listProperties.get(position);
 
                 Intent intent = new Intent(manager_roomlist.this, manager_room_details.class);
+
                 intent.putExtra("room_name", property.getRoomName());
                 intent.putExtra("room_type", property.getRoomType());
                 intent.putExtra("room_trangthai", property.getRoomTrangthai());

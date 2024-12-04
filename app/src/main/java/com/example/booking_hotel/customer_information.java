@@ -28,6 +28,7 @@ public class customer_information extends AppCompatActivity {
         Button btnDoiMK = findViewById(R.id.btn_DoiMatKhau);
         Button btnCapNhat = findViewById(R.id.btn_ThayDoiThongTin);
 
+
         // Set a click listener to navigate to another activity
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

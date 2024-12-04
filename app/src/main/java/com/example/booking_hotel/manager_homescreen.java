@@ -1,8 +1,6 @@
 package com.example.booking_hotel;
 
-
 import android.app.DatePickerDialog;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,9 +27,6 @@ public class manager_homescreen extends AppCompatActivity {
             return insets;
         });
 
-        Button btnQLKH = findViewById(R.id.btn_manager_quanlykhachhang);
-        Button btnQLP = findViewById(R.id.btn_manager_quanlyphong);
-        Button btnQLDDP = findViewById(R.id.btn_manager_quanlydondatphong);
         Button checkinDateButton = findViewById(R.id.btn_manager_checkin);
         Button checkoutDateButton = findViewById(R.id.btn_manager_checkout);
 
@@ -61,6 +56,9 @@ public class manager_homescreen extends AppCompatActivity {
             datePickerDialog.show();
         });
 
+        Button btnQLKH = findViewById(R.id.btn_manager_quanlykhachhang);
+        Button btnQLP = findViewById(R.id.btn_manager_quanlyphong);
+        Button btnQLDDP = findViewById(R.id.btn_manager_quanlydondatphong);
         Button btnSearchRoom = findViewById(R.id.btn_manager_search_room);
 
         btnSearchRoom.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +68,6 @@ public class manager_homescreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         // Set a click listener to navigate to another activity
         btnQLKH.setOnClickListener(new View.OnClickListener() {
