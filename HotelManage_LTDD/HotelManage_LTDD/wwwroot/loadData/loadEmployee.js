@@ -32,7 +32,7 @@
                     return `
                             <a href = "/Admin/Employee/Details/${data}" class="btn btn-info btn-sm">Xem</a>
                             <a href = "/Admin/Employee/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
-                            <a onClick="Delete('/Admin/Employee/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
+                            <a onClick="DeleteEmployee('/Admin/Employee/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
                         `;
                 },
                 width: "30%"
@@ -41,7 +41,7 @@
     });
 });
 
-function Delete(url) {
+function DeleteEmployee(url) {
 
     var currentPage = $('#EmployeeTable').DataTable().page();
 

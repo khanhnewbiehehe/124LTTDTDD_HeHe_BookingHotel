@@ -257,6 +257,10 @@
       "PackagePath": "staticwebassets\\loadData\\loadEmployee.js"
     },
     {
+      "Id": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadRoom.js",
+      "PackagePath": "staticwebassets\\loadData\\loadRoom.js"
+    },
+    {
       "Id": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadRoomType.js",
       "PackagePath": "staticwebassets\\loadData\\loadRoomType.js"
     },

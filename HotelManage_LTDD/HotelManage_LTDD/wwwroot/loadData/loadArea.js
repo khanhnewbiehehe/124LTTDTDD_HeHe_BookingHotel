@@ -22,9 +22,9 @@
                 data: 'Id',
                 render: (data, type, row) => {
                     return `
-                            <a href = "Admin/Area/Details/${data}" class="btn btn-info btn-sm">Xem</a>
-                            <a href = "Admin/Area/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
-                            <a onClick="Delete('Admin/Area/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
+                            <a href = "/Admin/Area/Details/${data}" class="btn btn-info btn-sm">Xem</a>
+                            <a href = "/Admin/Area/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
+                            <a onClick="DeleteArea('/Admin/Area/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
                         `;
                 },
                 width: "30%"
@@ -33,7 +33,7 @@
     });
 });
 
-function Delete(url) {
+function DeleteArea(url) {
 
     var currentPage = $('#AreaTable').DataTable().page();
 

@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
-    $('#RoomTypeTable').DataTable({
+    $('#RoomTable').DataTable({
         ajax: {
-            url: '/Admin/RoomType/List',
+            url: '/Admin/Room/List',
             type: 'GET',
             dataSrc: function (json) {
                 // Firebase trả về object, chuyển thành array
@@ -15,24 +15,36 @@
                 width: "10%"
             }, // Số thứ tự
             {
-                data: 'Name',
-                width: "20%"
-            },
-            {
-                data: 'People',
+                data: 'Code',
                 width: "10%"
             },
             {
-                data: 'Description',
-                width: "30%"
+                data: 'TypeName',
+                width: "10%"
+            },
+            {
+                data: 'AreaName',
+                width: "10%"
+            },
+            {
+                data: 'Price',
+                width: "10%"
+            },
+            {
+                data: 'Status',
+                width: "10%"
+            },
+            {
+                data: 'Discount',
+                width: "10%"
             },
             {
                 data: 'Id',
                 render: (data, type, row) => {
                     return `
-                            <a href = "/Admin/RoomType/Details/${data}" class="btn btn-info btn-sm">Xem</a>
-                            <a href = "/Admin/RoomType/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
-                            <a onClick="DeleteType('/Admin/RoomType/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
+                            <a href = "/Admin/Room/Details/${data}" class="btn btn-info btn-sm">Xem</a>
+                            <a href = "/Admin/Room/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
+                            <a onClick="DeleteRoom('/Admin/Room/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
                         `;
                 },
                 width: "30%"
@@ -41,9 +53,9 @@
     });
 });
 
-function DeleteType(url) {
+function DeleteRoom(url) {
 
-    var currentPage = $('#RoomTypeTable').DataTable().page();
+    var currentPage = $('#RoomTable').DataTable().page();
 
     $.ajax({
         url: url,
@@ -51,7 +63,7 @@ function DeleteType(url) {
         success: function (response) {
             if (response.success) {
                 toastr.success(response.message);
-                var table = $('#RoomTypeTable').DataTable();
+                var table = $('#RoomTable').DataTable();
                 table.ajax.reload(function () {
                     table.page(currentPage).draw('page');
                 });
