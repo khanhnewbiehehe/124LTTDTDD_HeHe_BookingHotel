@@ -249,6 +249,10 @@
       "PackagePath": "staticwebassets\\loadData\\loadArea.js"
     },
     {
+      "Id": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadBooking.js",
+      "PackagePath": "staticwebassets\\loadData\\loadBooking.js"
+    },
+    {
       "Id": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadClient.js",
       "PackagePath": "staticwebassets\\loadData\\loadClient.js"
     },
