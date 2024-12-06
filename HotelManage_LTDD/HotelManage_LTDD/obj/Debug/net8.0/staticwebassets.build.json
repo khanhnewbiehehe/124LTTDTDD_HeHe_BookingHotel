@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CR7pbkQ4MvKzb/JCFzDTvsGNj897GQqgDAi2dXww9Tk=",
+  "Hash": "bmvV9zD5c/vx68ocwuDkreU+6gS7mEUaKCiNlAbFoWU=",
   "Source": "HotelManage_LTDD",
   "BasePath": "_content/HotelManage_LTDD",
   "Mode": "Default",
@@ -1288,6 +1288,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\loadData\\loadRoomType.js"
+    },
+    {
+      "Identity": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadVoucher.js",
+      "SourceId": "HotelManage_LTDD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\",
+      "BasePath": "_content/HotelManage_LTDD",
+      "RelativePath": "loadData/loadVoucher.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\loadData\\loadVoucher.js"
     }
   ]
 }

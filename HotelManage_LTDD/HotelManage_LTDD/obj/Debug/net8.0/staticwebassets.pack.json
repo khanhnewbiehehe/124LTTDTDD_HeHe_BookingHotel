@@ -265,6 +265,10 @@
       "PackagePath": "staticwebassets\\loadData\\loadRoomType.js"
     },
     {
+      "Id": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadVoucher.js",
+      "PackagePath": "staticwebassets\\loadData\\loadVoucher.js"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HotelManage_LTDD.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
