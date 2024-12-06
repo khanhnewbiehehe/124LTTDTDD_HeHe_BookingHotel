@@ -13,11 +13,22 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.example.booking_hotel.model.Customer;
+
 import java.util.ArrayList;
 
 public class list_customer extends AppCompatActivity {
 
+    private ArrayList<Customer> arrCustomer;
+    private ListviewCustomerAdapter customAdapter;
+    private DatabaseReference databaseReference;
     ListView listCus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +43,12 @@ public class list_customer extends AppCompatActivity {
         Button btnBack = findViewById(R.id.btn_Back);
         Button btnTaoKH = findViewById(R.id.btn_TaoKH);
 
-        // Set a click listener to navigate to another activity
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to go back to the desired activity (e.g., MainActivity)
+
+
                 Intent intent = new Intent(list_customer.this, manager_homescreen.class);
                 startActivity(intent);
             }
@@ -45,7 +57,7 @@ public class list_customer extends AppCompatActivity {
         btnTaoKH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to go back to the desired activity (e.g., MainActivity)
+
                 Intent intent = new Intent(list_customer.this, create_customer.class);
                 startActivity(intent);
             }
@@ -53,24 +65,43 @@ public class list_customer extends AppCompatActivity {
 
         listCus = findViewById(R.id.list_KH);
 
-        ArrayList<Customer> arrCustomer = new ArrayList<>();
-        arrCustomer.add(new Customer("0123123123", "Nguyễn Văn A"));
-        arrCustomer.add(new Customer("0123123123", "Nguyễn Văn B"));
-        arrCustomer.add(new Customer("0123123123", "Nguyễn Văn C"));
-        arrCustomer.add(new Customer("0123123123", "Nguyễn Văn D"));
-
-        ListviewCustomerAdapter customAdapter = new ListviewCustomerAdapter(this, R.layout.customer_row, arrCustomer);
+        arrCustomer = new ArrayList<>();
+        customAdapter = new ListviewCustomerAdapter(this, R.layout.customer_row, arrCustomer);
         listCus.setAdapter(customAdapter);
 
-        AdapterView.OnItemClickListener adapterViewListener = new AdapterView.OnItemClickListener() {
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("customers");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                arrCustomer.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Customer customer = snapshot.getValue(Customer.class);
+                    arrCustomer.add(customer);
+                }
+                customAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                System.err.println("Lỗi Firebase: " + databaseError.getMessage());
+            }
+        });
+
+
+        listCus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Customer property = arrCustomer.get(position);
+                Customer customer = arrCustomer.get(position);
                 Intent intent = new Intent(list_customer.this, customer_information.class);
-                intent.putExtra("txt_CusName", property.getCusFullname());
-                intent.putExtra("txt_SDT", property.getCusID());
+                intent.putExtra("txt_CusName", customer.getCusFullname());
+                intent.putExtra("txt_SDT", customer.getCusPhone());
+                intent.putExtra("txt_Email", customer.getCusEmail());
+                System.out.println("t" + customer.getCusEmail());
                 startActivity(intent);
             }
-        };
-        listCus.setOnItemClickListener(adapterViewListener);
+        });
     }
+
 }
+

@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.booking_hotel.model.Customer;
 
 public class customer_information extends AppCompatActivity {
 
@@ -23,6 +26,24 @@ public class customer_information extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        Intent intent = getIntent();
+        String cusName = intent.getStringExtra("txt_CusName");
+        String cusPhone = intent.getStringExtra("txt_SDT");
+        String cusEmail = intent.getStringExtra("txt_Email");
+
+
+        TextView txtCusName = findViewById(R.id.txt_CusName);
+        TextView txtCusPhone = findViewById(R.id.txt_CusPhone);
+        TextView txtCusEmail = findViewById(R.id.txt_cusEmail);
+
+
+        txtCusName.setText("Họ tên: " + cusName);
+        txtCusPhone.setText("SĐT: " + cusPhone);
+        txtCusEmail.setText("Email: " + cusEmail);
+
+
 
         Button btnBack = findViewById(R.id.btn_Back);
         Button btnDoiMK = findViewById(R.id.btn_DoiMatKhau);
@@ -43,6 +64,9 @@ public class customer_information extends AppCompatActivity {
             public void onClick(View v) {
                 // Create an intent to go back to the desired activity (e.g., MainActivity)
                 Intent intent = new Intent(customer_information.this, change_password.class);
+                intent.putExtra("cusPhone", cusPhone);
+                intent.putExtra("cusEmail", cusEmail);
+
                 startActivity(intent);
             }
         });
@@ -51,6 +75,9 @@ public class customer_information extends AppCompatActivity {
             public void onClick(View v) {
                 // Create an intent to go back to the desired activity (e.g., MainActivity)
                 Intent intent = new Intent(customer_information.this, update_customer.class);
+                intent.putExtra("cusPhone", cusPhone);
+                intent.putExtra("cusEmail", cusEmail);
+                intent.putExtra("cusFullName", cusName);
                 startActivity(intent);
             }
         });

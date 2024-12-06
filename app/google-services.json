@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "24299857737",
-    "project_id": "ltdd-76039",
-    "storage_bucket": "ltdd-76039.firebasestorage.app"
+    "project_number": "407753404786",
+    "project_id": "fir-3086a",
+    "storage_bucket": "fir-3086a.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:24299857737:android:0787761d7c88140fa0dc98",
+        "mobilesdk_app_id": "1:407753404786:android:fc4a7d975a3a805446edeb",
         "android_client_info": {
           "package_name": "com.example.booking_hotel"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBqDqUtzPWrxNB9_LMf-RgnYPEbMyckBBU"
+          "current_key": "AIzaSyDtnVkXLU39yXv5ybTdQeTYwYisz6c1gXI"
         }
       ],
       "services": {

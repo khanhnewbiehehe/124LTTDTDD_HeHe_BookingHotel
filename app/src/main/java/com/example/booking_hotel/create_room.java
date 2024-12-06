@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,10 +15,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class create_room extends AppCompatActivity {
+    public DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,43 +53,90 @@ public class create_room extends AppCompatActivity {
             }
         });
 
-        // Spinner Loại phòng
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        EditText txtMaPhong = findViewById(R.id.txt_MaPhong);
+        EditText txtGiaTien = findViewById(R.id.txt_GiaTien);
+        Spinner spnLoaiPhong = findViewById(R.id.spn_LoaiPhong);
+        Spinner spnLoaiView = findViewById(R.id.spn_LoaiView);
+        Spinner spnLoaiGiuong = findViewById(R.id.spn_LoaiGiuong);
+
+
         Spinner loaiPhong = findViewById(R.id.spn_LoaiPhong);
-        List<String> listLoaiPhong = new ArrayList<>();
-        listLoaiPhong.add("Loại phòng"); // Thêm phần tử placeholder
-        listLoaiPhong.add("Phòng đôi");
-        listLoaiPhong.add("Phòng đơn");
-        listLoaiPhong.add("Phòng gia đình");
-        ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listLoaiPhong);
-        LoaiPhongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        loaiPhong.setAdapter(LoaiPhongAdapter);
-        loaiPhong.setSelection(0); // Hiển thị giá trị placeholder ban đầu
-
-        // Spinner Loại khung cảnh
         Spinner loaiView = findViewById(R.id.spn_LoaiView);
-        List<String> listKhungCanh = new ArrayList<>();
-        listKhungCanh.add("Loại khung cảnh"); // Thêm phần tử placeholder
-        listKhungCanh.add("Thành phố");
-        listKhungCanh.add("Biển");
-        listKhungCanh.add("Cửa sổ");
-        listKhungCanh.add("Không có");
-        ArrayAdapter<String> KhungCanhAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listKhungCanh);
-        KhungCanhAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        loaiView.setAdapter(KhungCanhAdapter);
-        loaiView.setSelection(0); // Hiển thị giá trị placeholder ban đầu
-
-        // Spinner Loại giường
         Spinner loaiGiuong = findViewById(R.id.spn_LoaiGiuong);
-        List<String> listLoaiGiuong = new ArrayList<>();
-        listLoaiGiuong.add("Loại giường"); // Thêm phần tử placeholder
-        listLoaiGiuong.add("1 giường đơn");
-        listLoaiGiuong.add("2 giường đơn");
-        listLoaiGiuong.add("1 giường đôi");
-        listLoaiGiuong.add("2 giường đôi");
-        ArrayAdapter<String> LoaiGiuongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listLoaiGiuong);
-        LoaiGiuongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        loaiGiuong.setAdapter(LoaiGiuongAdapter);
-        loaiGiuong.setSelection(0); // Hiển thị giá trị placeholder ban đầu
+
+
+        loadDropdownData("loaiPhong", loaiPhong);
+        loadDropdownData("loaiView", loaiView);
+        loadDropdownData("loaiGiuong", loaiGiuong);
+
+        Button btn_tao = findViewById(R.id.btn_CapNhat);
+        btn_tao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String maPhong = txtMaPhong.getText().toString();
+                String giaTien = txtGiaTien.getText().toString();
+                String loaiPhong = spnLoaiPhong.getSelectedItem().toString();
+                String loaiView = spnLoaiView.getSelectedItem().toString();
+                String loaiGiuong = spnLoaiGiuong.getSelectedItem().toString();
+
+                // Kiểm tra các trường dữ liệu
+                if (maPhong.isEmpty() || giaTien.isEmpty() || loaiPhong.equals("Loại phòng") || loaiView.equals("Loại khung cảnh") || loaiGiuong.equals("Loại giường")) {
+                    Toast.makeText(create_room.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                Map<String, Object> roomData = new HashMap<>();
+                roomData.put("maPhong", maPhong);
+                roomData.put("giaTien", giaTien);
+                roomData.put("loaiPhong", loaiPhong);
+                roomData.put("loaiView", loaiView);
+                roomData.put("loaiGiuong", loaiGiuong);
+                roomData.put("trangthai", "Trống");
+                roomData.put("img" , "room_img" );
+
+
+                mDatabase.child("rooms").child(maPhong).setValue(roomData).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(create_room.this, "Thêm phòng thành công", Toast.LENGTH_SHORT).show();
+
+
+                        Intent intent = new Intent(create_room.this, manager_roomlist.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(create_room.this, "Có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
+
+
+    private void loadDropdownData(String dropdownKey, Spinner spinner) {
+        DatabaseReference dropdownRef = mDatabase.child("dropdown_values").child(dropdownKey);
+
+        dropdownRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<String> dropdownValues = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String value = snapshot.getValue(String.class);
+                    dropdownValues.add(value);
+                }
+
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(create_room.this, android.R.layout.simple_spinner_item, dropdownValues);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(create_room.this, "Lỗi khi tải dữ liệu từ Firebase!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

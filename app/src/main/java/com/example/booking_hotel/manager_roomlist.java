@@ -14,19 +14,28 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class manager_roomlist extends AppCompatActivity {
 
     private ArrayList<manager_roomlist_detail> manager_room_listProperties = new ArrayList<>();
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mDataRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,40 +64,17 @@ public class manager_roomlist extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mDatabase = FirebaseDatabase.getInstance();
+        mDataRef = mDatabase.getReference("dropdown_values");
+
         Spinner trangthai = findViewById(R.id.spn_manager_rooomlist_trangthai);
-        List<String> listTrangThai = new ArrayList<>();
-        listTrangThai.add("Trạng thái"); // Thêm phần tử placeholder
-        listTrangThai.add("Trống");
-        listTrangThai.add("Đang sử dụng");
-        listTrangThai.add("Chưa nhận phòng");
-        listTrangThai.add("Bảo trì");
-        ArrayAdapter<String> TrangThaiAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listTrangThai);
-        TrangThaiAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        trangthai.setAdapter(TrangThaiAdapter);
-        trangthai.setSelection(0);
-
         Spinner loaiPhong = findViewById(R.id.spn_manager_rooomlist_loai);
-        List<String> listLoaiPhong = new ArrayList<>();
-        listLoaiPhong.add("Loại"); // Thêm phần tử placeholder
-        listLoaiPhong.add("Phòng đơn");
-        listLoaiPhong.add("Phòng đôi");
-        listLoaiPhong.add("Phòng 3 người");
-        listLoaiPhong.add("Phòng 4 người");
-        ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listLoaiPhong);
-        LoaiPhongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        loaiPhong.setAdapter(LoaiPhongAdapter);
-        loaiPhong.setSelection(0);
-
         Spinner view = findViewById(R.id.spn_manager_rooomlist_view);
-        List<String> listView = new ArrayList<>();
-        listView.add("View"); // Thêm phần tử placeholder
-        listView.add("Không có");
-        listView.add("Biển");
-        listView.add("Thành phố");
-        ArrayAdapter<String> ViewAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listView);
-        ViewAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        view.setAdapter(ViewAdapter);
-        view.setSelection(0);
+
+        loadDropdownData("trangthai", trangthai);
+        loadDropdownData("loaiPhong", loaiPhong);
+        loadDropdownData("loaiView", view);
 
         manager_room_listProperties.add(
                 new manager_roomlist_detail("308","Phòng đôi", "Trống","room_img"));
@@ -117,8 +103,58 @@ public class manager_roomlist extends AppCompatActivity {
                 startActivity(intent);
             }
         };
+//        loadRoomDataFromFirebase();
+
 //set the listener to the list view
         roomlistView.setOnItemClickListener(adapterViewListener);
+    }
+    private void loadRoomDataFromFirebase() {
+        mDataRef = mDatabase.getReference("rooms");
+        mDataRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                manager_room_listProperties.clear();  // Xóa dữ liệu cũ
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    manager_roomlist_detail room = snapshot.getValue(manager_roomlist_detail.class);  // Lấy dữ liệu phòng
+                    if (room != null) {
+                        manager_room_listProperties.add(room);  // Thêm vào danh sách
+                    }
+                }
+
+                // Cập nhật ListView
+                ((ArrayAdapter) ((ListView) findViewById(R.id.manager_room_listview)).getAdapter()).notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(manager_roomlist.this, "Lỗi khi tải dữ liệu từ Firebase!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void loadDropdownData(String dropdownKey, Spinner spinner) {
+        mDataRef.child(dropdownKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<String> dropdownValues = new ArrayList<>();
+
+                // Lấy giá trị từ Firebase
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String value = snapshot.getValue(String.class);
+                    dropdownValues.add(value);
+                }
+
+                // Cập nhật Spinner
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(manager_roomlist.this, android.R.layout.simple_spinner_item, dropdownValues);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Xử lý lỗi nếu có
+                Toast.makeText(manager_roomlist.this, "Lỗi khi tải dữ liệu từ Firebase!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
 
@@ -133,6 +169,8 @@ class manager_room_listArrayAdapter extends ArrayAdapter<manager_roomlist_detail
         this.context = context;
         this.manager_room_listProperties = objects;
     }
+
+
 
     public View getView(int position, View convertView, ViewGroup parent) {
 

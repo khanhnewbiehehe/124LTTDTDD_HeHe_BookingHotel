@@ -66,35 +66,37 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/txt_CusName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp"
-            android:text="Họ tên: Nguyen Nhat Khanh hjhj"
+
             android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/txt_cusEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp"
-            android:text="Email: Quatangcuocsong@gmail.com"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/txt_CusPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp"
-            android:text="SĐT: 0123123123"
+
             android:textColor="@color/white"
             android:textSize="16sp" />
 

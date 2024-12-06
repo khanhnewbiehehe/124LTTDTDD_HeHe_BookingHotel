@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.booking_hotel.model.Customer;
 
 public class ListviewCustomerAdapter extends ArrayAdapter<Customer> {
 
@@ -41,7 +42,7 @@ public class ListviewCustomerAdapter extends ArrayAdapter<Customer> {
         }
 
         Customer cus = arrCustomer.get(position);
-        viewHolder.CusID.setText(cus.getCusID());
+        viewHolder.CusID.setText(cus.getCusPhone());
         viewHolder.CusFullname.setText(cus.getCusFullname());  // Đã sửa tên biến
 
         return convertView;
