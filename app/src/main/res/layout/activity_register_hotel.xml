@@ -132,19 +132,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo" />
 
-    <TextView
-        android:id="@+id/Khanh_2725"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="404"
-        android:textStyle="bold"
-        android:textColor="#FF0000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/haveAccount"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/haveAccount"
-        app:layout_constraintTop_toBottomOf="@+id/haveAccount" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
