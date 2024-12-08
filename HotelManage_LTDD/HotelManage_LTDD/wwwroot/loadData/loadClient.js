@@ -32,7 +32,7 @@
                     return `
                             <a href = "/Admin/Client/Details/${data}" class="btn btn-info btn-sm">Xem</a>
                             <a href = "/Admin/Client/Edit/${data}" class="btn btn-success btn-sm">Sửa</a>
-                            <a onClick="Delete('/Admin/Client/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
+                            <a onClick="DeleteClient('/Admin/Client/Delete/${data}')" class="btn btn-danger btn-sm">Xóa</a>
                         `;
                 },
                 width: "30%"
@@ -41,7 +41,7 @@
     });
 });
 
-function Delete(url) {
+function DeleteClient(url) {
 
     var currentPage = $('#ClientTable').DataTable().page();
 

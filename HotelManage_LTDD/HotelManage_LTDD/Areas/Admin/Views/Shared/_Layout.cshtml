@@ -33,6 +33,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Khách hàng</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Room" asp-action="Index">Phòng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Voucher" asp-action="Index">Ưu đãi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Booking" asp-action="Index">Đơn thuê</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -57,6 +66,9 @@
     <script src="~/loadData/loadArea.js"></script>
     <script src="~/loadData/loadEmployee.js"></script>
     <script src="~/loadData/loadClient.js"></script>
+    <script src="~/loadData/loadRoom.js"></script>
+    <script src="~/loadData/loadVoucher.js"></script>
+    <script src="~/loadData/loadBooking.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

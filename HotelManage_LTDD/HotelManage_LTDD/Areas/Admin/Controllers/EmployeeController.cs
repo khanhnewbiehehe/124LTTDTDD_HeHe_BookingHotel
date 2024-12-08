@@ -16,19 +16,19 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
         {
             _client = client;
         }
-        [Route("Admin/Employee")]
+        [Route("/Admin/Employee")]
         public ActionResult Index()
         {
             return View();
         }
 
-        [Route("Admin/Employee/Create")]
+        [Route("/Admin/Employee/Create")]
         public ActionResult Create()
         {
             return View();
         }
 
-        [Route("Admin/Employee/List")]
+        [Route("/Admin/Employee/List")]
         public async Task<IActionResult> getList()
         {
             FirebaseResponse response = _client.Get("Users");
@@ -45,7 +45,7 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
             return Json(employeeUsers);
         }
 
-        [Route("Admin/Employee/Details/{id}")]
+        [Route("/Admin/Employee/Details/{id}")]
         public ActionResult Details(string id)
         {
             // Lấy dữ liệu từ Firebase theo ID
@@ -61,7 +61,7 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
             return View(user);
         }
 
-        [Route("Admin/Employee/Create")]
+        [Route("/Admin/Employee/Create")]
         // POST: RoomTypeController/Create
         [HttpPost]
         public async Task<ActionResult> Create(User user, IFormFile AvatarUrl)
@@ -103,7 +103,7 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
             return View();
         }
 
-        [Route("Admin/Employee/Edit/{id}")]
+        [Route("/Admin/Employee/Edit/{id}")]
         // GET: RoomTypeController/Edit/5
         public ActionResult Edit(string id)
         {
@@ -119,7 +119,7 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
             var user = JsonConvert.DeserializeObject<User>(JsonConvert.SerializeObject(data));
             return View(user);
         }
-        [Route("Admin/Employee/Edit/{id}")]
+        [Route("/Admin/Employee/Edit/{id}")]
         [HttpPost]
         public async Task<ActionResult> Edit(string id, User user, IFormFile AvatarUrl = null)
         {
@@ -183,7 +183,7 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
             return View(user);
         }
 
-        [Route("Admin/Employee/Delete/{id}")]
+        [Route("/Admin/Employee/Delete/{id}")]
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {

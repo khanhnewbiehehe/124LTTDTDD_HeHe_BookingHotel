@@ -1,0 +1,64 @@
+﻿@model HotelManage_LTDD.Models.Voucher
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg" style="width: 30rem;">
+        <div class="card-body">
+            <form asp-area="Admin" asp-action="Create" asp-controller="Voucher" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Tên ưu đãi:</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter voucher name" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Code" class="form-label">Mã ưu đãi:</label>
+                    <input asp-for="Code" class="form-control" type="text" placeholder="Enter code" required />
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Quantity" class="form-label">Số lượng:</label>
+                    <input asp-for="Quantity" class="form-control" type="number" placeholder="Enter quantity" required />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label">Trạng thái:</label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Discount" class="form-label">Giảm giá(%):</label>
+                    <input asp-for="Discount" class="form-control" type="number" step="5" placeholder="Enter discount" required />
+                    <span asp-validation-for="Discount" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">Mô tả:</label>
+                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter room type description" required></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ImageUrl" class="form-label">Hình ảnh:</label>
+                    <input asp-for="ImageUrl" class="form-control" type="file" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary">Tạo ưu đãi</button>
+                </div>
+            </form>
+
+            <div class="d-grid">
+                <a asp-area="Admin" asp-action="Index" asp-controller="Voucher" class="btn btn-secondary">Hủy</a>
+            </div>
+        </div>
+    </div>
+</div>
