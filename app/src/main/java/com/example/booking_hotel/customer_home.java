@@ -68,14 +68,13 @@ public class customer_home extends AppCompatActivity {
                     } else {
                         Log.d("firebase", "No user data found.");
                         TextView txtHello = findViewById(R.id.hello);
-                        txtHello.setText("User data is not available.");
+                        txtHello.setText("Xin chao!");
                     }
                 }
             }
         });
 
 
-//        NavigationView navigationView = findViewById(R.id.nav_view);
 
         Button btnNav = findViewById(R.id.btn_nav);
         btnNav.setOnClickListener(new View.OnClickListener() {
