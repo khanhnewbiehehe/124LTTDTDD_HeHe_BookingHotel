@@ -1,33 +1,51 @@
 ﻿@model HotelManage_LTDD.Models.Room
 
-<form asp-area="Admin" asp-controller="Room" asp-action="Create" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="TypeName">Type Name</label>
-        <input type="text" class="form-control" id="TypeName" name="TypeName" />
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg" style="width: 35rem;">
+        <div class="card-header">
+            <h4 class="mb-0">Tạo Phòng Mới</h4>
+        </div>
+        <div class="card-body">
+            <form asp-area="Admin" asp-controller="Room" asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="TypeName" class="form-label">Loại Phòng</label>
+                    <input type="text" class="form-control" id="TypeName" name="TypeName" placeholder="Nhập loại phòng" required />
+                </div>
+                <div class="mb-3">
+                    <label for="AreaName" class="form-label">Tên Khu Vực</label>
+                    <input type="text" class="form-control" id="AreaName" name="AreaName" placeholder="Nhập tên khu vực" required />
+                </div>
+                <div class="mb-3">
+                    <label for="Code" class="form-label">Số Phòng</label>
+                    <input type="text" class="form-control" id="Code" name="Code" placeholder="Nhập số phòng" required />
+                </div>
+                <div class="mb-3">
+                    <label for="Price" class="form-label">Giá (VND)</label>
+                    <input type="number" step="50000" class="form-control" id="Price" name="Price" placeholder="Nhập giá phòng" required />
+                </div>
+                <div class="mb-3">
+                    <label for="Discount" class="form-label">Giảm Giá (%)</label>
+                    <input type="number" step="5" class="form-control" id="Discount" name="Discount" placeholder="Nhập giảm giá (nếu có)" />
+                </div>
+                <div class="mb-3">
+                    <label for="Status" class="form-label">Trạng Thái</label>
+                    <select id="Status" name="Status" class="form-select">
+                        <option value="Sẵn sàng">Sẵn sàng</option>
+                        <option value="Bảo trì">Bảo trì</option>
+                        <option value="Ngưng hoạt động">Ngưng hoạt động</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="Images" class="form-label">Hình Ảnh</label>
+                    <input type="file" class="form-control" id="Images" name="images" multiple accept="image/*" />
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Tạo Phòng</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <a asp-area="Admin" asp-controller="Room" asp-action="Index" class="btn btn-secondary">Hủy</a>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="AreaName">Area Name</label>
-        <input type="text" class="form-control" id="AreaName" name="AreaName" />
-    </div>
-    <div class="form-group">
-        <label for="Code">Số phòng</label>
-        <input type="text" class="form-control" id="Code" name="Code" />
-    </div>
-    <div class="form-group">
-        <label for="Price">Price</label>
-        <input type="number" step="50000" class="form-control" id="Price" name="Price" />
-    </div>
-    <div class="form-group">
-        <label for="Discount">Discount</label>
-        <input type="number" step="5" class="form-control" id="Discount" name="Discount" />
-    </div>
-    <div class="form-group">
-        <label for="Status">Status</label>
-        <input type="text" class="form-control" id="Status" name="Status" />
-    </div>
-    <div class="form-group">
-        <label for="Images">Images</label>
-        <input type="file" class="form-control" id="Images" name="images" multiple />
-    </div>
-    <button type="submit" class="btn btn-primary">Create Room</button>
-</form>
+</div>

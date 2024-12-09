@@ -1,50 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\BTCK_LTDD\\HotelManage_LTDD\\",
+  "WorkspaceRootPath": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\views\\booking\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\views\\booking\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\124lttdtdd_hehe_bookinghotel\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\views\\roomtype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\views\\roomtype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\124lttdtdd_hehe_bookinghotel\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\views\\roomtype\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\views\\roomtype\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\views\\booking\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\views\\booking\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\124lttdtdd_hehe_bookinghotel\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\views\\roomtype\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\views\\roomtype\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\controllers\\areacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\controllers\\areacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\views\\booking\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\views\\booking\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\views\\booking\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\views\\booking\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\wwwroot\\loaddata\\loadbooking.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\wwwroot\\loaddata\\loadbooking.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\models\\roomtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\models\\roomtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\hotelmanage_ltdd\\hotelmanage_ltdd\\models\\voucher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\models\\voucher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|d:\\btck_ltdd\\124lttdtdd_hehe_bookinghotel\\hotelmanage_ltdd\\hotelmanage_ltdd\\areas\\admin\\views\\employee\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{424772A8-D229-44A7-A6AE-FDCD21A96E8D}|HotelManage_LTDD\\HotelManage_LTDD.csproj|solutionrelative:hotelmanage_ltdd\\areas\\admin\\views\\employee\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,145 +62,54 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Employee\\Details.cshtml",
+              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Views\\Employee\\Details.cshtml",
+              "ToolTip": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Employee\\Details.cshtml",
+              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Views\\Employee\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-09T19:13:30.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Edit.cshtml",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Edit.cshtml",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Edit.cshtml",
-              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABWAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Edit.cshtml",
+              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Edit.cshtml",
+              "ToolTip": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Edit.cshtml",
+              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T15:29:50.859Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Details.cshtml",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Details.cshtml",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Details.cshtml",
-              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T15:23:57.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "loadBooking.js",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadBooking.js",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\wwwroot\\loadData\\loadBooking.js",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadBooking.js",
-              "RelativeToolTip": "HotelManage_LTDD\\wwwroot\\loadData\\loadBooking.js",
-              "ViewState": "AgIAADcAAAAAAAAAAAAxwE0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-06T15:07:06.794Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Create.cshtml",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Create.cshtml",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Create.cshtml",
-              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Create.cshtml",
-              "ViewState": "AgIAABYAAAAAAAAAAAAkwDMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T14:51:22.211Z",
+              "WhenOpened": "2024-12-09T19:10:40.147Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Index.cshtml",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Index.cshtml",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Index.cshtml",
-              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Views\\Booking\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABLAAAAAAAAAA==",
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Details.cshtml",
+              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Details.cshtml",
+              "ToolTip": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Details.cshtml*",
+              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Details.cshtml*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T14:49:31.344Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AreaController.cs",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Controllers\\AreaController.cs",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Controllers\\AreaController.cs",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Controllers\\AreaController.cs",
-              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Controllers\\AreaController.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAIwIwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T14:19:05.609Z",
+              "WhenOpened": "2024-12-09T19:10:39.567Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "BookingController.cs",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Controllers\\BookingController.cs",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Controllers\\BookingController.cs",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Controllers\\BookingController.cs",
-              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Controllers\\BookingController.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAIAwwJwAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T14:18:46.119Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RoomType.cs",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Models\\RoomType.cs",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Models\\RoomType.cs",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Models\\RoomType.cs",
-              "RelativeToolTip": "HotelManage_LTDD\\Models\\RoomType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T12:52:38.61Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Voucher.cs",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Models\\Voucher.cs",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Models\\Voucher.cs",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Models\\Voucher.cs",
-              "RelativeToolTip": "HotelManage_LTDD\\Models\\Voucher.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T12:52:35.29Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Booking.cs",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Models\\Booking.cs",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Models\\Booking.cs",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Models\\Booking.cs",
-              "RelativeToolTip": "HotelManage_LTDD\\Models\\Booking.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAADwvxQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T12:39:58.938Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\BTCK_LTDD\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAADsAAAAAAAAAAAAgwEYAAAAnAAAAAAAAAA==",
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Create.cshtml",
+              "RelativeDocumentMoniker": "HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Create.cshtml",
+              "ToolTip": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Create.cshtml",
+              "RelativeToolTip": "HotelManage_LTDD\\Areas\\Admin\\Views\\RoomType\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T12:39:22.68Z",
+              "WhenOpened": "2024-12-09T19:10:38.924Z",
               "EditorCaption": ""
             }
           ]

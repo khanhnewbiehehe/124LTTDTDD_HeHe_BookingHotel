@@ -2,6 +2,10 @@
 
 <div class="d-flex justify-content-center align-items-center">
     <div class="card shadow-lg" style="width: 30rem;">
+        <!-- Thêm card-header -->
+        <div class="card-header">
+            <h5 class="card-title">Chỉnh sửa ưu đãi</h5>
+        </div>
         <div class="card-body">
             @using (Html.BeginForm("Edit", "Voucher", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {

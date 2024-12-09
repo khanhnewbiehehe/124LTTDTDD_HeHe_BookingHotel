@@ -2,11 +2,15 @@
 
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-lg" style="width: 30rem;">
+        <div class="card-header">
+            <h4 class="mb-0">Chỉnh sửa thông tin nhân viên</h4>
+        </div>
         <div class="card-body">
             @using (Html.BeginForm("Edit", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 <input class="Role" id="Role" name="Role" value="Employee" type="hidden" />
+
                 <div class="mb-3">
                     <label for="Name" class="form-label">Họ và tên:</label>
                     <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required />
@@ -14,7 +18,7 @@
 
                 <div class="mb-3">
                     <label for="Email" class="form-label">Email:</label>
-                    <input type="text" id="Email" name="Email" class="form-control" value="@Model.Email" required />
+                    <input type="email" id="Email" name="Email" class="form-control" value="@Model.Email" required />
                 </div>
 
                 <div class="mb-3">
@@ -24,17 +28,17 @@
 
                 <div class="mb-3">
                     <label for="Password" class="form-label">Mật khẩu:</label>
-                    <input type="text" id="Password" name="Password" class="form-control" value="@Model.Password" required />
+                    <input type="password" id="Password" name="Password" class="form-control" value="@Model.Password" required />
                 </div>
 
                 <div class="mb-3">
-                    <label for="AvatarUrl" class="form-label">Hình ảnh:</label>
+                    <label for="AvatarUrl" class="form-label">Hình ảnh đại diện:</label>
                     <input type="file" id="AvatarUrl" name="AvatarUrl" class="form-control" />
                     @if (!string.IsNullOrEmpty(Model.AvatarUrl))
                     {
                         <div class="mt-3 text-center">
                             <strong>Hình ảnh hiện tại:</strong>
-                            <img src="@Model.AvatarUrl" alt="@Model.AvatarUrl" class="img-thumbnail" style="max-width: 200px; height: auto;" />
+                            <img src="@Model.AvatarUrl" alt="Avatar" class="img-thumbnail" style="max-width: 200px; height: auto;" />
                         </div>
                     }
                 </div>

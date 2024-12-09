@@ -1,26 +1,30 @@
 ﻿@model HotelManage_LTDD.Models.RoomType
 
-<div class="d-flex justify-content-center align-items-center vh-100">
-    <div class="card shadow-lg" style="width: 30rem;">
+<div class="d-flex justify-content-center align-items-center ">
+    <div class="card shadow-lg" style="width: 30rem; border-radius: 15px;">
+        <!-- Card Header -->
+        <div class="card-header ">
+            <h5 class="card-title ">Tạo loại phòng mới</h5>
+        </div>
         <div class="card-body">
             <form asp-area="Admin" asp-action="Create" asp-controller="RoomType" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
 
                 <div class="mb-3">
                     <label asp-for="Name" class="form-label">Tên loại phòng:</label>
-                    <input asp-for="Name" class="form-control" placeholder="Enter room type name" required />
+                    <input asp-for="Name" class="form-control" placeholder="Nhập tên loại phòng" required />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="People" class="form-label">Số người tối đa:</label>
-                    <input asp-for="People" class="form-control" type="number" placeholder="Enter max people" required />
+                    <input asp-for="People" class="form-control" type="number" placeholder="Nhập số người tối đa" required />
                     <span asp-validation-for="People" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="Description" class="form-label">Mô tả:</label>
-                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter room type description" required></textarea>
+                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Nhập mô tả loại phòng" required></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
 

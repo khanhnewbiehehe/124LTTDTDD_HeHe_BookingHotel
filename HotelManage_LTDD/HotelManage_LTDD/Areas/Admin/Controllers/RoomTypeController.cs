@@ -20,7 +20,7 @@ namespace HotelManage_LTDD.Controllers
         {
             _client = client;
         }
-        [Route("/Admin")]
+        [Route("/Admin/RoomType")]
         public ActionResult Index()
         {
             return View();

@@ -1,7 +1,10 @@
 ﻿@model HotelManage_LTDD.Models.Voucher
 
-<div class="d-flex justify-content-center align-items-center vh-100">
+<div class="d-flex justify-content-center align-items-center ">
     <div class="card shadow-lg" style="width: 30rem;">
+        <div class="card-header">
+            <h4>Tạo Ưu Đãi Mới</h4>
+        </div>
         <div class="card-body">
             <form asp-area="Admin" asp-action="Create" asp-controller="Voucher" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
