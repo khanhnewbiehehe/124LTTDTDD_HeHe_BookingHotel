@@ -1,15 +1,15 @@
 package com.example.booking_hotel.Models;
 
-public class HotelArea {
+public class Area {
 
     public String Id;
     public String Name;
 
-    public HotelArea() {
+    public Area() {
 
     }
 
-    public HotelArea(String id, String name) {
+    public Area(String id, String name) {
         Id = id;
         Name = name;
     }

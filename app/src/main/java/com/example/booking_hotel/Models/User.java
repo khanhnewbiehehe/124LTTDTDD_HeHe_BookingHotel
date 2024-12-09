@@ -1,29 +1,43 @@
 package com.example.booking_hotel.Models;
 
 public class User {
-
-    public String Id;
-    public String Name;
-    public String Email;
-    public String PhoneNumber;
-    public String Password;
-    public String AvatarUrl;
-    public String Role;
-    public int Vip;
+    private String AvatarUrl;
+    private String Email;
+    private String Id;
+    private String Name;
+    private String Password;
+    private String PhoneNumber;
+    private String Role;
+    private int Vip;
 
     public User() {
-
     }
 
-    public User(String id, String name, String email, String phoneNumber, String password, String avatarUrl, String role, int vip) {
+    public User(String avatarUrl, String email, String id, String name, String password, String phoneNumber, String role, int vip) {
+        AvatarUrl = avatarUrl;
+        Email = email;
         Id = id;
         Name = name;
-        Email = email;
-        PhoneNumber = phoneNumber;
         Password = password;
-        AvatarUrl = avatarUrl;
+        PhoneNumber = phoneNumber;
         Role = role;
         Vip = vip;
+    }
+
+    public String getAvatarUrl() {
+        return AvatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        AvatarUrl = avatarUrl;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 
     public String getId() {
@@ -42,22 +56,6 @@ public class User {
         Name = name;
     }
 
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getPhoneNumber() {
-        return PhoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
-    }
-
     public String getPassword() {
         return Password;
     }
@@ -66,12 +64,12 @@ public class User {
         Password = password;
     }
 
-    public String getAvatarUrl() {
-        return AvatarUrl;
+    public String getPhoneNumber() {
+        return PhoneNumber;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
-        AvatarUrl = avatarUrl;
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
     }
 
     public String getRole() {

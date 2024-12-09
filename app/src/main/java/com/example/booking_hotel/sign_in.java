@@ -90,6 +90,8 @@ public class sign_in extends AppCompatActivity {
                             // Check user role and navigate accordingly
                             if ("Client".equalsIgnoreCase(role)) {
                                 Intent clientHome = new Intent(sign_in.this, customer_home.class);
+                                String user_id = userSnapshot.child("Id").getValue(String.class);
+                                clientHome.putExtra("user_id", user_id);
                                 startActivity(clientHome);
                                 Toast.makeText(sign_in.this, "Chào mừng quý khách!", Toast.LENGTH_SHORT).show();
                             } else {

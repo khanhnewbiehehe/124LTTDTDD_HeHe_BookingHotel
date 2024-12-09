@@ -42,10 +42,10 @@
             android:layout_height="36dp"
             android:layout_margin="36dp"
             android:layout_marginTop="68dp"
-            android:text="Xin chào Khánh!"
+            android:text=""
             android:textAlignment="viewEnd"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

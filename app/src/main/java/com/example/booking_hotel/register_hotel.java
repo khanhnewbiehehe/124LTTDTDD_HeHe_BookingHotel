@@ -98,7 +98,8 @@ public class register_hotel extends AppCompatActivity {
         userMap.put("Name", name);
         userMap.put("Password", password);
         userMap.put("PhoneNumber", phoneNumber);
-        userMap.put("Role", "Client"); // Default role for new users
+        userMap.put("Role", "Client");
+        userMap.put("Vip", 0);
 
         if (userId != null) {
             mDatabase.child(userId).setValue(userMap).addOnCompleteListener(task -> {
