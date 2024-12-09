@@ -74,12 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
+
             android:background="@drawable/blue_fill_rounded_topleft_topright"
-            android:drawableRight="@drawable/icon_search"
-            android:drawablePadding="20dp"
-            android:includeFontPadding="false"
-            android:paddingStart="90dp"
-            android:paddingEnd="100dp"
             android:text="Tìm kiếm  "
             android:textAllCaps="false"
             android:textColor="@color/white"

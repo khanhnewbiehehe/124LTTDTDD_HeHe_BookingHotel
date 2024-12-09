@@ -1,0 +1,22 @@
+﻿@model HotelManage_LTDD.Models.HotelArea
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg" style="width: 30rem;">
+        <div class="card-body">
+            <form asp-area="Admin" asp-action="Create" asp-controller="Area" method="post" >
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Tên loại phòng:</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter area name" required autocomplete="organization" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary">Tạo khu vực</button>
+                </div>
+            </form>
+
+            <div class="d-grid">
+                <a asp-area="Admin" asp-action="Index" asp-controller="Area" class="btn btn-secondary">Hủy</a>
+            </div>
+        </div>
+    </div>
+</div>

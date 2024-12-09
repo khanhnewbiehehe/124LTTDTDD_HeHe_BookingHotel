@@ -91,6 +91,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"/>
 
+
         <TextView
             android:id="@+id/giatien"
             android:layout_width="match_parent"
@@ -115,6 +116,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"/>
 
+
         <TextView
             android:id="@+id/loaigiuong"
             android:layout_width="match_parent"
@@ -126,6 +128,7 @@
             android:text="Loại giường: 2 giường đôi"
             android:textSize="14sp"
             android:textColor="@color/black"/>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -1,0 +1,76 @@
+﻿@model HotelManage_LTDD.Models.Room
+
+
+
+<h2>Edit Room</h2>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="TypeName" class="form-label">Loại phòng</label>
+        <input asp-for="TypeName" class="form-control" />
+        <span asp-validation-for="TypeName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AreaName" class="form-label">Khu vực</label>
+        <input asp-for="AreaName" class="form-control" />
+        <span asp-validation-for="AreaName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Code" class="form-label">Số phòng</label>
+        <input asp-for="Code" class="form-control" />
+        <span asp-validation-for="Code" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="form-label">Giá (VND)</label>
+        <input asp-for="Price" class="form-control" type="number" step="50000" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Discount" class="form-label">Giảm giá (%)</label>
+        <input asp-for="Discount" class="form-control" type="number" step="5" />
+        <span asp-validation-for="Discount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Status" class="form-label">Trạng thái</label>
+        <select asp-for="Status" class="form-control">
+            <option value="Sẵn sàng">Sẵn sàng</option>
+            <option value="Bảo trì">Bảo trì</option>
+            <option value="Ngưng hoạt động">Ngưng hoạt động</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="images" class="form-label">Tải ảnh lên</label>
+        <input id="images" name="images" type="file" multiple class="form-control" accept="image/*" />
+    </div>
+
+    <div class="form-group">
+        <label>Hình ảnh hiện tại</label>
+        @if (Model.Images != null && Model.Images.Any())
+        {
+            <div class="row">
+                @foreach (var image in Model.Images)
+                {
+                    <div class="col-md-3 mb-3">
+                        <img src="@image" class="img-thumbnail" alt="Room Image" style="width: 15rem; height: 15rem;" />
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">Không có ảnh nào.</p>
+        }
+    </div>
+
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+    </div>
+</form>
+

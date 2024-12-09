@@ -1,0 +1,67 @@
+﻿@model HotelManage_LTDD.Models.Room
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>Thông tin phòng</h3>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Loại phòng:</dt>
+            <dd class="col-sm-9">@Model.TypeName</dd>
+
+            <dt class="col-sm-3">Khu vực:</dt>
+            <dd class="col-sm-9">@Model.AreaName</dd>
+
+            <dt class="col-sm-3">Số phòng:</dt>
+            <dd class="col-sm-9">@Model.Code</dd>
+
+            <dt class="col-sm-3">Giá:</dt>
+            <dd class="col-sm-9">@Model.Price VND</dd>
+
+
+            <dt class="col-sm-3">Trạng thái:</dt>
+            <dd class="col-sm-9">@Model.Status</dd>
+
+            <dt class="col-sm-3">Giảm giá:</dt>
+            <dd class="col-sm-9">
+                @if (Model.Discount.HasValue)
+                {
+                    <p>@Model.Discount % </p>
+                }
+                else
+                {
+                    <span class="text-muted">No Discount</span>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+@if (Model.Images != null && Model.Images.Any())
+{
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Hình ảnh phòng:</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                @foreach (var imageUrl in Model.Images)
+                {
+                    <div class="col-md-3 mb-3">
+                        <img src="@imageUrl" class="img-fluid img-thumbnail" alt="Room Image"
+                             style="width: 20rem; height: 20rem; object-fit: cover;">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-muted">Không có ảnh nào.</p>
+}
+
+<div class="mt-3">
+    <a asp-area="Admin" asp-action="Index" asp-controller="Room" class="btn btn-primary">Quay lại</a>
+</div>
+

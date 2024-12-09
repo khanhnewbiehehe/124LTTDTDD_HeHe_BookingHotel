@@ -1,0 +1,28 @@
+﻿@model HotelManage_LTDD.Models.Voucher
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow" style="width: 30rem;">
+        <div class="card-body text-center">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <div style="width: 100%; height: 30rem; overflow: hidden; position: relative;">
+                    <img src="@Model.ImageUrl" alt="@Model.Name"
+                         style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                         class="img-fluid" />
+                </div>
+            }
+            else
+            {
+                <p class="text-muted mb-3">Không có ảnh nào</p>
+            }
+
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text"><strong>Mã ưu đãi:</strong> @Model.Code</p>
+            <p class="card-text"><strong>Giảm giá:</strong> @Model.Discount %</p>
+            <p class="card-text"><strong>Mô tả:</strong> @Model.Description</p>
+            <p class="card-text"><strong>Số lượng:</strong> @Model.Quantity</p>
+            <p class="card-text"><strong>Trạng thái:</strong> @Model.Status</p>
+            <a asp-area="Admin" asp-action="Index" asp-controller="Voucher" class="btn btn-primary mt-3">Quay lại</a>
+        </div>
+    </div>
+</div>
