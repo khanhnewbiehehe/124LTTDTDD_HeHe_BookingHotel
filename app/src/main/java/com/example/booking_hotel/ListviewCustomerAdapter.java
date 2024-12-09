@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+import com.example.booking_hotel.Models.Customer;
 
 import java.util.ArrayList;
 import java.util.List;

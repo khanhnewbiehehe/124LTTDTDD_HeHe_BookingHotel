@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "33798697072",
+    "firebase_url": "https://ltddhaha-default-rtdb.firebaseio.com",
+    "project_id": "ltddhaha",
+    "storage_bucket": "ltddhaha.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33798697072:android:c5df5fad6eb129631684b5",
+        "android_client_info": {
+          "package_name": "com.example.booking_hotel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGpbhGPu7DHYqau4FK3mKwzK5U4i4JrVo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
