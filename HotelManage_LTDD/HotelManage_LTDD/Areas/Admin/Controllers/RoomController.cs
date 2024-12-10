@@ -37,6 +37,36 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
             return Content(response.Body, "application/json");
         }
 
+        [Route("/Admin/Room/List/{CheckIn}/{CheckOut}")]
+        public async Task<IActionResult> GetListFree(DateTime CheckIn, DateTime CheckOut)
+        {
+            // Lấy danh sách Rooms từ Firebase
+            FirebaseResponse roomResponse = await _client.GetAsync("Rooms");
+            var roomDictionary = roomResponse.ResultAs<Dictionary<string, Room>>();
+            var rooms = roomDictionary?.Values.ToList() ?? new List<Room>();
+
+            // Lấy danh sách Bookings từ Firebase
+            FirebaseResponse bookingResponse = await _client.GetAsync("Bookings");
+            var bookingDictionary = bookingResponse.ResultAs<Dictionary<string, Booking>>();
+            var bookings = bookingDictionary?.Values.ToList() ?? new List<Booking>();
+
+            // Lọc các phòng đã đặt trong khoảng thời gian CheckIn - CheckOut
+            var bookedRoomIds = bookings
+                .Where(b =>
+                    (b.CheckIn <= CheckOut && b.CheckOut >= CheckIn)) // Kiểm tra giao khoảng thời gian
+                .Select(b => b.RoomCode) // Lấy RoomId
+                .Distinct() // Tránh trùng lặp
+                .ToList();
+
+            // Loại trừ các phòng đã đặt
+            var freeRooms = rooms.Where(r => !bookedRoomIds.Contains(r.Code)).ToList();
+
+            // Trả về JSON
+            return Json(freeRooms);
+        }
+
+
+
         [Route("/Admin/Room/Details/{id}")]
         public ActionResult Details(string id)
         {

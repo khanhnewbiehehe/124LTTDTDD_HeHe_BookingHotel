@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nacCffMn74pVlvtkXyEJ4K7JyHm5FyAJBoJHoDzRsM8=",
+  "Hash": "Rvvscb5JrCsRiti41CRzjxVrCNJyMPmwimilQtPCsYY=",
   "Source": "HotelManage_LTDD",
   "BasePath": "_content/HotelManage_LTDD",
   "Mode": "Default",
@@ -1269,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\loadData\\loadEmployee.js"
+    },
+    {
+      "Identity": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadFreeRoom.js",
+      "SourceId": "HotelManage_LTDD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\",
+      "BasePath": "_content/HotelManage_LTDD",
+      "RelativePath": "loadData/loadFreeRoom.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\loadData\\loadFreeRoom.js"
     },
     {
       "Identity": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadRoom.js",
