@@ -161,12 +161,6 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var rooms = _client.Get("Rooms/").ResultAs<Dictionary<string, Room>>();
-                if (rooms != null && rooms.Values.Any(r => r.Code == room.Code))
-                {
-                    ModelState.AddModelError(nameof(Room.Code), "The room code is already in use. Please choose a different code.");
-                    return View(room);
-                }
                 FirebaseResponse response = _client.Get("Rooms/" + id);
                 dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
 

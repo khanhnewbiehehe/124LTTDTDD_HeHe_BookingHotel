@@ -249,6 +249,10 @@
       "PackagePath": "staticwebassets\\loadData\\loadArea.js"
     },
     {
+      "Id": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadAreaCB.js",
+      "PackagePath": "staticwebassets\\loadData\\loadAreaCB.js"
+    },
+    {
       "Id": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadBooking.js",
       "PackagePath": "staticwebassets\\loadData\\loadBooking.js"
     },
@@ -271,6 +275,10 @@
     {
       "Id": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadRoomType.js",
       "PackagePath": "staticwebassets\\loadData\\loadRoomType.js"
+    },
+    {
+      "Id": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadTypeCB.js",
+      "PackagePath": "staticwebassets\\loadData\\loadTypeCB.js"
     },
     {
       "Id": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadVoucher.js",

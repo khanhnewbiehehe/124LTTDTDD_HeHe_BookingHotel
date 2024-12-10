@@ -9,12 +9,16 @@
             <form asp-area="Admin" asp-controller="Room" asp-action="Create" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="TypeName" class="form-label">Loại Phòng</label>
-                    <input asp-for="TypeName" class="form-control" id="TypeName" placeholder="Nhập loại phòng" required />
+                    <select asp-for="TypeName" class="form-control" id="TypeName" required>
+                        <option value="">Chọn loại phòng</option> <!-- Thêm một option mặc định -->
+                    </select>
                     <span asp-validation-for="TypeName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="AreaName" class="form-label">Tên Khu Vực</label>
-                    <input asp-for="AreaName" class="form-control" id="AreaName" placeholder="Nhập tên khu vực" required />
+                    <select asp-for="AreaName" class="form-control" id="AreaName" required>
+                        <option value="">Chọn khu vực</option> <!-- Thêm một option mặc định -->
+                    </select>
                     <span asp-validation-for="AreaName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
