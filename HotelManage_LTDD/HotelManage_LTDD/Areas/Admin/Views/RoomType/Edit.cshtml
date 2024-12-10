@@ -6,23 +6,25 @@
             <h5 class="card-title">Chỉnh sửa loại phòng</h5>
         </div>
         <div class="card-body">
-            @using (Html.BeginForm("Edit", "RoomType", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+            <form asp-area="Admin" asp-action="Edit" asp-controller="RoomType" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
 
                 <div class="mb-3">
-                    <label for="Name" class="form-label">Tên loại phòng:</label>
-                    <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required />
+                    <label asp-for="Name" class="form-label">Tên loại phòng:</label>
+                    <input asp-for="Name" class="form-control" placeholder="Nhập tên loại phòng" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label for="Description" class="form-label">Mô tả:</label>
-                    <textarea id="Description" name="Description" class="form-control" rows="4" required>@Model.Description</textarea>
+                    <label asp-for="Description" class="form-label">Mô tả:</label>
+                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Nhập mô tả loại phòng" required></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label for="People" class="form-label">Số người tối đa:</label>
-                    <input type="number" id="People" name="People" class="form-control" value="@Model.People" required />
+                    <label asp-for="People" class="form-label">Số người tối đa:</label>
+                    <input asp-for="People" class="form-control" type="number" placeholder="Nhập số người tối đa" required />
+                    <span asp-validation-for="People" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
@@ -40,10 +42,10 @@
                 <div class="d-grid mb-3">
                     <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
                 </div>
-            }
+            </form>
 
             <div class="d-grid">
-                <a asp-area="Admin" asp-action="Index" asp-controller="RoomType" class="btn btn-secondary">Quay lại</a>
+                <a asp-area="Admin" asp-action="Index" asp-controller="RoomType" class="btn btn-secondary form-control">Quay lại</a>
             </div>
         </div>
     </div>

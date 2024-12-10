@@ -8,12 +8,14 @@
         <div class="card-body">
             <form asp-area="Admin" asp-controller="Area" asp-action="Edit" method="post">
                 <div class="mb-3">
-                    <label for="Name" class="form-label">Tên khu vực:</label>
-                    <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" placeholder="Nhập tên khu vực" required />
+                    <label asp-for="Name" class="form-label">Tên khu vực:</label>
+                    <input asp-for="Name" class="form-control" placeholder="Nhập tên khu vực" required autocomplete="organization" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="d-grid mb-3">
-                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                    <button type="submit" class="btn btn-primary form-control my-1">Lưu thay đổi</button>
+                    <a href="/Admin/Area" class="btn btn-secondary form-control my-1">Quay lại</a>
                 </div>
             </form>
         </div>
