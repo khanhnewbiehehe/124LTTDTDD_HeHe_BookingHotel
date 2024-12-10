@@ -62,6 +62,14 @@ namespace HotelManage_LTDD.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra tính duy nhất của RoomType.Name
+                var roomTypes = _client.Get("RoomTypes/").ResultAs<Dictionary<string, RoomType>>(); // Lấy danh sách hiện có
+                if (roomTypes != null && roomTypes.Values.Any(rt => rt.Name.Equals(RoomType.Name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    ModelState.AddModelError(nameof(RoomType.Name), "The name is already in use. Please choose a different name.");
+                    return View(RoomType);
+                }
+
                 if (ImageUrl != null && ImageUrl.Length > 0)
                 {
                     // Kiểm tra loại file (ví dụ chỉ cho phép file hình ảnh)
@@ -70,14 +78,15 @@ namespace HotelManage_LTDD.Controllers
                     if (!allowedExtensions.Contains(extension))
                     {
                         ModelState.AddModelError(string.Empty, "Only image files (.jpg, .jpeg, .png) are allowed.");
-                        return View();
+                        return View(RoomType);
                     }
 
                     // Đẩy ảnh lên Firebase Storage và lấy URL của ảnh
                     var imageUrl = await UploadImageToFirebaseStorage(ImageUrl);
-                    RoomType.ImageUrl = imageUrl;  // Gán URL ảnh vào thuộc tính của RoomType
+                    RoomType.ImageUrl = imageUrl; // Gán URL ảnh vào thuộc tính của RoomType
                 }
 
+                // Thêm dữ liệu nếu không trùng lặp
                 var data = RoomType;
                 PushResponse response = _client.Push("RoomTypes/", data);
                 data.Id = response.Result.name;
@@ -94,8 +103,9 @@ namespace HotelManage_LTDD.Controllers
                 }
             }
 
-            return View();
+            return View(RoomType);
         }
+
 
         [Route("/Admin/RoomType/Edit/{id}")]
         // GET: RoomTypeController/Edit/5
@@ -119,7 +129,12 @@ namespace HotelManage_LTDD.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                var roomTypes = _client.Get("RoomTypes/").ResultAs<Dictionary<string, RoomType>>(); // Lấy danh sách hiện có
+                if (roomTypes != null && roomTypes.Values.Any(rt => rt.Name.Equals(roomType.Name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    ModelState.AddModelError(nameof(RoomType.Name), "The name is already in use. Please choose a different name.");
+                    return View(roomType);
+                }
                 FirebaseResponse response = _client.Get("RoomTypes/" + id);
                 dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
 

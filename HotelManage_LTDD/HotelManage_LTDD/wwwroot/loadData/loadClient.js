@@ -11,7 +11,7 @@
         columns: [
             {
                 data: 'id',
-                width: "10%"
+                width: "20%"
             }, 
             {
                 data: 'name',
@@ -19,11 +19,11 @@
             },
             {
                 data: 'email',
-                width: "10%"
+                width: "20%"
             },
             {
                 data: 'phoneNumber',
-                width: "30%"
+                width: "10%"
             },
             {
                 data: 'id',
