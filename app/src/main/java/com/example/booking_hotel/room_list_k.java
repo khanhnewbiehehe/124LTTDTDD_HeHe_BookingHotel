@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.booking_hotel.Models.Bookings;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,12 +34,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class room_list_k extends AppCompatActivity {
 
     private ArrayList<customer_roomlist_detail> customer_room_listProperties = new ArrayList<>();
+    private ArrayList<Bookings> bookingList = new ArrayList<>();
     private String selectedRoomType = "Loại - Tất cả";
     private String selectedPriceRange = "Giá - Tất cả";
     DatabaseReference mDatabase;
@@ -50,8 +57,13 @@ public class room_list_k extends AppCompatActivity {
         Intent intent = getIntent();
         String checkin = intent.getStringExtra("checkInDate");
         String checkout = intent.getStringExtra("checkOutDate");
+        String user_id = intent.getStringExtra("user_id");
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        ArrayAdapter<customer_roomlist_detail> adapter = new customer_room_listArrayAdapter(this, 0, customer_room_listProperties);
+        ListView roomlistView = (ListView) findViewById(R.id.customer_room_listview);
+        roomlistView.setAdapter(adapter);
 
         Button btn = findViewById(R.id.btn_Back);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -107,59 +119,46 @@ public class room_list_k extends AppCompatActivity {
 
         ////////////////////////////
 
+
         DatabaseReference roomRef = mDatabase.child("Rooms");
-        roomRef.addChildEventListener(new ChildEventListener() {
+        roomRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String roomName = snapshot.child("Code").getValue(String.class);
-                String roomType = snapshot.child("TypeName").getValue(String.class);
-                String roomPrice = snapshot.child("Price").getValue(String.class);
-                String roomID = snapshot.child("Id").getValue(String.class);
-                String firstImagePath = null;
-
-                DataSnapshot imageUrlsSnapshot = snapshot.child("Images");
-                if (imageUrlsSnapshot.exists()) {
-                    firstImagePath = imageUrlsSnapshot.getChildren().iterator().next().getValue(String.class);
-                }
-
-                if (roomName != null && roomType != null && roomPrice != null && roomID != null) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                customer_room_listProperties.clear();
+                for (DataSnapshot roomSnapshot  : snapshot.getChildren()) {
+                    String roomName = String.valueOf(roomSnapshot.child("Code").getValue(Integer.class));
+                    String roomType = roomSnapshot.child("TypeName").getValue(String.class);
+                    String roomPrice = String.valueOf(roomSnapshot.child("Price").getValue(Integer.class));
+                    String roomID = roomSnapshot.child("Id").getValue(String.class);
+                    String firstImagePath = null;
+                    DataSnapshot imageUrlsSnapshot = roomSnapshot.child("Images");
+                    if (imageUrlsSnapshot.exists()) {
+                        for (DataSnapshot urlSnapshot : imageUrlsSnapshot.getChildren()) {
+                            firstImagePath = urlSnapshot.getValue(String.class);
+                            break; // Get only the first image path
+                        }
+                    }
                     customer_room_listProperties.add(new customer_roomlist_detail(roomName, roomType, roomPrice, firstImagePath, roomID));
                 }
+                adapter.notifyDataSetChanged();
             }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                // Handle updates to existing children if needed
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                // Handle removal of children if needed
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                // Handle moving children if needed
-            }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(room_list_k.this, "Failed to load rooms: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("Firebase", "Error: " + error.getMessage());
             }
         });
 
 
-        ArrayAdapter<customer_roomlist_detail> adapter = new customer_room_listArrayAdapter(this, 0, customer_room_listProperties);
-
-        ListView roomlistView = (ListView) findViewById(R.id.customer_room_listview);
-        roomlistView.setAdapter(adapter);
 
         AdapterView.OnItemClickListener adapterViewListener = new AdapterView.OnItemClickListener() {
             //on click
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 customer_roomlist_detail property = customer_room_listProperties.get(position);
-                Intent intent = new Intent(room_list_k.this, manager_room_details.class);
-                intent.putExtra("Id", property.getRoomName());
+                Intent intent = new Intent(room_list_k.this, room_details.class);
+                intent.putExtra("Id", property.getRoomID());
+                intent.putExtra("user_id", user_id);
+                intent.putExtra("CheckIn",checkin);
+                intent.putExtra("CheckOut", checkout);
                 startActivity(intent);
             }
         };

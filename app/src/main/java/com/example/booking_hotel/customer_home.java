@@ -125,7 +125,7 @@ public class customer_home extends AppCompatActivity {
                     Toast.makeText(customer_home.this, "Vui lòng chọn ngày check in và check out", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(customer_home.this, room_list_k.class);
-
+                    intent.putExtra("user_id", user_id);
                     intent.putExtra("checkInDate", checkInDate);
                     intent.putExtra("checkOutDate", checkOutDate);
                     startActivity(intent);

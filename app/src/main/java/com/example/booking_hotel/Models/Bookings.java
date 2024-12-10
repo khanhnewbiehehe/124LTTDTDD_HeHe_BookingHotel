@@ -1,41 +1,54 @@
 package com.example.booking_hotel.Models;
-import java.time.LocalDateTime;
+
 public class Bookings {
 
-    public LocalDateTime CheckIn, CheckOut;
-    public String Id, RoomCode, RoomID, Status, UserID, UserName;
-    public Double Price, Total;
+    public String CheckIn, CheckOut, Id;
+    public Integer Price;  // Kept as Integer
+    public Integer RoomCode;
+    public Integer RoomDiscount;  // Kept as Integer
+    public String RoomID, Status;
+    public Integer Total;  // Kept as Integer
+    public String UserID, UserName, VoucherCode;
+    public Integer VoucherDiscount;
+    public String VoucherID;
 
+    // Default constructor
     public Bookings() {
 
     }
 
-    public Bookings(LocalDateTime checkIn, LocalDateTime checkOut, String id, String roomCode, String roomID, String status, String userID, String userName, double price, double total) {
+    // Constructor with Integer data types for price, discount, and total
+    public Bookings(String checkIn, String checkOut, String id, Integer price, Integer roomCode, Integer roomDiscount, String roomID, String status, Integer total, String userID, String userName, String voucherCode, Integer voucherDiscount, String voucherID) {
         CheckIn = checkIn;
         CheckOut = checkOut;
         Id = id;
+        Price = price;
         RoomCode = roomCode;
+        RoomDiscount = roomDiscount;
         RoomID = roomID;
         Status = status;
+        Total = total;
         UserID = userID;
         UserName = userName;
-        Price = price;
-        Total = total;
+        VoucherCode = voucherCode;
+        VoucherDiscount = voucherDiscount;
+        VoucherID = voucherID;
     }
 
-    public LocalDateTime getCheckIn() {
+    // Getters and Setters
+    public String getCheckIn() {
         return CheckIn;
     }
 
-    public void setCheckIn(LocalDateTime checkIn) {
+    public void setCheckIn(String checkIn) {
         CheckIn = checkIn;
     }
 
-    public LocalDateTime getCheckOut() {
+    public String getCheckOut() {
         return CheckOut;
     }
 
-    public void setCheckOut(LocalDateTime checkOut) {
+    public void setCheckOut(String checkOut) {
         CheckOut = checkOut;
     }
 
@@ -47,12 +60,28 @@ public class Bookings {
         Id = id;
     }
 
-    public String getRoomCode() {
+    public Integer getPrice() {
+        return Price;
+    }
+
+    public void setPrice(Integer price) {
+        Price = price;
+    }
+
+    public Integer getRoomCode() {
         return RoomCode;
     }
 
-    public void setRoomCode(String roomCode) {
+    public void setRoomCode(Integer roomCode) {
         RoomCode = roomCode;
+    }
+
+    public Integer getRoomDiscount() {
+        return RoomDiscount;
+    }
+
+    public void setRoomDiscount(Integer roomDiscount) {
+        RoomDiscount = roomDiscount;
     }
 
     public String getRoomID() {
@@ -71,6 +100,14 @@ public class Bookings {
         Status = status;
     }
 
+    public Integer getTotal() {
+        return Total;
+    }
+
+    public void setTotal(Integer total) {
+        Total = total;
+    }
+
     public String getUserID() {
         return UserID;
     }
@@ -87,19 +124,27 @@ public class Bookings {
         UserName = userName;
     }
 
-    public double getPrice() {
-        return Price;
+    public String getVoucherCode() {
+        return VoucherCode;
     }
 
-    public void setPrice(double price) {
-        Price = price;
+    public void setVoucherCode(String voucherCode) {
+        VoucherCode = voucherCode;
     }
 
-    public double getTotal() {
-        return Total;
+    public Integer getVoucherDiscount() {
+        return VoucherDiscount;
     }
 
-    public void setTotal(double total) {
-        Total = total;
+    public void setVoucherDiscount(Integer voucherDiscount) {
+        VoucherDiscount = voucherDiscount;
+    }
+
+    public String getVoucherID() {
+        return VoucherID;
+    }
+
+    public void setVoucherID(String voucherID) {
+        VoucherID = voucherID;
     }
 }

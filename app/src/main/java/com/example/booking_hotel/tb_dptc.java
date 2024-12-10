@@ -24,6 +24,7 @@ public class tb_dptc extends AppCompatActivity {
             public void onClick(View view) {
                 Intent tb_home = new Intent(tb_dptc.this , customer_home.class);
                 startActivity(tb_home);
+                finish();
             }
         });
     }

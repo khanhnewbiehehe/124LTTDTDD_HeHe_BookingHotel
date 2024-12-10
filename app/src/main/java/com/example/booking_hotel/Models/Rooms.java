@@ -1,16 +1,18 @@
 package com.example.booking_hotel.Models;
 
+import java.util.List;
+
 public class Rooms {
 
    public String AreaName, Code, Id, Status, TypeName;
-   public String[] Images;
+   public List<String> Images;
    public Double Discount, Price;
 
    public Rooms() {
 
    }
 
-   public Rooms(String areaName, String code, String id, String status, String typeName, String[] images, double discount, double price) {
+   public Rooms(String areaName, String code, double discount, String id, List<String> images,double price, String status, String typeName) {
       AreaName = areaName;
       Code = code;
       Id = id;
@@ -61,11 +63,11 @@ public class Rooms {
       TypeName = typeName;
    }
 
-   public String[] getImages() {
+   public List<String> getImages() {
       return Images;
    }
 
-   public void setImages(String[] images) {
+   public void setImages(List<String> images) {
       Images = images;
    }
 
