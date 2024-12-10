@@ -22,322 +22,48 @@
         android:contentDescription="Nút quay lại"
         />
 
-    <FrameLayout
-        android:id="@+id/dropdown_loai"
-        android:layout_width="115dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/back_ground_customer_search"
+    <Spinner
+        android:id="@+id/spn_rooomlist_gia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/white_fill_container"
+        android:drawableEnd="@drawable/icon_dropdown"
+        android:drawableTint="@color/blue"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spn_rooomlist_loai"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/spn_rooomlist_loai"
+        app:layout_constraintTop_toTopOf="@+id/spn_rooomlist_loai" />
+
+    <Spinner
+        android:id="@+id/spn_rooomlist_loai"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/white_fill_container"
+        android:drawableEnd="@drawable/icon_dropdown"
+        android:drawableTint="@color/blue"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/spn_rooomlist_gia"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Back">
+        app:layout_constraintTop_toBottomOf="@+id/btn_Back" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Loại"
-            android:textAlignment="center"
-            android:textColor="@color/blue"
-            android:drawableEnd="@drawable/drop_down"
-            android:textSize="18dp" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/dropdown_gia"
-        android:layout_width="115dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/back_ground_customer_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dropdown_loai"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Back">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:drawableEnd="@drawable/drop_down"
-            android:text="Giá"
-            android:textAlignment="center"
-            android:textColor="@color/blue"
-            android:textSize="18dp" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/dropdown_view"
-        android:layout_width="115dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/back_ground_customer_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Back">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:drawableEnd="@drawable/drop_down"
-            android:text="View"
-            android:textAlignment="center"
-            android:textColor="@color/blue"
-            android:textSize="18dp" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/id_qk"
-        android:layout_width="327dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/back_ground_customer_search"
+    <ListView
+        android:id="@+id/customer_room_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dropdown_view">
-
-        <ImageView
-            android:id="@+id/img_slider"
-            android:layout_width="117dp"
-            android:layout_height="86dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-        <FrameLayout
-            android:layout_width="324dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:text="Phòng 301"
-                android:textColor="@color/blue"
-                android:textSize="17dp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="phòng đôi"
-                android:textSize="14sp"
-                android:textColor="@color/light_blue"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="phòng đôi"
-                android:textSize="14sp"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="3000$"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:paddingTop="55dp"
-                android:paddingEnd="5dp"
-                android:textAlignment="textEnd"
-                />
-        </FrameLayout>
-
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/id_qk1"
-        android:layout_width="327dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/back_ground_customer_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_qk">
-
-        <ImageView
-            android:id="@+id/img_slider1"
-            android:layout_width="117dp"
-            android:layout_height="86dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-        <FrameLayout
-            android:layout_width="324dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:text="Phòng 301"
-                android:textColor="@color/blue"
-                android:textSize="17dp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="phòng đôi"
-                android:textSize="14sp"
-                android:textColor="@color/light_blue"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="phòng đôi"
-                android:textSize="14sp"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="3000$"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:paddingTop="55dp"
-                android:paddingEnd="5dp"
-                android:textAlignment="textEnd"
-                />
-        </FrameLayout>
-
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/id_qk2"
-        android:layout_width="327dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/back_ground_customer_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_qk1">
-
-        <ImageView
-            android:id="@+id/img_slider2"
-            android:layout_width="117dp"
-            android:layout_height="86dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-        <FrameLayout
-            android:layout_width="324dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:text="Phòng 301"
-                android:textColor="@color/blue"
-                android:textSize="17dp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="phòng đôi"
-                android:textSize="14sp"
-                android:textColor="@color/light_blue"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="phòng đôi"
-                android:textSize="14sp"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="3000$"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:paddingTop="55dp"
-                android:paddingEnd="5dp"
-                android:textAlignment="textEnd"
-                />
-        </FrameLayout>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/id_qk3"
-        android:layout_width="327dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/back_ground_customer_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_qk2">
-
-        <ImageView
-            android:id="@+id/img_slider3"
-            android:layout_width="117dp"
-            android:layout_height="86dp"
-            android:background="@drawable/rounded_img"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/room_img" />
-
-        <FrameLayout
-            android:layout_width="324dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:text="Phòng 301"
-                android:textColor="@color/blue"
-                android:textSize="17dp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="phòng đôi"
-                android:textSize="14sp"
-                android:textColor="@color/light_blue"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="phòng đôi"
-                android:textSize="14sp"
-                android:paddingTop="25dp"
-                android:textAlignment="center"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="3000$"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:paddingTop="55dp"
-                android:paddingEnd="5dp"
-                android:textAlignment="textEnd"
-                />
-        </FrameLayout>
-
-
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/spn_rooomlist_loai" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
