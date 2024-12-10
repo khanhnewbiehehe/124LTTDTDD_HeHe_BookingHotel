@@ -88,8 +88,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Loại phòng: Phòng đôi"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/giatien"
@@ -100,8 +100,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Giá tiền : 300.000VNĐ/ngày"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/view"
@@ -112,8 +112,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="View: Thành phố"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/loaigiuong"
@@ -124,48 +124,10 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
             android:text="Loại giường: 2 giường đôi"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Mã giảm giá :"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/voucher_input"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/voucher_input"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/white_filled_input"
-                android:drawableEnd="@drawable/icon_dropdown"
-                android:drawableTint="#0F77A6"
-                android:paddingLeft="10dp"
-                android:paddingTop="2dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="2dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView5"
-                app:layout_constraintTop_toTopOf="@+id/textView5" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/btn_CapNhatPhong"

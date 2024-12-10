@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HotelManage_LTDD.props" />
+</Project>

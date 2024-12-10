@@ -1,0 +1,52 @@
+﻿@model HotelManage_LTDD.Models.Booking
+
+<div class="card">
+    <div class="card-header">
+        <h4>Thông tin chi tiết đặt phòng</h4>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Số phòng:</label>
+            <div class="col-sm-9">@Model.RoomCode</div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Tên người dùng:</label>
+            <div class="col-sm-9">@Model.UserName</div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Ngày nhận phòng:</label>
+            <div class="col-sm-9">@Model.CheckIn.ToString("dd/MM/yyyy HH:mm:ss")</div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Ngày trả phòng:</label>
+            <div class="col-sm-9">@Model.CheckOut.ToString("dd/MM/yyyy HH:mm:ss")</div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Trạng thái:</label>
+            <div class="col-sm-9">@Model.Status</div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Giá phòng (VND):</label>
+            <div class="col-sm-9">@Model.Price</div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Tổng tiền (VND):</label>
+            <div class="col-sm-9">@Model.Total</div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Voucher áp dụng:</label>
+            <div class="col-sm-9">@Model.VoucherCode</div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Giảm giá phòng (%):</label>
+            <div class="col-sm-9">@Model.RoomDiscount</div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 font-weight-bold">Giảm giá voucher (%):</label>
+            <div class="col-sm-9">@Model.VoucherDiscount</div>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <a href="/Admin/Booking" class="btn btn-secondary">Quay lại</a>
+    </div>
+</div>

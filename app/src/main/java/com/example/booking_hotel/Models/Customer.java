@@ -1,4 +1,4 @@
-package com.example.booking_hotel;
+package com.example.booking_hotel.Models;
 
 public class Customer {
     private String CusID; // Phone number

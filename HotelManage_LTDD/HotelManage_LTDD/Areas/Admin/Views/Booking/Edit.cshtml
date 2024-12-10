@@ -1,0 +1,46 @@
+﻿@model HotelManage_LTDD.Models.Booking
+
+<div class="card">
+    <div class="card-header">
+        <h4>Chỉnh Sửa Đặt Phòng</h4>
+    </div>
+    <div class="card-body">
+        <form method="post" asp-action="Edit" asp-controller="Booking" asp-area="Admin">
+            <div class="form-group">
+                <label for="UserID">Người dùng</label>
+                <input type="text" id="UserID" name="UserID" class="form-control" value="@Model.UserID" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="RoomID">Phòng</label>
+                <input type="text" id="RoomID" name="RoomID" class="form-control" value="@Model.RoomID" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="VoucherCode">Mã Giảm Giá</label>
+                <input type="text" id="VoucherCode" name="VoucherCode" class="form-control" value="@Model.VoucherCode" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="CheckIn">Ngày Nhận Phòng</label>
+                <input type="date" id="CheckIn" name="CheckIn" class="form-control" value="@Model.CheckIn.ToString("yyyy-MM-dd")" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="CheckOut">Ngày Trả Phòng</label>
+                <input type="date" id="CheckOut" name="CheckOut" class="form-control" value="@Model.CheckOut.ToString("yyyy-MM-dd")" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="Status">Trạng Thái</label>
+                <input type="text" id="Status" name="Status" class="form-control" value="@Model.Status" />
+                <span class="text-danger">@Html.ValidationMessage("Status")</span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                <a href="/Admin/Booking" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>

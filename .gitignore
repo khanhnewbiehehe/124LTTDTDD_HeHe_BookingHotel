@@ -1,3 +1,4 @@
+# Ignore IDE-specific files
 *.iml
 .gradle
 /local.properties
@@ -8,8 +9,30 @@
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
+
+# Ignore build output
 /build
 /captures
 .externalNativeBuild
 .cxx
+
+# Ignore Visual Studio temporary files, build results, and
+# other unneeded files.
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore local properties (machine-specific)
 local.properties
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore other temporary files and directories
+*.log
+*.tmp
+*.bak
+*.swp
+*.class

@@ -1,0 +1,60 @@
+﻿@model HotelManage_LTDD.Models.User
+
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="card shadow-lg" style="width: 30rem;">
+        <div class="card-header ">
+            <h5 class="mb-0">Tạo nhân viên mới</h5>
+        </div>
+        <div class="card-body">
+            <form asp-area="Admin" asp-action="Create" asp-controller="Employee" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input class="Role" id="Role" name="Role" value="Employee" type="hidden" />
+
+                <!-- Họ tên -->
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label ">Họ tên:</label>
+                    <input asp-for="Name" class="form-control shadow-sm" placeholder="Nhập tên nhân viên" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label ">Email:</label>
+                    <input asp-for="Email" class="form-control shadow-sm" type="email" placeholder="Nhập email" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <!-- Số điện thoại -->
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber" class="form-label ">Số điện thoại:</label>
+                    <input asp-for="PhoneNumber" class="form-control shadow-sm" placeholder="Nhập số điện thoại" required />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <!-- Mật khẩu -->
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label ">Mật khẩu:</label>
+                    <input asp-for="Password" class="form-control shadow-sm" placeholder="Nhập mật khẩu" required />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <!-- Hình ảnh đại diện -->
+                <div class="mb-3">
+                    <label asp-for="AvatarUrl" class="form-label ">Hình ảnh đại diện:</label>
+                    <input asp-for="AvatarUrl" class="form-control shadow-sm" type="file" />
+                    <span asp-validation-for="AvatarUrl" class="text-danger"></span>
+                </div>
+
+                <!-- Nút submit -->
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary shadow">Tạo nhân viên</button>
+                </div>
+            </form>
+
+            <!-- Nút hủy -->
+            <div class="d-grid">
+                <a asp-area="Admin" asp-action="Index" asp-controller="Employee" class="btn btn-secondary shadow">Hủy</a>
+            </div>
+        </div>
+    </div>
+</div>
