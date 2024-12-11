@@ -29,18 +29,17 @@
             android:exported="false" />
         <activity
             android:name=".room_list_k"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".customer_home"/>
         <activity
             android:name=".tb_dptc"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".customer_home"/>
         <activity
             android:name=".customer_home"
             android:exported="false" />
         <activity
             android:name=".manager_homescreen"
-            android:exported="false" />
-        <activity
-            android:name=".details_order"
             android:exported="false" />
         <activity
             android:name=".renew_password"
@@ -49,14 +48,12 @@
             android:name=".thongbao_huydatphong"
             android:exported="false" />
         <activity
-            android:name=".list_order"
-            android:exported="false" />
-        <activity
             android:name=".Renewal"
             android:exported="false" />
         <activity
             android:name=".booking_list"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".customer_home"/>
         <activity
             android:name=".profile"
             android:exported="false" />
@@ -71,9 +68,6 @@
             android:exported="false" />
         <activity
             android:name=".register_hotel_1"
-            android:exported="false" />
-        <activity
-            android:name=".create_order"
             android:exported="false" />
         <activity
             android:name=".forgot_pass"
@@ -96,7 +90,8 @@
             android:parentActivityName=".booking_list" />
         <activity
             android:name=".room_details"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".room_list_k"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

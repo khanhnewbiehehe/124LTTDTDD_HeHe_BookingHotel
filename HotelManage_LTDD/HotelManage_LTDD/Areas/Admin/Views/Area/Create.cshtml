@@ -2,21 +2,20 @@
 
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-lg" style="width: 30rem;">
+        <div class="card-header">
+            <h4 class="mb-0">Tạo Khu Vực Mới</h4>
+        </div>
         <div class="card-body">
-            <form asp-area="Admin" asp-action="Create" asp-controller="Area" method="post" >
+            <form asp-area="Admin" asp-action="Create" asp-controller="Area" method="post">
                 <div class="mb-3">
-                    <label asp-for="Name" class="form-label">Tên loại phòng:</label>
-                    <input asp-for="Name" class="form-control" placeholder="Enter area name" required autocomplete="organization" />
+                    <label asp-for="Name" class="form-label">Tên khu vực:</label>
+                    <input asp-for="Name" class="form-control" placeholder="Nhập tên khu vực" required autocomplete="organization" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-                <div class="d-grid mb-3">
+                <div class="d-grid">
                     <button type="submit" class="btn btn-primary">Tạo khu vực</button>
                 </div>
             </form>
-
-            <div class="d-grid">
-                <a asp-area="Admin" asp-action="Index" asp-controller="Area" class="btn btn-secondary">Hủy</a>
-            </div>
         </div>
     </div>
 </div>

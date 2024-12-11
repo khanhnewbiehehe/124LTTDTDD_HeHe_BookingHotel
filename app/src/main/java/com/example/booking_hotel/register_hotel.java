@@ -92,7 +92,7 @@ public class register_hotel extends AppCompatActivity {
         String userId = mDatabase.child("Users").push().getKey(); // Generate a unique ID for the user
 
         HashMap<String, Object> userMap = new HashMap<>();
-        userMap.put("AvatarUrl", "null");
+        userMap.put("AvatarUrl", null);
         userMap.put("Email", email);
         userMap.put("Id", userId);
         userMap.put("Name", name);

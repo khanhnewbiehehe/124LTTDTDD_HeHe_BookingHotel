@@ -10,10 +10,9 @@
         },
         columns: [
             {
-                data: null,
-                render: (data, type, row, meta) => meta.row + 1,
+                data: 'id',
                 width: "10%"
-            }, // Số thứ tự
+            }, 
             {
                 data: 'name',
                 width: "20%"

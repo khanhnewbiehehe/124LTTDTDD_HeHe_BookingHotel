@@ -19,27 +19,19 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.booking_hotel.Models.Bookings;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class room_list_k extends AppCompatActivity {
 
@@ -70,6 +62,7 @@ public class room_list_k extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent list_home = new Intent(room_list_k.this , customer_home.class);
+                list_home.putExtra("user_id", user_id);
                 startActivity(list_home);
             }
         });
@@ -149,18 +142,15 @@ public class room_list_k extends AppCompatActivity {
         });
 
 
-
-        AdapterView.OnItemClickListener adapterViewListener = new AdapterView.OnItemClickListener() {
-            //on click
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                customer_roomlist_detail property = customer_room_listProperties.get(position);
-                Intent intent = new Intent(room_list_k.this, room_details.class);
-                intent.putExtra("Id", property.getRoomID());
-                intent.putExtra("user_id", user_id);
-                intent.putExtra("CheckIn",checkin);
-                intent.putExtra("CheckOut", checkout);
-                startActivity(intent);
-            }
+        //on click
+        AdapterView.OnItemClickListener adapterViewListener = (parent, view, position, id) -> {
+            customer_roomlist_detail property = customer_room_listProperties.get(position);
+            Intent intent1 = new Intent(room_list_k.this, room_details.class);
+            intent1.putExtra("Id", property.getRoomID());
+            intent1.putExtra("user_id", user_id);
+            intent1.putExtra("CheckIn",checkin);
+            intent1.putExtra("CheckOut", checkout);
+            startActivity(intent1);
         };
         roomlistView.setOnItemClickListener(adapterViewListener);
     }

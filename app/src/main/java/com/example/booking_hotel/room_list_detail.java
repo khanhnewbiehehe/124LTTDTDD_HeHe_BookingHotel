@@ -2,14 +2,14 @@ package com.example.booking_hotel;
 
 public class room_list_detail {
 
-    private String roomName, roomType, roomDate, roomTrangthai, roomImage;
+    private String roomName, roomCheckIn, roomCheckOut, roomTrangthai, roomID;
 
-    public room_list_detail(String roomName, String roomType, String roomDate, String roomTrangthai, String roomImage) {
+    public room_list_detail(String roomName, String roomCheckIn, String roomCheckOut, String roomTrangthai, String roomID) {
         this.roomName = roomName;
-        this.roomType = roomType;
-        this.roomDate = roomDate;
+        this.roomCheckIn = roomCheckIn;
+        this.roomCheckOut = roomCheckOut;
         this.roomTrangthai = roomTrangthai;
-        this.roomImage = roomImage;
+        this.roomID = roomID;
     }
 
     public String getRoomName() {
@@ -20,20 +20,20 @@ public class room_list_detail {
         this.roomName = roomName;
     }
 
-    public String getRoomType() {
-        return roomType;
+    public String getRoomCheckIn() {
+        return roomCheckIn;
     }
 
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
+    public void setRoomCheckIn(String roomCheckIn) {
+        this.roomCheckIn = roomCheckIn;
     }
 
-    public String getRoomDate() {
-        return roomDate;
+    public String getRoomCheckOut() {
+        return roomCheckOut;
     }
 
-    public void setRoomDate(String roomDate) {
-        this.roomDate = roomDate;
+    public void setRoomCheckOut(String roomCheckOut) {
+        this.roomCheckOut = roomCheckOut;
     }
 
     public String getRoomTrangthai() {
@@ -44,12 +44,11 @@ public class room_list_detail {
         this.roomTrangthai = roomTrangthai;
     }
 
-    public String getRoomImage() {
-        return roomImage;
+    public String getRoomID() {
+        return roomID;
     }
 
-    public void setRoomImage(String roomImage) {
-        this.roomImage = roomImage;
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
     }
-
 }

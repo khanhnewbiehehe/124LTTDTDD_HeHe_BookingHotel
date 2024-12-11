@@ -9,46 +9,103 @@
     <link rel="stylesheet" href="~/HotelManage_LTDD.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <style>
+        /* Custom styles for sidebar */
+        .main-container {
+            display: flex;
+            height: 100vh;
+            background-color: #f4f7fa;
+        }
+
+        .sidebar {
+            width: 250px; /* Width of the sidebar */
+            background-color: #343a40;
+            color: white;
+            padding: 30px 20px;
+            height: 100%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            margin: -16px 0px 0px -12px;
+        }
+
+            .sidebar h4 {
+                color: #ffffff;
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+            }
+
+            .sidebar ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+
+                .sidebar ul li {
+                    margin-bottom: 15px;
+                }
+
+                    .sidebar ul li a {
+                        color: #ffffff;
+                        font-size: 1.2rem;
+                        text-decoration: none;
+                        transition: color 0.3s;
+                    }
+
+                        .sidebar ul li a:hover {
+                            color: #ccc;
+                            font-weight: bold;
+                        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HotelManage_LTDD</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="RoomType" asp-action="Index">Loại phòng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Area" asp-action="Index">Khu vực</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Employee" asp-action="Index">Nhân viên</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Khách hàng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Room" asp-action="Index">Phòng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Voucher" asp-action="Index">Ưu đãi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Booking" asp-action="Index">Đơn thuê</a>
-                        </li>
-                    </ul>
-                </div>
+                <h1 class="m-0 p-0" style="font-size:36px; white-space: nowrap;">
+                    <span style="color:red;">UTE</span>Hotel
+                </h1>              
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container-fluid main-container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="/Admin/Booking/Dashboard">Tạo đơn đặt phòng</a></li>
+                <li><a href="/Admin/Area">Quản lý khu vực</a></li>
+                <li><a href="/Admin/Room">Quản lý phòng</a></li>
+                <li><a href="/Admin/Client">Quản lý khách hàng</a></li>
+                <li><a href="/Admin/Employee">Quản lý nhân viên</a></li>
+                <li><a href="/Admin/Booking">Quản lý đơn đặt phòng</a></li>
+                <li><a href="/Admin/Voucher">Quản lý ưu đãi</a></li>
+                <li><a href="/Admin/RoomType">Quản lý loại phòng</a></li>
+                <li><a href="/Account/Login">Đăng xuất</a></li>
+            </ul>
+        </aside>
+
+        <main role="main" class="content">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                    <div class="alert alert-success" id="successMessage">
+                    @TempData["SuccessMessage"]
+                    </div>
+            }
+
+            @if (TempData["ErrorMessage"] != null)
+            {
+                    <div class="alert alert-danger" id="errorMessage">
+                    @TempData["ErrorMessage"]
+                    </div>
+            }
             @RenderBody()
         </main>
     </div>
@@ -69,6 +126,7 @@
     <script src="~/loadData/loadRoom.js"></script>
     <script src="~/loadData/loadVoucher.js"></script>
     <script src="~/loadData/loadBooking.js"></script>
+    <script src="~/loadData/loadFreeRoom.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

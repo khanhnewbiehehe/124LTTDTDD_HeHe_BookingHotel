@@ -92,8 +92,7 @@ public class manager_homescreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create an intent to go back to the desired activity (e.g., MainActivity)
-                Intent intent = new Intent(manager_homescreen.this, list_order.class);
-                startActivity(intent);
+
             }
         });
 

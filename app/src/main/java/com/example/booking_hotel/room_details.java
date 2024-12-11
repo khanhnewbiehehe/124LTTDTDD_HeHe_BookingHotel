@@ -154,65 +154,61 @@ public class room_details extends AppCompatActivity {
         loadRoomImages(id);
 
         Button btn = findViewById(R.id.btn_Back);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent rDetail_list = new Intent(room_details.this, room_list_k.class);
-                startActivity(rDetail_list);
-            }
+        btn.setOnClickListener(view -> {
+            Intent rDetail_list = new Intent(room_details.this, room_list_k.class);
+            rDetail_list.putExtra("user_id", user_id);
+            rDetail_list.putExtra("CheckIn",checkin);
+            rDetail_list.putExtra("CheckOut", checkout);
+            startActivity(rDetail_list);
         });
 
         Button btn_datphong = findViewById(R.id.btn_DatPhong);
-        btn_datphong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DatabaseReference bookingsRef = FirebaseDatabase.getInstance().getReference("Bookings");
+        btn_datphong.setOnClickListener(view -> {
+            DatabaseReference bookingsRef = FirebaseDatabase.getInstance().getReference("Bookings");
 
-                String CheckIn = checkin;
-                String CheckOut = checkout;
-                String Id = bookingsRef.push().getKey();
-                Double Price = Double.parseDouble(roomPrice.getText().toString().replace("Giá tiền : ", "").trim());
-                Integer RoomCode = Integer.valueOf(roomName.getText().toString().replace("Phòng ", "").trim());
-                Double RoomDiscount = Double.parseDouble(roomPrice2.getText().toString().replace(" VND /ngày", "").trim());
-                RoomDiscount = (Price - RoomDiscount) / Price * 100;
-                String RoomID = id;
-                String Status = "Chờ nhận phòng";
-                Double Total = Price; //chua
-                String UserID = user_id;
-                String UserName = user_name.getText().toString();
-                String VoucherCode = input_magiamgia.getText().toString();
-                Double VoucherDiscount = Double.valueOf(voucher_discount.getText().toString()) ;
-                String VoucherID = voucher_id.getText().toString();
+            String CheckIn = checkin;
+            String CheckOut = checkout;
+            String Id = bookingsRef.push().getKey();
+            Double Price = Double.parseDouble(roomPrice.getText().toString().replace("Giá tiền : ", "").trim());
+            Integer RoomCode = Integer.valueOf(roomName.getText().toString().replace("Phòng ", "").trim());
+            Double RoomDiscount = Double.parseDouble(roomPrice2.getText().toString().replace(" VND /ngày", "").trim());
+            RoomDiscount = (Price - RoomDiscount) / Price * 100;
+            String RoomID = id;
+            String Status = "Chờ nhận phòng";
+            Double Total = Price; //chua
+            String UserID = user_id;
+            String UserName = user_name.getText().toString();
+            String VoucherCode = input_magiamgia.getText().toString();
+            Double VoucherDiscount = Double.valueOf(voucher_discount.getText().toString()) ;
+            String VoucherID = voucher_id.getText().toString();
 
-                HashMap<String, Object> bookingMap = new HashMap<>();
-                bookingMap.put("CheckIn", CheckIn);
-                bookingMap.put("CheckOut", CheckOut);
-                bookingMap.put("Id", Id);
-                bookingMap.put("Price", Price);
-                bookingMap.put("RoomCode", RoomCode);
-                bookingMap.put("RoomDiscount", RoomDiscount);
-                bookingMap.put("RoomID", RoomID);
-                bookingMap.put("Status", Status);
-                bookingMap.put("Total", Total);
-                bookingMap.put("UserID", UserID);
-                bookingMap.put("UserName", UserName);
-                bookingMap.put("VoucherCode", VoucherCode);
-                bookingMap.put("VoucherDiscount", VoucherDiscount);
-                bookingMap.put("VoucherID", VoucherID);
+            HashMap<String, Object> bookingMap = new HashMap<>();
+            bookingMap.put("CheckIn", CheckIn);
+            bookingMap.put("CheckOut", CheckOut);
+            bookingMap.put("Id", Id);
+            bookingMap.put("Price", Price);
+            bookingMap.put("RoomCode", RoomCode);
+            bookingMap.put("RoomDiscount", RoomDiscount);
+            bookingMap.put("RoomID", RoomID);
+            bookingMap.put("Status", Status);
+            bookingMap.put("Total", Total);
+            bookingMap.put("UserID", UserID);
+            bookingMap.put("UserName", UserName);
+            bookingMap.put("VoucherCode", VoucherCode);
+            bookingMap.put("VoucherDiscount", VoucherDiscount);
+            bookingMap.put("VoucherID", VoucherID);
 
-                if (Id != null) {
-                    bookingsRef.child(Id).setValue(bookingMap).addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Intent start = new Intent(room_details.this, tb_dptc.class);
-                            startActivity(start);
-                            finish();
-                        } else {
-                            Toast.makeText(room_details.this, "thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } else {
-                    Toast.makeText(room_details.this, "Thất bại.", Toast.LENGTH_SHORT).show();
-                }
+            if (Id != null) {
+                bookingsRef.child(Id).setValue(bookingMap).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Intent start = new Intent(room_details.this, tb_dptc.class);
+                        startActivity(start);
+                    } else {
+                        Toast.makeText(room_details.this, "thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                Toast.makeText(room_details.this, "Thất bại.", Toast.LENGTH_SHORT).show();
             }
         });
 

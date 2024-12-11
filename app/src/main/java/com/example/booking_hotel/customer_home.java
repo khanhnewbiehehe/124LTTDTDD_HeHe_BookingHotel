@@ -137,28 +137,27 @@ public class customer_home extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         navigationView.bringToFront();
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
 
-                if (id == R.id.nav_logout) {
-                    Log.d("NavigationView", "Đã đăng xuất");
-                    Intent intent = new Intent(customer_home.this, sign_in.class);
-                    startActivity(intent);
-                    finish();
-                } else if (id == R.id.nav_home) {
-                    Intent intent = new Intent(customer_home.this, profile.class);
-                    startActivity(intent);
-                } else if (id == R.id.nav_settings) {
-                    Intent intent = new Intent(customer_home.this, booking_list.class);
-                    startActivity(intent);
-                }
-
-                // Close the drawer after item is selected
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
+            if (id == R.id.nav_logout) {
+                Log.d("NavigationView", "Đã đăng xuất");
+                Intent intent1 = new Intent(customer_home.this, sign_in.class);
+                startActivity(intent1);
+                finish();
+            } else if (id == R.id.nav_home) {
+                Intent intent1 = new Intent(customer_home.this, profile.class);
+                intent1.putExtra("user_id", user_id);
+                startActivity(intent1);
+            } else if (id == R.id.nav_settings) {
+                Intent intent1 = new Intent(customer_home.this, booking_list.class);
+                intent1.putExtra("user_id", user_id);
+                startActivity(intent1);
             }
+
+            // Close the drawer after item is selected
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         });
 
     }
