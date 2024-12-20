@@ -36,3 +36,7 @@ local.properties
 *.bak
 *.swp
 *.class
+
+# Ignore build output directories for .NET
+/bin/
+/obj/
