@@ -65,6 +65,7 @@ public class booking_details extends AppCompatActivity {
             Intent intent1 = new Intent(booking_details.this, booking_list.class);
             intent1.putExtra("user_id", user_id);
             startActivity(intent1);
+            finish();
         });
 
         mViewPager = findViewById(R.id.img_slider);

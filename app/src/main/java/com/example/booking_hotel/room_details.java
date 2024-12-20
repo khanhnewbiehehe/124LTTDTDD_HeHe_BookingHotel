@@ -2,6 +2,8 @@ package com.example.booking_hotel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -16,11 +19,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import me.relex.circleindicator.CircleIndicator;
 import android.text.SpannableString;
@@ -36,6 +44,7 @@ public class room_details extends AppCompatActivity {
     private TextView roomName, roomType, roomPrice, roomCheckin, roomCheckout, roomTotal, roomPrice2, user_name, voucher_discount, voucher_id;
     private img_slider_adapter_2 adapter;
     private EditText input_magiamgia;
+    private Button btnVoucher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +68,8 @@ public class room_details extends AppCompatActivity {
         user_name = findViewById(R.id.username);
         voucher_discount = findViewById(R.id.voucher_discount);
         voucher_id = findViewById(R.id.voucher_id);
+        btnVoucher = findViewById(R.id.btnVoucher);
+        roomTotal = findViewById(R.id.txt_total);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -81,30 +92,6 @@ public class room_details extends AppCompatActivity {
 
                     // Set the user name to the TextView
                     user_name.setText(userName);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Handle any errors in fetching user data
-                Toast.makeText(room_details.this, "Error loading user data", Toast.LENGTH_SHORT).show();
-            }
-        });
-        DatabaseReference voucherRef = FirebaseDatabase.getInstance().getReference("Vouchers");
-
-        voucherRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot Snapshot : snapshot.getChildren()) {
-                    String voucherid = Snapshot.getKey();
-                    if (Snapshot.child("Code").getValue(String.class).equals(input_magiamgia.getText().toString())) {
-                        String voucherDiscount = String.valueOf(Snapshot.child("Discount").getValue(Double.class));
-                        voucher_discount.setText(voucherDiscount);
-                        voucher_id.setText(voucherid);
-                    }
-                    break;
-                }
-                voucher_discount.setText("0.0");
-                voucher_id.setText(null);
             }
 
             @Override
@@ -143,6 +130,11 @@ public class room_details extends AppCompatActivity {
 
                 roomCheckin.setText("Ngày nhận phòng : " + checkin);
                 roomCheckout.setText("Ngày trả phòng : " + checkout);
+                Double total = (price - (roomdiscount/100)*price)*dayRange(checkin,checkout);
+                roomTotal.setText("Tổng cộng : " + total );
+
+                voucher_discount.setText("0.0");
+                voucher_id.setText(null);
 
             }
 
@@ -153,6 +145,11 @@ public class room_details extends AppCompatActivity {
         });
         loadRoomImages(id);
 
+        btnVoucher.setOnClickListener(view -> {
+            String ma = input_magiamgia.getText().toString();
+            checkVoucher(ma, checkin,checkout);
+        });
+
         Button btn = findViewById(R.id.btn_Back);
         btn.setOnClickListener(view -> {
             Intent rDetail_list = new Intent(room_details.this, room_list_k.class);
@@ -160,6 +157,7 @@ public class room_details extends AppCompatActivity {
             rDetail_list.putExtra("CheckIn",checkin);
             rDetail_list.putExtra("CheckOut", checkout);
             startActivity(rDetail_list);
+            finish();
         });
 
         Button btn_datphong = findViewById(R.id.btn_DatPhong);
@@ -175,7 +173,7 @@ public class room_details extends AppCompatActivity {
             RoomDiscount = (Price - RoomDiscount) / Price * 100;
             String RoomID = id;
             String Status = "Chờ nhận phòng";
-            Double Total = Price; //chua
+            Double Total = Double.parseDouble(roomTotal.getText().toString().replace("Tổng cộng : ","").trim());
             String UserID = user_id;
             String UserName = user_name.getText().toString();
             String VoucherCode = input_magiamgia.getText().toString();
@@ -212,7 +210,6 @@ public class room_details extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void loadRoomImages(String roomId) {
@@ -232,6 +229,87 @@ public class room_details extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) {
                 Toast.makeText(room_details.this, "Error loading room images", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public int dayRange(String startDate, String endDate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+        try {
+            Date start = sdf.parse(startDate);
+            Date end = sdf.parse(endDate);
+
+            if (start != null && end != null) {
+                long differenceInMillis = end.getTime() - start.getTime();
+                long differenceInDays = differenceInMillis / (1000 * 60 * 60 * 24);
+
+                return (int) differenceInDays;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0; // Trả về 0 nếu có lỗi
+    }
+
+    public void checkVoucher(String code,String checkin, String checkout) {
+        DatabaseReference voucherRef = mDatabase.child("Vouchers");
+        Query query = voucherRef.orderByChild("Code").equalTo(code);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot voucherSnapshot : snapshot.getChildren()) {
+                        Double discount = voucherSnapshot.child("Discount").getValue(Double.class);
+                        String id = voucherSnapshot.child("Id").getValue(String.class);
+                        if (discount != null) {
+                            Double roomDiscount = 0.0;
+                            Double price = Double.parseDouble(roomPrice.getText().toString().replace("Giá tiền : ", "").trim());
+                            String roomDiscountRaw = roomPrice2.getText().toString().replace(" VND /ngày", "").trim();
+                            if (!roomDiscountRaw.isEmpty()) {
+                                roomDiscount = Double.parseDouble(roomDiscountRaw);
+                            }
+                            Double discountAmount = (price - roomDiscount) / price * 100;
+                            Double total = (price - (discountAmount/100)*price - (discount/100)*price)*dayRange(checkin,checkout);
+                            roomTotal.setText("Tổng cộng : " + total);
+                            voucher_discount.setText(String.valueOf(discount));
+                            voucher_id.setText(id);
+                        } else {
+                            Toast.makeText(room_details.this, "Voucher is valid but has no discount.", Toast.LENGTH_SHORT).show();
+                            Double roomDiscount = 0.0;
+                            Double price = Double.parseDouble(roomPrice.getText().toString().replace("Giá tiền : ", "").trim());
+                            String roomDiscountRaw = roomPrice2.getText().toString().replace(" VND /ngày", "").trim();
+                            if (!roomDiscountRaw.isEmpty()) {
+                                roomDiscount = Double.parseDouble(roomDiscountRaw);
+                            }
+                            Double discountAmount = (price - roomDiscount) / price * 100;
+                            Double total = (price - (discountAmount/100)*price)*dayRange(checkin,checkout);
+                            roomTotal.setText("Tổng cộng : " + total);
+                            voucher_discount.setText("0.0");
+                            voucher_id.setText(null);
+                        }
+                        break;
+                    }
+                } else {
+                    Toast.makeText(room_details.this, "Invalid voucher code.", Toast.LENGTH_SHORT).show();
+                    Double roomDiscount = 0.0;
+                    Double price = Double.parseDouble(roomPrice.getText().toString().replace("Giá tiền : ", "").trim());
+                    String roomDiscountRaw = roomPrice2.getText().toString().replace(" VND /ngày", "").trim();
+                    if (!roomDiscountRaw.isEmpty()) {
+                        roomDiscount = Double.parseDouble(roomDiscountRaw);
+                    }
+                    Double discountAmount = (price - roomDiscount) / price * 100;
+                    Double total = (price - (discountAmount/100)*price)*dayRange(checkin,checkout);
+                    roomTotal.setText("Tổng cộng : " + total);
+                    voucher_discount.setText("0.0");
+                    voucher_id.setText(null);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(room_details.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

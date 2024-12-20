@@ -3,6 +3,7 @@ package com.example.booking_hotel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,15 +65,57 @@ public class booking_list extends AppCompatActivity {
 
         Spinner trangthai = findViewById(R.id.spn_trangthai_danhsach);
         List<String> listTrangThai = new ArrayList<>();
-        listTrangThai.add("Trạng thái"); // Thêm phần tử placeholder
+        listTrangThai.add("Trạng thái - Tất cả"); // Thêm phần tử placeholder
         listTrangThai.add("Chờ nhận phòng");
         listTrangThai.add("Đã nhận phòng");
         listTrangThai.add("Chờ thanh toán");
-        listTrangThai.add("Hoàn thành");
+        listTrangThai.add("Đã hoàn thành");
         ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listTrangThai);
         LoaiPhongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         trangthai.setAdapter(LoaiPhongAdapter);
         trangthai.setSelection(0);
+
+        trangthai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    String selectedValue = parent.getItemAtPosition(position).toString();
+                    BookingList(user_id, selectedValue);
+
+                } else {
+                    DatabaseReference roomRef = mDatabase.child("Bookings");
+                    roomRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            room_listProperties.clear();
+                            for (DataSnapshot roomSnapshot : snapshot.getChildren()) {
+                                String userid = roomSnapshot.child("UserID").getValue(String.class);
+                                if (userid.equals(user_id)) {
+                                    String CheckIn = roomSnapshot.child("CheckIn").getValue(String.class);
+                                    String CheckOut = roomSnapshot.child("CheckOut").getValue(String.class);
+                                    String roomName = String.valueOf(roomSnapshot.child("RoomCode").getValue(Integer.class));
+                                    String bookingID = roomSnapshot.child("Id").getValue(String.class);
+                                    String TrangThai = roomSnapshot.child("Status").getValue(String.class);
+
+                                    room_listProperties.add(new room_list_detail(roomName, CheckIn, CheckOut, TrangThai, bookingID));
+                                }
+
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.e("Firebase", "Error: " + error.getMessage());
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Khi không có mục nào được chọn (hiếm khi xảy ra)
+            }
+        });
 
         DatabaseReference roomRef = mDatabase.child("Bookings");
         roomRef.addValueEventListener(new ValueEventListener() {
@@ -80,13 +123,17 @@ public class booking_list extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 room_listProperties.clear();
                 for (DataSnapshot roomSnapshot : snapshot.getChildren()) {
-                    String CheckIn = roomSnapshot.child("CheckIn").getValue(String.class);
-                    String CheckOut = roomSnapshot.child("CheckOut").getValue(String.class);
-                    String roomName = String.valueOf(roomSnapshot.child("RoomCode").getValue(Integer.class));
-                    String bookingID = roomSnapshot.child("Id").getValue(String.class);
-                    String TrangThai = roomSnapshot.child("Status").getValue(String.class);
+                    String userid = roomSnapshot.child("UserID").getValue(String.class);
+                    if (userid.equals(user_id)) {
+                        String CheckIn = roomSnapshot.child("CheckIn").getValue(String.class);
+                        String CheckOut = roomSnapshot.child("CheckOut").getValue(String.class);
+                        String roomName = String.valueOf(roomSnapshot.child("RoomCode").getValue(Integer.class));
+                        String bookingID = roomSnapshot.child("Id").getValue(String.class);
+                        String TrangThai = roomSnapshot.child("Status").getValue(String.class);
 
-                    room_listProperties.add(new room_list_detail(roomName, CheckIn, CheckOut, TrangThai, bookingID));
+                        room_listProperties.add(new room_list_detail(roomName, CheckIn, CheckOut, TrangThai, bookingID));
+                    }
+
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -111,6 +158,37 @@ public class booking_list extends AppCompatActivity {
         roomlistView.setOnItemClickListener(adapterViewListener);
     }
 
+    public void BookingList(String user_id, String filter) {
+        ArrayAdapter<room_list_detail> adapter = new customer_booking_listArrayAdapter(this, 0, room_listProperties);
+        ListView roomlistView = (ListView) findViewById(R.id.room_listview);
+        roomlistView.setAdapter(adapter);
+
+        DatabaseReference roomRef = mDatabase.child("Bookings");
+        roomRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                room_listProperties.clear();
+                for (DataSnapshot roomSnapshot : snapshot.getChildren()) {
+                    String userid = roomSnapshot.child("UserID").getValue(String.class);
+                    String TrangThai = roomSnapshot.child("Status").getValue(String.class);
+                    if (userid.equals(user_id) && TrangThai.equals(filter)) {
+                        String CheckIn = roomSnapshot.child("CheckIn").getValue(String.class);
+                        String CheckOut = roomSnapshot.child("CheckOut").getValue(String.class);
+                        String roomName = String.valueOf(roomSnapshot.child("RoomCode").getValue(Integer.class));
+                        String bookingID = roomSnapshot.child("Id").getValue(String.class);
+
+                        room_listProperties.add(new room_list_detail(roomName, CheckIn, CheckOut, TrangThai, bookingID));
+                    }
+
+                }
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Firebase", "Error: " + error.getMessage());
+            }
+        });
+    }
 
 }
 
@@ -142,6 +220,23 @@ class customer_booking_listArrayAdapter extends ArrayAdapter<room_list_detail> {
         room_date.setText(property.getRoomCheckIn() + " - " + property.getRoomCheckOut());
         room_trangthai.setText(property.getRoomTrangthai());
 
+        switch (property.getRoomTrangthai()) {
+            case "Chờ nhận phòng":
+                room_trangthai.setTextColor(Color.parseColor("#FFC107"));
+                break;
+            case "Đã nhận phòng":
+                room_trangthai.setTextColor(Color.parseColor("#4CAF50"));
+                break;
+            case "Chờ thanh toán":
+                room_trangthai.setTextColor(Color.parseColor("#ED3237"));
+                break;
+            case "Đã hoàn thành":
+                room_trangthai.setTextColor(Color.parseColor("#9E9E9E"));
+                break;
+            default:
+                room_trangthai.setTextColor(Color.BLACK);
+                break;
+        }
         return view;
     }
 

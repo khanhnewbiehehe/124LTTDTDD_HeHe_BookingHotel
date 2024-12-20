@@ -30,16 +30,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class room_list_k extends AppCompatActivity {
 
     private ArrayList<customer_roomlist_detail> customer_room_listProperties = new ArrayList<>();
     private ArrayList<Bookings> bookingList = new ArrayList<>();
-    private String selectedRoomType = "Loại - Tất cả";
-    private String selectedPriceRange = "Giá - Tất cả";
     DatabaseReference mDatabase;
+    private DatabaseReference roomRef;
+    private DatabaseReference bookingRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,7 @@ public class room_list_k extends AppCompatActivity {
         String checkin = intent.getStringExtra("checkInDate");
         String checkout = intent.getStringExtra("checkOutDate");
         String user_id = intent.getStringExtra("user_id");
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -70,14 +77,13 @@ public class room_list_k extends AppCompatActivity {
         Spinner gia = findViewById(R.id.spn_rooomlist_gia);
         List<String> listGia = new ArrayList<>();
         listGia.add("Giá - Tất cả"); // Thêm phần tử placeholder
-        listGia.add("> 100,000");
-        listGia.add("> 200,000");
-        listGia.add("> 300,000");
-        listGia.add("> 400,000");
+        listGia.add("Tăng dần");
+        listGia.add("Giảm dần");
         ArrayAdapter<String> GiaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listGia);
         GiaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gia.setAdapter(GiaAdapter);
         gia.setSelection(0);
+
 
         Spinner loaiPhong = findViewById(R.id.spn_rooomlist_loai);
         List<String> listLoaiPhong = new ArrayList<>();
@@ -110,37 +116,43 @@ public class room_list_k extends AppCompatActivity {
             }
         });
 
-        ////////////////////////////
-
-
-        DatabaseReference roomRef = mDatabase.child("Rooms");
-        roomRef.addValueEventListener(new ValueEventListener() {
+        gia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                customer_room_listProperties.clear();
-                for (DataSnapshot roomSnapshot  : snapshot.getChildren()) {
-                    String roomName = String.valueOf(roomSnapshot.child("Code").getValue(Integer.class));
-                    String roomType = roomSnapshot.child("TypeName").getValue(String.class);
-                    String roomPrice = String.valueOf(roomSnapshot.child("Price").getValue(Integer.class));
-                    String roomID = roomSnapshot.child("Id").getValue(String.class);
-                    String firstImagePath = null;
-                    DataSnapshot imageUrlsSnapshot = roomSnapshot.child("Images");
-                    if (imageUrlsSnapshot.exists()) {
-                        for (DataSnapshot urlSnapshot : imageUrlsSnapshot.getChildren()) {
-                            firstImagePath = urlSnapshot.getValue(String.class);
-                            break; // Get only the first image path
-                        }
-                    }
-                    customer_room_listProperties.add(new customer_roomlist_detail(roomName, roomType, roomPrice, firstImagePath, roomID));
-                }
-                adapter.notifyDataSetChanged();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedPriceRange = parent.getItemAtPosition(position).toString(); // Get selected option
+                String selectedRoomType = loaiPhong.getSelectedItem() != null
+                        ? loaiPhong.getSelectedItem().toString()
+                        : "Loại - Tất cả";
+                roomListShowFilter(checkin, checkout, selectedPriceRange, selectedRoomType);
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("Firebase", "Error: " + error.getMessage());
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
             }
         });
 
+        loaiPhong.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedRoomType = parent.getItemAtPosition(position).toString(); // Get selected room type option
+                String selectedPriceRange = gia.getSelectedItem() != null
+                        ? gia.getSelectedItem().toString()
+                        : "Giá - Tất cả"; // Default value if null
+
+                // Call your filter method
+                roomListShowFilter(checkin, checkout, selectedPriceRange, selectedRoomType);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+        ////////////////////////////
+
+        roomListShow(checkin,checkout);
 
         //on click
         AdapterView.OnItemClickListener adapterViewListener = (parent, view, position, id) -> {
@@ -155,6 +167,184 @@ public class room_list_k extends AppCompatActivity {
         roomlistView.setOnItemClickListener(adapterViewListener);
     }
 
+    public void roomListShow(String checkin, String checkout) {
+        ArrayAdapter<customer_roomlist_detail> adapter = new customer_room_listArrayAdapter(this, 0, customer_room_listProperties);
+        ListView roomlistView = (ListView) findViewById(R.id.customer_room_listview);
+        roomlistView.setAdapter(adapter);
+
+        roomRef = mDatabase.child("Rooms");
+        bookingRef = mDatabase.child("Bookings");
+
+        bookingRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot bookingSnapshot) {
+                List<String> bookedRoomIds = new ArrayList<>();
+
+                for (DataSnapshot bookingData : bookingSnapshot.getChildren()) {
+                    String status = bookingData.child("Status").getValue(String.class);
+                    String bookingCheckIn = bookingData.child("CheckIn").getValue(String.class);
+                    String bookingCheckOut = bookingData.child("CheckOut").getValue(String.class);
+
+                    if (!status.equals("Đã hoàn thành") && !status.equals("Bị hủy")) {
+                        if (isDateOverlap(bookingCheckIn, bookingCheckOut, checkin, checkout)) {
+                            String roomid = bookingData.child("RoomID").getValue(String.class);
+                            bookedRoomIds.add(roomid);
+                        }
+                    }
+                }
+
+                roomRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        customer_room_listProperties.clear();
+
+                        for (DataSnapshot roomSnapshot : snapshot.getChildren()) {
+                            String roomid = roomSnapshot.child("Id").getValue(String.class);
+                            String roomStatus = roomSnapshot.child("Status").getValue(String.class);
+
+                            if (!bookedRoomIds.contains(roomid) && "Sẵn sàng".equals(roomStatus)) {
+                                String roomName = String.valueOf(roomSnapshot.child("Code").getValue(Integer.class));
+                                String roomType = roomSnapshot.child("TypeName").getValue(String.class);
+                                String roomPrice = String.valueOf(roomSnapshot.child("Price").getValue(Integer.class));
+                                String roomID = roomSnapshot.child("Id").getValue(String.class);
+
+                                String firstImagePath = null;
+                                DataSnapshot imageUrlsSnapshot = roomSnapshot.child("Images");
+                                if (imageUrlsSnapshot.exists()) {
+                                    for (DataSnapshot urlSnapshot : imageUrlsSnapshot.getChildren()) {
+                                        firstImagePath = urlSnapshot.getValue(String.class);
+                                        break;
+                                    }
+                                }
+
+                                customer_room_listProperties.add(new customer_roomlist_detail(roomName, roomType, roomPrice, firstImagePath, roomID));
+                            }
+                        }
+
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("Firebase", "Error fetching Rooms: " + error.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Firebase", "Error fetching Bookings: " + error.getMessage());
+            }
+        });
+    }
+
+    private boolean isDateOverlap(String bookingStart, String bookingEnd, String inputStart, String inputEnd) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        try {
+            Date bStart = sdf.parse(bookingStart);
+            Date bEnd = sdf.parse(bookingEnd);
+            Date iStart = sdf.parse(inputStart);
+            Date iEnd = sdf.parse(inputEnd);
+
+            return (bStart != null && bEnd != null && iStart != null && iEnd != null) &&
+                    (bStart.compareTo(iEnd) <= 0 && bEnd.compareTo(iStart) >= 0);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void roomListShowFilter(String checkin, String checkout, String gia, String loai) {
+        ArrayAdapter<customer_roomlist_detail> adapter = new customer_room_listArrayAdapter(this, 0, customer_room_listProperties);
+        ListView roomlistView = (ListView) findViewById(R.id.customer_room_listview);
+        roomlistView.setAdapter(adapter);
+
+        roomRef = mDatabase.child("Rooms");
+        bookingRef = mDatabase.child("Bookings");
+
+        bookingRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot bookingSnapshot) {
+                List<String> bookedRoomIds = new ArrayList<>();
+
+                for (DataSnapshot bookingData : bookingSnapshot.getChildren()) {
+                    String status = bookingData.child("Status").getValue(String.class);
+                    String bookingCheckIn = bookingData.child("CheckIn").getValue(String.class);
+                    String bookingCheckOut = bookingData.child("CheckOut").getValue(String.class);
+
+                    if (!status.equals("Đã hoàn thành") && !status.equals("Bị hủy")) {
+                        if (isDateOverlap(bookingCheckIn, bookingCheckOut, checkin, checkout)) {
+                            String roomid = bookingData.child("RoomID").getValue(String.class);
+                            bookedRoomIds.add(roomid);
+                        }
+                    }
+                }
+
+                roomRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        customer_room_listProperties.clear();
+
+                        for (DataSnapshot roomSnapshot : snapshot.getChildren()) {
+                            String roomid = roomSnapshot.child("Id").getValue(String.class);
+                            String roomStatus = roomSnapshot.child("Status").getValue(String.class);
+                            String roomType = roomSnapshot.child("TypeName").getValue(String.class);
+
+                            if (!bookedRoomIds.contains(roomid) && "Sẵn sàng".equals(roomStatus)) {
+                                if (roomType.equals(loai) || loai.equals("Loại - Tất cả")) {
+                                    String roomName = String.valueOf(roomSnapshot.child("Code").getValue(Integer.class));
+                                    String roomPrice = String.valueOf(roomSnapshot.child("Price").getValue(Integer.class));
+                                    String roomID = roomSnapshot.child("Id").getValue(String.class);
+
+                                    String firstImagePath = null;
+                                    DataSnapshot imageUrlsSnapshot = roomSnapshot.child("Images");
+                                    if (imageUrlsSnapshot.exists()) {
+                                        for (DataSnapshot urlSnapshot : imageUrlsSnapshot.getChildren()) {
+                                            firstImagePath = urlSnapshot.getValue(String.class);
+                                            break;
+                                        }
+                                    }
+
+                                    customer_room_listProperties.add(new customer_roomlist_detail(roomName, roomType, roomPrice, firstImagePath, roomID));
+                                }
+                            }
+                        }
+                        if (gia.equals("Tăng dần")) {
+                            Collections.sort(customer_room_listProperties, new Comparator<customer_roomlist_detail>() {
+                                @Override
+                                public int compare(customer_roomlist_detail o1, customer_roomlist_detail o2) {
+                                    int price1 = Integer.parseInt(o1.getRoomPrice());
+                                    int price2 = Integer.parseInt(o2.getRoomPrice());
+                                    return Integer.compare(price1, price2);
+                                }
+                            });
+                        } else if (gia.equals("Giảm dần")) {
+                            Collections.sort(customer_room_listProperties, new Comparator<customer_roomlist_detail>() {
+                                @Override
+                                public int compare(customer_roomlist_detail o1, customer_roomlist_detail o2) {
+                                    int price1 = Integer.parseInt(o1.getRoomPrice());
+                                    int price2 = Integer.parseInt(o2.getRoomPrice());
+                                    return Integer.compare(price2, price1);
+                                }
+                            });
+                        }
+
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("Firebase", "Error fetching Rooms: " + error.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Firebase", "Error fetching Bookings: " + error.getMessage());
+            }
+        });
+    }
 
 }
 
