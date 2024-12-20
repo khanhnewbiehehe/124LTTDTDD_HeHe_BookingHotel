@@ -33,9 +33,9 @@ public class register_hotel extends AppCompatActivity {
         // Initialize UI components
         inputName = findViewById(R.id.inputName);
         inputEmail = findViewById(R.id.inputEmail);
-        inputNumberCall = findViewById(R.id.inputNumberCall_R);
+        inputNumberCall = findViewById(R.id.inputNumberCall);
         inputPass = findViewById(R.id.inputPass);
-        btnRegister = findViewById(R.id.btnRegister);
+        btnRegister = findViewById(R.id.btnCapNhat);
 
         // Set Register Button Click Listener
         btnRegister.setOnClickListener(new View.OnClickListener() {

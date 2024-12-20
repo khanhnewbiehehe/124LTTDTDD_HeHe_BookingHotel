@@ -55,6 +55,7 @@ public class profile extends AppCompatActivity {
             public void onClick(View v) {
                 // Create an intent to go back to the desired activity (e.g., MainActivity)
                 Intent intent = new Intent(profile.this, update_in4.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });

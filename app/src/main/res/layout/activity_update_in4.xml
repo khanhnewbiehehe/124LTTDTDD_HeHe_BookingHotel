@@ -81,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
     <EditText
-        android:id="@+id/inputNumberCall_R"
+        android:id="@+id/inputNumberCall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnCapNhat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -111,9 +111,9 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/inputNumberCall_R"
+        app:layout_constraintEnd_toEndOf="@+id/inputNumberCall"
         app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="@+id/inputNumberCall_R"
-        app:layout_constraintTop_toBottomOf="@+id/inputNumberCall_R" />
+        app:layout_constraintStart_toStartOf="@+id/inputNumberCall"
+        app:layout_constraintTop_toBottomOf="@+id/inputNumberCall" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

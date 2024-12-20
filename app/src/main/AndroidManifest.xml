@@ -56,10 +56,12 @@
             android:parentActivityName=".customer_home"/>
         <activity
             android:name=".profile"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".customer_home"/>
         <activity
             android:name=".update_in4"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".profile"/>
         <activity
             android:name=".list_customer"
             android:exported="false" />
