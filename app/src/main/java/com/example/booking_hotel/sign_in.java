@@ -42,14 +42,6 @@ public class sign_in extends AppCompatActivity {
             }
         });
 
-        TextView textView_forgot = findViewById(R.id.forgotPass);
-        textView_forgot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent forgot_pass = new Intent(sign_in.this, forgot_pass.class);
-                startActivity(forgot_pass);
-            }
-        });
 
         EditText sdt = findViewById(R.id.inputName);
         EditText pass = findViewById(R.id.inputPass);

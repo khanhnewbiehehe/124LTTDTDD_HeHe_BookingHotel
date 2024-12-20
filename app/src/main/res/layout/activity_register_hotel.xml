@@ -32,13 +32,13 @@
         android:text="Đã Có Tài Khoản"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="@+id/btnCapNhat"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/btnRegister"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+        app:layout_constraintStart_toStartOf="@+id/btnCapNhat"
+        app:layout_constraintTop_toBottomOf="@+id/btnCapNhat" />
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnCapNhat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -66,13 +66,13 @@
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputNumberCall_R"
+        app:layout_constraintEnd_toEndOf="@+id/inputNumberCall"
         app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="@+id/inputNumberCall_R"
-        app:layout_constraintTop_toBottomOf="@+id/inputNumberCall_R" />
+        app:layout_constraintStart_toStartOf="@+id/inputNumberCall"
+        app:layout_constraintTop_toBottomOf="@+id/inputNumberCall" />
 
     <EditText
-        android:id="@+id/inputNumberCall_R"
+        android:id="@+id/inputNumberCall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

@@ -42,7 +42,7 @@ public class manager_roomlist extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(manager_roomlist.this, manager_homescreen.class);
+                Intent intent = new Intent(manager_roomlist.this, room_list_k.class);
                 startActivity(intent);
             }
         });

@@ -33,9 +33,9 @@ public class register_hotel extends AppCompatActivity {
         // Initialize UI components
         inputName = findViewById(R.id.inputName);
         inputEmail = findViewById(R.id.inputEmail);
-        inputNumberCall = findViewById(R.id.inputNumberCall_R);
+        inputNumberCall = findViewById(R.id.inputNumberCall);
         inputPass = findViewById(R.id.inputPass);
-        btnRegister = findViewById(R.id.btnRegister);
+        btnRegister = findViewById(R.id.btnCapNhat);
 
         // Set Register Button Click Listener
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +92,7 @@ public class register_hotel extends AppCompatActivity {
         String userId = mDatabase.child("Users").push().getKey(); // Generate a unique ID for the user
 
         HashMap<String, Object> userMap = new HashMap<>();
-        userMap.put("AvatarUrl", "null");
+        userMap.put("AvatarUrl", "https://firebasestorage.googleapis.com/v0/b/ltddhaha.firebasestorage.app/o/ProjectImages%2Fmember1.png?alt=media&token=13a54791-4baf-4d35-b533-d23a2d1b8bb4");
         userMap.put("Email", email);
         userMap.put("Id", userId);
         userMap.put("Name", name);

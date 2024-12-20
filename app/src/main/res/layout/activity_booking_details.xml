@@ -74,7 +74,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="Phong 123"
+            android:text="Phong"
             android:textColor="@color/blue"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -99,31 +99,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
-            android:text="Giá tiền : 300.000VNĐ/ngày"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
-
-        <TextView
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="5dp"
-            android:text="View: Thành phố"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
-
-        <TextView
-            android:id="@+id/loaigiuong"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="5dp"
-            android:text="Loại giường: 1 giường đôi"
+            android:text="Giá tiền"
             android:textSize="14sp"
             android:textColor="@color/black"/>
 
@@ -135,7 +111,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
-            android:text="Trạng thái: Chưa nhận phòng"
+            android:text="Trạng thái"
             android:textSize="14sp"
             android:textColor="@color/black"/>
 
@@ -147,7 +123,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
-            android:text="Ngày nhận: 20/9/2024 "
+            android:text="Ngày nhận "
             android:textSize="14sp"
             android:textColor="@color/black"/>
 
@@ -159,26 +135,27 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
-            android:text="Ngày trả: 22/09/2024"
+            android:text="Ngày trả"
             android:textSize="14sp"
             android:textColor="@color/black"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="20dp">
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="20dp">
 
             <TextView
+                android:id="@+id/txtMagiamgia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mã giảm giá :"
-                android:textSize="14sp"
-                android:textColor="@color/black" />
+                android:text="Mã giảm giá"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
             <TextView
                 android:id="@+id/voucher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="None"
                 android:textSize="14sp"
                 android:textColor="@color/drak_gray"
                 android:layout_marginLeft="5dp"
@@ -200,8 +177,22 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone"
+            />
 
+        <TextView
+            android:id="@+id/roomID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="14sp"
+            android:visibility="gone"/>
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

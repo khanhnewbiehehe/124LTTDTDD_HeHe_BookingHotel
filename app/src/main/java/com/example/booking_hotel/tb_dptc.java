@@ -19,12 +19,13 @@ public class tb_dptc extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_tb_dptc);
         Button btn = findViewById(R.id.btn_trang_chu);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent tb_home = new Intent(tb_dptc.this , customer_home.class);
-                startActivity(tb_home);
-            }
+        Intent intent = getIntent();
+        String user_id = intent.getStringExtra("user_id");
+        btn.setOnClickListener(view -> {
+            Intent tb_home = new Intent(tb_dptc.this , customer_home.class);
+            tb_home.putExtra("user_id", user_id);
+            startActivity(tb_home);
+            finish();
         });
     }
 }
