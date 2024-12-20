@@ -4,6 +4,7 @@ using FireSharp.Response;
 using HotelManage_LTDD.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Globalization;
 using System.Linq;
 
 namespace HotelManage_LTDD.Areas.Admin.Controllers
@@ -40,6 +41,7 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
         [Route("/Admin/Room/List/{CheckIn}/{CheckOut}")]
         public async Task<IActionResult> GetListFree(DateTime CheckIn, DateTime CheckOut)
         {
+            
             // Lấy danh sách Rooms từ Firebase
             FirebaseResponse roomResponse = await _client.GetAsync("Rooms");
             var roomDictionary = roomResponse.ResultAs<Dictionary<string, Room>>();

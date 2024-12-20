@@ -261,6 +261,10 @@
       "PackagePath": "staticwebassets\\loadData\\loadClient.js"
     },
     {
+      "Id": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadClientBooking.js",
+      "PackagePath": "staticwebassets\\loadData\\loadClientBooking.js"
+    },
+    {
       "Id": "D:\\BTCK_LTDD\\124LTTDTDD_HeHe_BookingHotel\\HotelManage_LTDD\\HotelManage_LTDD\\wwwroot\\loadData\\loadEmployee.js",
       "PackagePath": "staticwebassets\\loadData\\loadEmployee.js"
     },

@@ -260,18 +260,21 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
         {
             try
             {
-                string url = imageUrl;
+                if (imageUrl != "https://firebasestorage.googleapis.com/v0/b/ltddhaha.firebasestorage.app/o/ProjectImages%2Fmember1.png?alt=media&token=13a54791-4baf-4d35-b533-d23a2d1b8bb4")
+                {
+                    string url = imageUrl;
 
-                // Tìm vị trí của '%2F' và '?'
-                int startIndex = url.IndexOf("%2F") + 3;  // Tính từ vị trí sau "%2F"
-                int endIndex = url.IndexOf("?", startIndex); // Tìm dấu hỏi chấm bắt đầu từ startIndex
+                    // Tìm vị trí của '%2F' và '?'
+                    int startIndex = url.IndexOf("%2F") + 3;  // Tính từ vị trí sau "%2F"
+                    int endIndex = url.IndexOf("?", startIndex); // Tìm dấu hỏi chấm bắt đầu từ startIndex
 
-                // Trích xuất tên ảnh
-                string fileName = url.Substring(startIndex, endIndex - startIndex);
+                    // Trích xuất tên ảnh
+                    string fileName = url.Substring(startIndex, endIndex - startIndex);
 
-                // Tạo instance FirebaseStorage và xóa ảnh
-                var storage = new FirebaseStorage("ltddhaha.firebasestorage.app");
-                await storage.Child("UserImages").Child(fileName).DeleteAsync();
+                    // Tạo instance FirebaseStorage và xóa ảnh
+                    var storage = new FirebaseStorage("ltddhaha.firebasestorage.app");
+                    await storage.Child("UserImages").Child(fileName).DeleteAsync();
+                }
             }
             catch (Exception ex)
             {

@@ -24,11 +24,33 @@
             },
             {
                 data: 'CheckIn',
-                width: "10%"
+                width: "10%",
+                render: function (data, type, row) {
+                    // Kiểm tra nếu dữ liệu là một đối tượng Date
+                    if (data) {
+                        var date = new Date(data);
+                        var day = String(date.getDate()).padStart(2, '0');
+                        var month = String(date.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
+                        var year = date.getFullYear();
+                        return day + '/' + month + '/' + year;
+                    }
+                    return data; // Trả lại dữ liệu gốc nếu không phải ngày hợp lệ
+                }
             },
             {
                 data: 'CheckOut',
-                width: "10%"
+                width: "10%",
+                render: function (data, type, row) {
+                    // Kiểm tra nếu dữ liệu là một đối tượng Date
+                    if (data) {
+                        var date = new Date(data);
+                        var day = String(date.getDate()).padStart(2, '0');
+                        var month = String(date.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
+                        var year = date.getFullYear();
+                        return day + '/' + month + '/' + year;
+                    }
+                    return data; // Trả lại dữ liệu gốc nếu không phải ngày hợp lệ
+                }
             },
             {
                 data: 'Total',
