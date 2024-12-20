@@ -24,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -154,8 +156,8 @@ public class room_details extends AppCompatActivity {
         btn.setOnClickListener(view -> {
             Intent rDetail_list = new Intent(room_details.this, room_list_k.class);
             rDetail_list.putExtra("user_id", user_id);
-            rDetail_list.putExtra("CheckIn",checkin);
-            rDetail_list.putExtra("CheckOut", checkout);
+            rDetail_list.putExtra("checkInDate",checkin);
+            rDetail_list.putExtra("checkOutDate", checkout);
             startActivity(rDetail_list);
             finish();
         });
@@ -165,7 +167,25 @@ public class room_details extends AppCompatActivity {
             DatabaseReference bookingsRef = FirebaseDatabase.getInstance().getReference("Bookings");
 
             String CheckIn = checkin;
+            try {
+                SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = inputFormat.parse(checkin);
+                SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                String formattedDate = outputFormat.format(date);
+                CheckIn = formattedDate;
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             String CheckOut = checkout;
+            try {
+                SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = inputFormat.parse(checkout);
+                SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                String formattedDate = outputFormat.format(date);
+                CheckOut = formattedDate;
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             String Id = bookingsRef.push().getKey();
             Double Price = Double.parseDouble(roomPrice.getText().toString().replace("Giá tiền : ", "").trim());
             Integer RoomCode = Integer.valueOf(roomName.getText().toString().replace("Phòng ", "").trim());
@@ -200,7 +220,9 @@ public class room_details extends AppCompatActivity {
                 bookingsRef.child(Id).setValue(bookingMap).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Intent start = new Intent(room_details.this, tb_dptc.class);
+                        start.putExtra("user_id", user_id);
                         startActivity(start);
+                        finish();
                     } else {
                         Toast.makeText(room_details.this, "thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

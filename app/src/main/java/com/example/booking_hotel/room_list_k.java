@@ -3,6 +3,7 @@ package com.example.booking_hotel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -79,7 +80,15 @@ public class room_list_k extends AppCompatActivity {
         listGia.add("Giá - Tất cả"); // Thêm phần tử placeholder
         listGia.add("Tăng dần");
         listGia.add("Giảm dần");
-        ArrayAdapter<String> GiaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listGia);
+        ArrayAdapter<String> GiaAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listGia) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // This is the view that shows the selected item
+                TextView tv = (TextView) super.getView(position, convertView, parent);
+                tv.setTextColor(Color.BLACK); // Set the text color to black
+                return tv;
+            }
+        };
         GiaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gia.setAdapter(GiaAdapter);
         gia.setSelection(0);
@@ -87,7 +96,15 @@ public class room_list_k extends AppCompatActivity {
 
         Spinner loaiPhong = findViewById(R.id.spn_rooomlist_loai);
         List<String> listLoaiPhong = new ArrayList<>();
-        ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listLoaiPhong);
+        ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listLoaiPhong){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // This is the view that shows the selected item
+                TextView tv = (TextView) super.getView(position, convertView, parent);
+                tv.setTextColor(Color.BLACK); // Set the text color to black
+                return tv;
+            }
+        };
         LoaiPhongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         loaiPhong.setAdapter(LoaiPhongAdapter);
 

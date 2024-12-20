@@ -21,7 +21,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator;
@@ -91,7 +94,24 @@ public class booking_details extends AppCompatActivity {
                 String checkout = snapshot.child("CheckOut").getValue(String.class);
                 String voucher = snapshot.child("VoucherCode").getValue(String.class);
                 String roomid = snapshot.child("RoomID").getValue(String.class);
-
+                try {
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    Date date = inputFormat.parse(checkin);
+                    SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    String formattedDate = outputFormat.format(date);
+                    checkin = formattedDate;
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    Date date = inputFormat.parse(checkout);
+                    SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    String formattedDate = outputFormat.format(date);
+                    checkout = formattedDate;
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
                 // Update UI
                 bookingName.setText("Phòng " + name);

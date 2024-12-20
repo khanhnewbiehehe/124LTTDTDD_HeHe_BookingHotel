@@ -30,7 +30,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class booking_list extends AppCompatActivity {
@@ -70,7 +73,15 @@ public class booking_list extends AppCompatActivity {
         listTrangThai.add("Đã nhận phòng");
         listTrangThai.add("Chờ thanh toán");
         listTrangThai.add("Đã hoàn thành");
-        ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listTrangThai);
+        ArrayAdapter<String> LoaiPhongAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listTrangThai) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // This is the view that shows the selected item
+                TextView tv = (TextView) super.getView(position, convertView, parent);
+                tv.setTextColor(Color.BLACK); // Set the text color to black
+                return tv;
+            }
+        };
         LoaiPhongAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         trangthai.setAdapter(LoaiPhongAdapter);
         trangthai.setSelection(0);
@@ -93,6 +104,24 @@ public class booking_list extends AppCompatActivity {
                                 if (userid.equals(user_id)) {
                                     String CheckIn = roomSnapshot.child("CheckIn").getValue(String.class);
                                     String CheckOut = roomSnapshot.child("CheckOut").getValue(String.class);
+                                    try {
+                                        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                                        Date date = inputFormat.parse(CheckIn);
+                                        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                        String formattedDate = outputFormat.format(date);
+                                        CheckIn = formattedDate;
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                    try {
+                                        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                                        Date date = inputFormat.parse(CheckOut);
+                                        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                        String formattedDate = outputFormat.format(date);
+                                        CheckOut = formattedDate;
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
                                     String roomName = String.valueOf(roomSnapshot.child("RoomCode").getValue(Integer.class));
                                     String bookingID = roomSnapshot.child("Id").getValue(String.class);
                                     String TrangThai = roomSnapshot.child("Status").getValue(String.class);
