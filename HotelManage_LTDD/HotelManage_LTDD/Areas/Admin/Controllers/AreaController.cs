@@ -61,6 +61,15 @@ namespace HotelManage_LTDD.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra tính duy nhất của model.Name
+                var areas = _client.Get("Areas/").ResultAs<Dictionary<string, HotelArea>>(); // Lấy danh sách hiện có
+                if (areas != null && areas.Values.Any(area => area.Name.Equals(model.Name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    ModelState.AddModelError(nameof(model.Name), "The name is already in use. Please choose a different name.");
+                    return View(model);
+                }
+
+                // Thêm dữ liệu nếu không trùng lặp
                 var data = model;
                 PushResponse response = _client.Push("Areas/", data);
                 data.Id = response.Result.name;
@@ -77,8 +86,9 @@ namespace HotelManage_LTDD.Controllers
                 }
             }
 
-            return View();
+            return View(model);
         }
+
 
         [Route("/Admin/Area/Edit/{id}")]
         public ActionResult Edit(string id)
@@ -99,6 +109,13 @@ namespace HotelManage_LTDD.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra tính duy nhất của model.Name
+                var areas = _client.Get("Areas/").ResultAs<Dictionary<string, HotelArea>>(); // Lấy danh sách hiện có
+                if (areas != null && areas.Values.Any(area => area.Name.Equals(model.Name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    ModelState.AddModelError(nameof(model.Name), "The name is already in use. Please choose a different name.");
+                    return View(model);
+                }
                 // Cập nhật lại thông tin loại phòng trong Firebase
                 FirebaseResponse response = _client.Set("Areas/" + id, model);
 
