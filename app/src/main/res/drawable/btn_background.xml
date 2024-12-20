@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Thiết lập background màu trắng -->
-    <solid android:color="#0F77A7" />
-
+    <gradient
+        android:startColor="#00c6ff"
+        android:endColor="#0072ff"
+        />
     <!-- Thiết lập bo góc -->
     <corners android:radius="30dp" />
 

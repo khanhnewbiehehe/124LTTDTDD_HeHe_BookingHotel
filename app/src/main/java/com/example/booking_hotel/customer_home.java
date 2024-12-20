@@ -1,13 +1,21 @@
 package com.example.booking_hotel;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -23,16 +31,21 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.booking_hotel.Models.*;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class customer_home extends AppCompatActivity {
 
@@ -45,6 +58,8 @@ public class customer_home extends AppCompatActivity {
 
     DatabaseReference mDatabase;
 
+    private ArrayList<voucher_list_detail> voucher_listProperties = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +69,8 @@ public class customer_home extends AppCompatActivity {
         Intent intent = getIntent();
         String user_id = intent.getStringExtra("user_id");
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
 
         mDatabase.child("Users").child(user_id).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -160,6 +177,32 @@ public class customer_home extends AppCompatActivity {
             return true;
         });
 
+        ArrayAdapter<voucher_list_detail> adapter = new voucher_listArrayAdapter(this, 0, voucher_listProperties);
+        ListView voucherlistView = (ListView) findViewById(R.id.voucher_listview);
+        voucherlistView.setAdapter(adapter);
+
+        DatabaseReference roomRef = mDatabase.child("Vouchers");
+        roomRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                voucher_listProperties.clear();
+                for (DataSnapshot roomSnapshot : snapshot.getChildren()) {
+                    String vouchername = roomSnapshot.child("Name").getValue(String.class);
+                    String voucherdescription = roomSnapshot.child("Description").getValue(String.class);
+                    String voucherdiscount = String.valueOf(roomSnapshot.child("Discount").getValue(Double.class));
+                    String image = roomSnapshot.child("ImageUrl").getValue(String.class);
+                    String vouchercode = roomSnapshot.child("Code").getValue(String.class);
+
+                    voucher_listProperties.add(new voucher_list_detail(vouchername, voucherdescription, voucherdiscount, image, vouchercode));
+                }
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Firebase", "Error: " + error.getMessage());
+            }
+        });
+
     }
 
     public void onBackPressed()  {
@@ -172,6 +215,60 @@ public class customer_home extends AppCompatActivity {
     }
 
 
+}
+class voucher_listArrayAdapter extends ArrayAdapter<voucher_list_detail> {
 
+    private Context context;
+    private List<voucher_list_detail> room_listProperties;
+
+    public voucher_listArrayAdapter(Context context, int resource, ArrayList<voucher_list_detail> objects) {
+        super(context, resource, objects);
+
+        this.context = context;
+        this.room_listProperties = objects;
+    }
+
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.voucher_list_item, parent, false);
+            holder = new ViewHolder();
+            holder.voucherName = convertView.findViewById(R.id.voucher_item_name);
+            holder.voucherDescription = convertView.findViewById(R.id.voucher_item_des);
+            holder.voucherDiscount = convertView.findViewById(R.id.voucher_item_dis);
+            holder.voucherCode = convertView.findViewById(R.id.voucher_item_code);
+            holder.image = convertView.findViewById(R.id.voucher_item_img);
+            holder.btnCopy = convertView.findViewById(R.id.btnCopy);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        voucher_list_detail property = getItem(position);
+        holder.voucherName.setText(property.getVoucherName());
+        holder.voucherDescription.setText(property.getVoucherDescription());
+        holder.voucherDiscount.setText(property.getVoucherDiscount() + " %");
+        holder.voucherCode.setText(property.getVoucherCode());
+        Glide.with(context).load(property.getVoucherImage()).placeholder(R.drawable.corner_img_slider).into(holder.image);
+
+        // Set up btnCopy click listener
+        holder.btnCopy.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("Voucher Code", property.getVoucherCode());
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(context, "Đã lưu vào clipboard!", Toast.LENGTH_SHORT).show();
+        });
+
+        return convertView;
+    }
+
+    static class ViewHolder {
+        TextView voucherName;
+        TextView voucherDescription;
+        TextView voucherDiscount;
+        TextView voucherCode;
+        ImageView image;
+        Button btnCopy;
+    }
 
 }

@@ -65,6 +65,7 @@ public class register_hotel extends AppCompatActivity {
         textView_haveAccount.setOnClickListener(view -> {
             Intent start_sign = new Intent(register_hotel.this, sign_in.class);
             startActivity(start_sign);
+            finish();
         });
     }
 

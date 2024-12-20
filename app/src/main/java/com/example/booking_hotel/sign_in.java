@@ -2,6 +2,7 @@ package com.example.booking_hotel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -39,6 +41,22 @@ public class sign_in extends AppCompatActivity {
             public void onClick(View view) {
                 Intent sign_register = new Intent(sign_in.this, register_hotel.class);
                 startActivity(sign_register);
+            }
+        });
+
+        textView_register.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        textView_register.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        textView_register.setTextColor(ContextCompat.getColor(view.getContext(), R.color.yellow));
+                        break;
+                }
+                return false;
             }
         });
 

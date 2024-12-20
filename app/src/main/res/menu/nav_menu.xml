@@ -9,13 +9,16 @@
 
         <item
             android:id="@+id/nav_home"
-            android:title="Tài Khoản"/>
+            android:icon="@drawable/icon_person"
+            android:title="Tài Khoản" />
 
         <item
             android:id="@+id/nav_settings"
-            android:title="Đơn Đặt Phòng"/>
+            android:icon="@drawable/icon_room_menu"
+            android:title="Đơn Đặt Phòng" />
         <item
             android:id="@+id/nav_logout"
-            android:title="Đăng Xuất"/>
+            android:icon="@drawable/icon_logout"
+            android:title="Đăng Xuất" />
     </group>
 </menu>
