@@ -7,38 +7,46 @@
             <h5 class="card-title">Chỉnh sửa ưu đãi</h5>
         </div>
         <div class="card-body">
-            @using (Html.BeginForm("Edit", "Voucher", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+            <form asp-area="Admin" asp-action="Edit" asp-controller="Voucher" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
 
                 <div class="mb-3">
-                    <label for="Name" class="form-label">Tên ưu đãi:</label>
-                    <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required />
+                    <label asp-for="Name" class="form-label">Tên ưu đãi:</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter voucher name" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label for="Code" class="form-label">Mã ưu đãi:</label>
-                    <input type="text" id="Code" name="Code" class="form-control" value="@Model.Code" required />
+                    <label asp-for="Code" class="form-label">Mã ưu đãi:</label>
+                    <input asp-for="Code" class="form-control" type="text" placeholder="Enter code" required readonly/>
+                    <span asp-validation-for="Code" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label for="Discount" class="form-label">Giảm giá (%):</label>
-                    <input type="number" step="5" id="Discount" name="Discount" class="form-control" value="@Model.Discount" required />
+                    <label asp-for="Discount" class="form-label">Giảm giá(%):</label>
+                    <input asp-for="Discount" class="form-control" type="number" step="5" placeholder="Enter discount" required />
+                    <span asp-validation-for="Discount" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label for="Description" class="form-label">Mô tả:</label>
-                    <textarea id="Description" name="Description" class="form-control" rows="4" required>@Model.Description</textarea>
+                    <label asp-for="Description" class="form-label">Mô tả:</label>
+                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter room type description" required></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label for="Quantity" class="form-label">Số lượng</label>
-                    <input type="number" id="Quantity" name="Quantity" class="form-control" value="@Model.Quantity" required />
+                    <label asp-for="Quantity" class="form-label">Số lượng:</label>
+                    <input asp-for="Quantity" class="form-control" type="number" placeholder="Enter quantity" required />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label for="Status" class="form-label">Trạng thái:</label>
-                    <input type="text" id="Status" name="Status" class="form-control" value="@Model.Status" required />
+                    <label asp-for="Status" class="form-label">Trạng thái:</label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
@@ -56,10 +64,10 @@
                 <div class="d-grid mb-3">
                     <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
                 </div>
-            }
+            </form>
 
             <div class="d-grid">
-                <a asp-area="Admin" asp-action="Index" asp-controller="Voucher" class="btn btn-secondary">Quay lại</a>
+                <a asp-area="Admin" asp-action="Index" asp-controller="Voucher" class="btn btn-secondary form-control">Quay lại</a>
             </div>
         </div>
     </div>

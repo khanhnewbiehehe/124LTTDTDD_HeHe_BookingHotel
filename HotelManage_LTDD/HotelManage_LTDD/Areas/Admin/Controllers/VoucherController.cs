@@ -59,6 +59,12 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var vouchers = _client.Get("Vouchers/").ResultAs<Dictionary<string, Voucher>>(); // Lấy danh sách hiện có
+                if (vouchers != null && vouchers.Values.Any(v => v.Code.Equals(Voucher.Code, StringComparison.OrdinalIgnoreCase)))
+                {
+                    ModelState.AddModelError(nameof(Voucher.Code), "The voucher code is already in use. Please choose a different code.");
+                    return View(Voucher);
+                }
                 if (ImageUrl != null && ImageUrl.Length > 0)
                 {
                     // Kiểm tra loại file (ví dụ chỉ cho phép file hình ảnh)
@@ -116,7 +122,7 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
+               
                 FirebaseResponse response = _client.Get("Vouchers/" + id);
                 dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
 

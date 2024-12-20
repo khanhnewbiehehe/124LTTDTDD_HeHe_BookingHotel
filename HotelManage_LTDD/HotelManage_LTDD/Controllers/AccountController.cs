@@ -48,7 +48,7 @@ namespace HotelManage_LTDD.Controllers
                     // Kiểm tra quyền Admin
                     if (userEntry.Role == "Admin")
                     {
-                        return RedirectToAction("Index", "RoomType", new { area = "Admin" });
+                        return RedirectToAction("Dashboard", "Booking", new { area = "Admin" });
                     }
                     TempData["Error"] = "Bạn không có quyền hạn truy cập vào trang quản lý!";
                     return View();

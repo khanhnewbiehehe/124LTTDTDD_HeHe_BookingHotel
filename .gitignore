@@ -36,3 +36,11 @@ local.properties
 *.bak
 *.swp
 *.class
+
+# Ignore build output directories for .NET
+/bin/
+/obj/
+
+# Bỏ qua các tệp build trong obj/Debug
+HotelManage_LTDD/HotelManage_LTDD/obj/Debug/net8.0/HotelManage_LTDD.AssemblyInfo.cs
+HotelManage_LTDD/HotelManage_LTDD/obj/Debug/net8.0/HotelManage_LTDD.AssemblyInfoInputs.cache

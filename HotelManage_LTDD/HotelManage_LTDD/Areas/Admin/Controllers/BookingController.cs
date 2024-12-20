@@ -3,6 +3,7 @@ using FireSharp.Response;
 using HotelManage_LTDD.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace HotelManage_LTDD.Areas.Admin.Controllers
 {
@@ -22,10 +23,30 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
             return View();
         }
 
-        [Route("/Admin/Booking/Create")]
-        public ActionResult Create()
+        [Route("/Admin/Booking/Dashboard")]
+        public ActionResult Dashboard()
         {
             return View();
+        }
+
+        [Route("/Admin/Booking/Create/{id}/{CheckIn}/{CheckOut}")]
+        public ActionResult Create(string id, DateTime CheckIn, DateTime CheckOut)
+        {
+            FirebaseResponse response = _client.Get("Rooms/" + id);
+            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+
+            if (data == null)
+            {
+                return NotFound();
+
+            }
+            var room = JsonConvert.DeserializeObject<Room>(JsonConvert.SerializeObject(data));
+            var Booking = new Booking();
+            Booking.RoomID = id;
+            Booking.CheckIn = CheckIn;
+            Booking.CheckOut = CheckOut;
+            Booking.RoomCode = room.Code;
+            return View(Booking);
         }
 
         [Route("/Admin/Booking/List")]
@@ -76,7 +97,7 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
 
                 }
                 var user = JsonConvert.DeserializeObject<User>(JsonConvert.SerializeObject(userdata));
-
+                model.RoomDiscount = room.Discount;
                 model.RoomCode = room.Code;
                 model.UserName = user.Name;
                 model.Price = room.Price * (decimal)(model.CheckOut - model.CheckIn).TotalDays;
@@ -88,16 +109,31 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
 
                 if (model.VoucherCode != null)
                 {
-                    FirebaseResponse voucherresponse = _client.Get("Vouchers/" + model.RoomID);
-                    dynamic voucherdata = JsonConvert.DeserializeObject<dynamic>(voucherresponse.Body);
-
-                    if (voucherdata == null)
+                    FirebaseResponse voucherresponse = _client.Get("Vouchers");
+                    dynamic Vouchersdata = JsonConvert.DeserializeObject<dynamic>(voucherresponse.Body);
+                    var listVouchers = new List<Voucher>();
+                    if (Vouchersdata != null)
                     {
-                        return NotFound();
+                        foreach (var item in Vouchersdata)
+                        {
+                            listVouchers.Add(JsonConvert.DeserializeObject<Voucher>(((JProperty)item).Value.ToString()));
+                        }
+                    }
+
+                    if (listVouchers == null)
+                    {
+                        return NotFound("Danh sách voucher rỗng!");
 
                     }
-                    var voucher = JsonConvert.DeserializeObject<Room>(JsonConvert.SerializeObject(voucherdata));
-                    model.VoucherID = voucher.ID;
+                    var voucher = listVouchers.Where(v => v.Code == model.VoucherCode).FirstOrDefault();
+                    if (voucher.Quantity <= 0)
+                    {
+                        return NotFound("Voucher đã hết!");
+
+                    }
+                    voucher.Quantity = voucher.Quantity -1;
+                    voucherresponse = _client.Set("Vouchers/" + voucher.Id, voucher);
+                    model.VoucherID = voucher.Id;
                     model.VoucherDiscount = voucher.Discount;
                     model.Total = (room.Price - (room.Discount / 100) * room.Price - (voucher.Discount / 100) * room.Price) * (decimal)(model.CheckOut - model.CheckIn).TotalDays;
                 }

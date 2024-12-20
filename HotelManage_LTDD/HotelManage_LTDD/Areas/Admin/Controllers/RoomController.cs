@@ -4,6 +4,7 @@ using FireSharp.Response;
 using HotelManage_LTDD.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Globalization;
 using System.Linq;
 
 namespace HotelManage_LTDD.Areas.Admin.Controllers
@@ -37,6 +38,37 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
             return Content(response.Body, "application/json");
         }
 
+        [Route("/Admin/Room/List/{CheckIn}/{CheckOut}")]
+        public async Task<IActionResult> GetListFree(DateTime CheckIn, DateTime CheckOut)
+        {
+            
+            // Lấy danh sách Rooms từ Firebase
+            FirebaseResponse roomResponse = await _client.GetAsync("Rooms");
+            var roomDictionary = roomResponse.ResultAs<Dictionary<string, Room>>();
+            var rooms = roomDictionary?.Values.ToList() ?? new List<Room>();
+
+            // Lấy danh sách Bookings từ Firebase
+            FirebaseResponse bookingResponse = await _client.GetAsync("Bookings");
+            var bookingDictionary = bookingResponse.ResultAs<Dictionary<string, Booking>>();
+            var bookings = bookingDictionary?.Values.ToList() ?? new List<Booking>();
+
+            // Lọc các phòng đã đặt trong khoảng thời gian CheckIn - CheckOut
+            var bookedRoomIds = bookings
+                .Where(b =>
+                    (b.CheckIn <= CheckOut && b.CheckOut >= CheckIn) && b.Status != "Đã hoàn thành" && b.Status != "Bị hủy") // Kiểm tra giao khoảng thời gian
+                .Select(b => b.RoomCode) // Lấy RoomId
+                .Distinct() // Tránh trùng lặp
+                .ToList();
+
+            // Loại trừ các phòng đã đặt
+            var freeRooms = rooms.Where(r => !bookedRoomIds.Contains(r.Code) && r.Status == "Sẵn sàng").ToList();
+
+            // Trả về JSON
+            return Json(freeRooms);
+        }
+
+
+
         [Route("/Admin/Room/Details/{id}")]
         public ActionResult Details(string id)
         {
@@ -55,11 +87,17 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
 
         [Route("/Admin/Room/Create")]
         [HttpPost]
-        public async Task<ActionResult> Create(Room Room, List<IFormFile> images)
+        public async Task<ActionResult> Create(Room room, List<IFormFile> images)
         {
             if (ModelState.IsValid)
             {
-                var data = Room;
+                var rooms = _client.Get("Rooms/").ResultAs<Dictionary<string, Room>>();
+                if (rooms != null && rooms.Values.Any(r => r.Code == room.Code))
+                {
+                    ModelState.AddModelError(nameof(Room.Code), "The room code is already in use. Please choose a different code.");
+                    return View(room);
+                }
+                var data = room;
 
                 // Tạo một bản ghi mới trong Firebase Realtime Database
                 PushResponse response = _client.Push("Rooms/", data);
@@ -125,7 +163,6 @@ namespace HotelManage_LTDD.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 FirebaseResponse response = _client.Get("Rooms/" + id);
                 dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
 
